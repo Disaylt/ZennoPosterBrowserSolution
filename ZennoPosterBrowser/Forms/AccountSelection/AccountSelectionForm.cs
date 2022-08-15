@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZennoPosterBrowser.Forms.Base;
 
-namespace ZennoPosterBrowser.Controller.AccountSelection
+namespace ZennoPosterBrowser.Forms.AccountSelection
 {
-    internal class AccountSelectionController : FormController
+    internal class AccountSelectionForm : BaseForm
     {
         private const string _nameForm = "Выбор аккаунтов";
-        public AccountSelectionController() : base(_nameForm)
+        public AccountSelectionForm() : base()
         {
-
+            Form.Size = new Size(400, 500);
         }
     }
 }

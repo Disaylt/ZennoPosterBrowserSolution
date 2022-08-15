@@ -81,8 +81,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\AccountSelection\AccountSelectionController.cs" />
-    <Compile Include="Controller\FormController.cs" />
+    <Compile Include="Forms\AccountSelection\AccountSelectionDataGrid.cs" />
+    <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
+    <Compile Include="Forms\AccountSelection\AccountSellectionFormControls.cs" />
+    <Compile Include="Forms\Base\BaseForm.cs" />
+    <Compile Include="Forms\Base\IFormControls.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
