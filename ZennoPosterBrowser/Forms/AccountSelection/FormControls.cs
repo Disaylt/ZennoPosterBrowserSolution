@@ -35,7 +35,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             get
             {
                 AccountSelectionDataGridBuilder accountSelectionDataGrid = new AccountSelectionDataGridBuilder();
-                return accountSelectionDataGrid.DataGridView;
+                return accountSelectionDataGrid.Create();
             }
         }
 

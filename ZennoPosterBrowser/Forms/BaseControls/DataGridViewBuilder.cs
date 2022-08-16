@@ -11,7 +11,7 @@ namespace ZennoPosterBrowser.Forms.BaseControls
     {
         public abstract DataGridView Create();
 
-        public static void AddAccountColumn(DataGridView dataGridView, IEnumerable<DataGridViewTextBoxColumn> columns)
+        public static void AddColumns(DataGridView dataGridView, IEnumerable<DataGridViewTextBoxColumn> columns)
         {
             foreach(DataGridViewTextBoxColumn column in columns)
             {

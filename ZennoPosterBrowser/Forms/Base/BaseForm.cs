@@ -14,7 +14,8 @@ namespace ZennoPosterBrowser.Forms.Base
         public BaseForm(IFormControls formControls)
         {
             Form = new Form();
-            AddControls(formControls.Controls);
+
+            AddControls(formControls.GetFormControls());
         }
 
         private void AddControls(IEnumerable<Control> controls)

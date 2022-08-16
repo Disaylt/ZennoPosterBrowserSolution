@@ -14,7 +14,8 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         {
             DataGridView dataGridView = new DataGridView();
             SetDataGridSettings(dataGridView);
-            AddAccountColumn(dataGridView);
+            AccountSelectionDataGridColumnsStorage columnStorage = new AccountSelectionDataGridColumnsStorage();
+            AddColumns(dataGridView, columnStorage.Columns);
             return dataGridView;
         }
 

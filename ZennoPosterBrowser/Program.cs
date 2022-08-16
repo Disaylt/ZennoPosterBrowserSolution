@@ -11,6 +11,7 @@ using ZennoLab.CommandCenter;
 using ZennoLab.Emulation;
 using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoLab.InterfacesLibrary.ProjectModel.Enums;
+using ZennoPosterBrowser.Configs;
 
 namespace ZennoPosterBrowser
 {
