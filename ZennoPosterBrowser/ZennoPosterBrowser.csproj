@@ -81,13 +81,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseConfig.cs" />
-    <Compile Include="Forms\AccountSelection\AccountSelectionConfig.cs" />
+    <Compile Include="Configs\BaseConfig.cs" />
+    <Compile Include="Configs\IMarketConfig.cs" />
+    <Compile Include="Configs\MarketsConfigFromFile.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionDataGrid.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
     <Compile Include="Forms\AccountSelection\AccountSellectionFormControls.cs" />
     <Compile Include="Forms\Base\BaseForm.cs" />
     <Compile Include="Forms\Base\IFormControls.cs" />
+    <Compile Include="JsonFileLoader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

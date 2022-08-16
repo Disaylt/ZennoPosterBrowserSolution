@@ -5,18 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using ZennoLab.InterfacesLibrary.ProjectModel;
 
-namespace ZennoPosterBrowser
+namespace ZennoPosterBrowser.Configs
 {
     internal class BaseConfig
     {
         private static BaseConfig _instance;
-        private string _projectPath;
-        private IEnumerable<string> _markets;
 
         private BaseConfig(IZennoPosterProjectModel project)
         {
-            _projectPath = project.Path;
+            ProjectPath = project.Path;
+            MarketConfig = new MarketsConfigFromFile(ProjectPath);
         }
+
+        public string ProjectPath { get; }
+        public IMarketConfig MarketConfig { get; }
 
         public static BaseConfig Instance
         {
@@ -29,8 +31,6 @@ namespace ZennoPosterBrowser
                 return _instance;
             }
         }
-
-        public string ProjectPath => _projectPath;
 
         public static void InitialConfig(IZennoPosterProjectModel project)
         {
