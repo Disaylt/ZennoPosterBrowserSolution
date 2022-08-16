@@ -81,7 +81,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
+    <Compile Include="BaseConfig.cs" />
+    <Compile Include="Forms\AccountSelection\AccountSelectionConfig.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionDataGrid.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
     <Compile Include="Forms\AccountSelection\AccountSellectionFormControls.cs" />

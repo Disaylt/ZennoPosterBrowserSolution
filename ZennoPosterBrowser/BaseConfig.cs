@@ -7,17 +7,18 @@ using ZennoLab.InterfacesLibrary.ProjectModel;
 
 namespace ZennoPosterBrowser
 {
-    internal class Config
+    internal class BaseConfig
     {
-        private static Config _instance;
+        private static BaseConfig _instance;
         private string _projectPath;
+        private IEnumerable<string> _markets;
 
-        private Config(IZennoPosterProjectModel project)
+        private BaseConfig(IZennoPosterProjectModel project)
         {
             _projectPath = project.Path;
         }
 
-        public static Config Instance
+        public static BaseConfig Instance
         {
             get
             {
@@ -35,7 +36,7 @@ namespace ZennoPosterBrowser
         {
             if (_instance == null)
             {
-                _instance = new Config(project);
+                _instance = new BaseConfig(project);
             }
         }
     }

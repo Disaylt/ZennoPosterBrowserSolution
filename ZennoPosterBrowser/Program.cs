@@ -27,8 +27,9 @@ namespace ZennoPosterBrowser
         /// <returns>Код выполнения скрипта</returns>		
         public int Execute(Instance instance, IZennoPosterProjectModel project)
         {
-            int executionResult = 0;
+            BaseConfig.InitialConfig(project);
 
+            int executionResult = 0;
             return executionResult;
         }
     }
