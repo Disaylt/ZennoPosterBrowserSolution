@@ -84,9 +84,12 @@
     <Compile Include="Configs\BaseConfig.cs" />
     <Compile Include="Configs\IMarketConfig.cs" />
     <Compile Include="Configs\MarketsConfigFromFile.cs" />
-    <Compile Include="Forms\AccountSelection\AccountSelectionDataGrid.cs" />
+    <Compile Include="Forms\AccountSelection\DataGridBuilder.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
-    <Compile Include="Forms\AccountSelection\AccountSellectionFormControls.cs" />
+    <Compile Include="Forms\AccountSelection\FormControls.cs" />
+    <Compile Include="Forms\AccountSelection\SelectMarketComboBoxBuilder.cs" />
+    <Compile Include="Forms\BaseControls\ComboBoxBuilder.cs" />
+    <Compile Include="Forms\BaseControls\DataGridBuilder.cs" />
     <Compile Include="Forms\Base\BaseForm.cs" />
     <Compile Include="Forms\Base\IFormControls.cs" />
     <Compile Include="JsonFileLoader.cs" />

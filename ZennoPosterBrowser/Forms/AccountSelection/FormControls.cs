@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZennoPosterBrowser.Configs;
 using ZennoPosterBrowser.Forms.Base;
+using ZennoPosterBrowser.Forms.BaseControls;
 
 namespace ZennoPosterBrowser.Forms.AccountSelection
 {
-    internal class AccountSellectionFormControls : IFormControls
+    internal class FormControls : IFormControls
     {
         public List<Control> Controls { get; }
 
-        public AccountSellectionFormControls()
+        public FormControls()
         {
             Controls = new List<Control>();
             AddAccountsSellectionControls();
@@ -22,17 +24,9 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         {
             get
             {
-                ComboBox comboBoxSelectMarket = new ComboBox();
-                comboBoxSelectMarket.FormattingEnabled = true;
-                comboBoxSelectMarket.Items.AddRange(new object[] {
-                    "Ozon",
-                    "WB",
-                    "Другое"});
-                comboBoxSelectMarket.Location = new System.Drawing.Point(170, 15);
-                comboBoxSelectMarket.Name = "comboBoxSelectMarket";
-                comboBoxSelectMarket.Size = new System.Drawing.Size(80, 20);
-                comboBoxSelectMarket.DropDownStyle = ComboBoxStyle.DropDownList;
-                return comboBoxSelectMarket;
+                IEnumerable<string> marketsName = BaseConfig.Instance.MarketConfig.MarketsName;
+                ComboBoxBuilder comboBoxBuilder = new SelectMarketComboBoxBuilder(marketsName);
+                return comboBoxBuilder.Create();
             }
         }
 
@@ -40,7 +34,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         {
             get
             {
-                AccountSelectionDataGrid accountSelectionDataGrid = new AccountSelectionDataGrid();
+                DataGridBuilder accountSelectionDataGrid = new DataGridBuilder();
                 return accountSelectionDataGrid.DataGridView;
             }
         }
@@ -61,6 +55,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         {
             Controls.Add(Grid);
             Controls.Add(TextBox);
+            Controls.Add(SelectMarket);
         }
 
         public List<Control> GetFormControls()

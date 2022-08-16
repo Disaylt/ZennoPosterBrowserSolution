@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace ZennoPosterBrowser.Forms.AccountSelection
 {
-    internal class AccountSelectionDataGrid
+    internal class DataGridBuilder
     {
         public DataGridView DataGridView { get; }
 
-        public AccountSelectionDataGrid()
+        public DataGridBuilder()
         {
             DataGridView = new DataGridView();
             SetDataGridSettings();
