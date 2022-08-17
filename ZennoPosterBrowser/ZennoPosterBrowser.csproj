@@ -100,6 +100,10 @@
     <Compile Include="Forms\Base\IFormControls.cs" />
     <Compile Include="JsonFileLoader.cs" />
     <Compile Include="Models\JSON\ProjectSettingsModel.cs" />
+    <Compile Include="Mongo\BrowserDatabaseConnector.cs" />
+    <Compile Include="Mongo\BrowserCollections\MarketsCollection.cs" />
+    <Compile Include="Mongo\IMongoCollectionConnector.cs" />
+    <Compile Include="Mongo\MongoCollectionConnector.cs" />
     <Compile Include="Mongo\MongoConnector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

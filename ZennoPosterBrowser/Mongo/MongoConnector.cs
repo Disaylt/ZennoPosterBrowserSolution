@@ -5,13 +5,17 @@ namespace ZennoPosterBrowser.Mongo
 {
     internal class MongoConnector
     {
+        private static object _locker = new object(); 
         private static MongoClient _client;
 
         public MongoConnector()
         {
-            if (_client == null)
+            lock(_locker)
             {
-                _client = CreateClient();
+                if (_client == null)
+                {
+                    _client = CreateClient();
+                }
             }
         }
 
