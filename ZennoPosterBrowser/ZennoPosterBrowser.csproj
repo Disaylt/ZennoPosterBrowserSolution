@@ -99,6 +99,8 @@
     <Compile Include="Forms\Base\BaseForm.cs" />
     <Compile Include="Forms\Base\IFormControls.cs" />
     <Compile Include="JsonFileLoader.cs" />
+    <Compile Include="Models\BSON\BsonIdModel.cs" />
+    <Compile Include="Models\BSON\ProjectNameModel.cs" />
     <Compile Include="Models\JSON\ProjectSettingsModel.cs" />
     <Compile Include="Mongo\BrowserDatabaseConnector.cs" />
     <Compile Include="Mongo\BrowserCollections\MarketsCollection.cs" />
@@ -142,7 +144,5 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\BSON\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
