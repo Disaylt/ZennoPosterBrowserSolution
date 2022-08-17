@@ -23,44 +23,64 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             Controls.Add(SelectProject);
         }
 
-        protected virtual ComboBox SelectProject
+        private ComboBox _selectProject;
+        public virtual ComboBox SelectProject
         {
             get
             {
-                IEnumerable<string> projectNames = BaseConfig.Instance.ProjectNamesStorage.ProjectNames;
-                ComboBoxBuilder comboBoxBuilder = new SelectProjectComboBoxBuilder(projectNames);
-                return comboBoxBuilder.Create();
+                if(_selectProject == null)
+                {
+                    IEnumerable<string> projectNames = BaseConfig.Instance.ProjectNamesStorage.ProjectNames;
+                    ComboBoxBuilder comboBoxBuilder = new SelectProjectComboBoxBuilder(projectNames);
+                    _selectProject = comboBoxBuilder.Create();
+                }
+                return _selectProject;
             }
         }
 
-        protected virtual ComboBox SelectMarket
+        private ComboBox _selectMarket;
+        public virtual ComboBox SelectMarket
         {
             get
             {
-                IEnumerable<string> marketNames = BaseConfig.Instance.MarketNamesStorage.MarketNames;
-                ComboBoxBuilder comboBoxBuilder = new SelectMarketComboBoxBuilder(marketNames);
-                return comboBoxBuilder.Create();
+                if(_selectMarket == null)
+                {
+                    IEnumerable<string> marketNames = BaseConfig.Instance.MarketNamesStorage.MarketNames;
+                    ComboBoxBuilder comboBoxBuilder = new SelectMarketComboBoxBuilder(marketNames);
+                    _selectMarket = comboBoxBuilder.Create();
+                }
+                return _selectMarket;
             }
         }
 
-        protected virtual DataGridView Grid
+        private DataGridView _grid;
+        public virtual DataGridView Grid
         {
             get
             {
-                AccountSelectionDataGridBuilder accountSelectionDataGrid = new AccountSelectionDataGridBuilder();
-                return accountSelectionDataGrid.Create();
+                if(_grid == null)
+                {
+                    AccountSelectionDataGridBuilder accountSelectionDataGrid = new AccountSelectionDataGridBuilder();
+                    _grid = accountSelectionDataGrid.Create();
+                }
+                return _grid;
             }
         }
 
-        protected virtual TextBox TextBox
+        private TextBox _textBox;
+        public virtual TextBox TextBox
         {
             get
             {
-                TextBox textBoxSearch = new TextBox();
-                textBoxSearch.Location = new System.Drawing.Point(15, 15);
-                textBoxSearch.Name = "textBoxSearch";
-                textBoxSearch.Size = new System.Drawing.Size(150, 20);
-                return textBoxSearch;
+                if(_textBox == null)
+                {
+                    TextBox textBoxSearch = new TextBox();
+                    textBoxSearch.Location = new System.Drawing.Point(15, 15);
+                    textBoxSearch.Name = "textBoxSearch";
+                    textBoxSearch.Size = new System.Drawing.Size(150, 20);
+                    _textBox = textBoxSearch;
+                }
+                return _textBox;
             }
         }
 
