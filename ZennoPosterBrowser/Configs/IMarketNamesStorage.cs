@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZennoPosterBrowser.Configs
 {
-    internal interface IProjectConfig
+    internal interface IMarketNamesStorage
     {
-        IEnumerable<string> ProjectNames { get; }
+        IEnumerable<string> MarketsName { get; }
     }
 }

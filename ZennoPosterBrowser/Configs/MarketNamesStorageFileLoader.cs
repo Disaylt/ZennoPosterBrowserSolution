@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ZennoPosterBrowser.Configs
 {
-    internal class MarketsConfigFile : IMarketConfig
+    internal class MarketNamesStorageFileLoader : IMarketNamesStorage
     {
         private const string _fileName = "MarketsName.json";
 
-        public MarketsConfigFile(string projectPath)
+        public MarketNamesStorageFileLoader(string projectPath)
         {
             MarketsName = JsonFileLoader.Load<List<string>>($"{projectPath}{_fileName}");
         }

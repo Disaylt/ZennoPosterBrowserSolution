@@ -9,36 +9,43 @@ namespace ZennoPosterBrowser.Configs
 {
     internal class BaseConfig
     {
+        private static object _locker = new object();
         private static BaseConfig _instance;
 
         private BaseConfig(IZennoPosterProjectModel project)
         {
             ProjectPath = project.Path;
-            MarketConfig = new MarketsConfigFile(ProjectPath);
-            ProjectConfig = new ProjectsConfigFile(ProjectPath);
+            MarketConfig = new MarketNamesStorageFileLoader(ProjectPath);
+            ProjectConfig = new ProjectNamesStorageFileLoader(ProjectPath);
         }
 
         public string ProjectPath { get; }
-        public IMarketConfig MarketConfig { get; }
-        public IProjectConfig ProjectConfig { get; }
+        public IMarketNamesStorage MarketConfig { get; }
+        public IProjectNamesStorage ProjectConfig { get; }
 
         public static BaseConfig Instance
         {
             get
             {
-                if (_instance == null)
+                lock(_locker)
                 {
-                    throw new NullReferenceException("Config instance not initialized");
+                    if (_instance == null)
+                    {
+                        throw new NullReferenceException("Config instance not initialized");
+                    }
+                    return _instance;
                 }
-                return _instance;
             }
         }
 
         public static void InitialConfig(IZennoPosterProjectModel project)
         {
-            if (_instance == null)
+            lock(_locker)
             {
-                _instance = new BaseConfig(project);
+                if (_instance == null)
+                {
+                    _instance = new BaseConfig(project);
+                }
             }
         }
     }

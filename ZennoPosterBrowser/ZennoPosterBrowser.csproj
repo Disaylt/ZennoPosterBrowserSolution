@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -82,10 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configs\BaseConfig.cs" />
-    <Compile Include="Configs\IMarketConfig.cs" />
-    <Compile Include="Configs\IProjectConfig.cs" />
-    <Compile Include="Configs\MarketsConfigFromFile.cs" />
-    <Compile Include="Configs\ProjectsConfigFromFile.cs" />
+    <Compile Include="Configs\IMarketNamesStorage.cs" />
+    <Compile Include="Configs\IProjectNamesStorage.cs" />
+    <Compile Include="Configs\IProjectSettings.cs" />
+    <Compile Include="Configs\MarketNamesStorageFileLoader.cs" />
+    <Compile Include="Configs\ProjectNamesStorageFileLoader.cs" />
+    <Compile Include="Configs\ProjectSettingsFileLoader.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionDataGridBuilder.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionDataGridColumnsStorage.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
@@ -97,6 +99,8 @@
     <Compile Include="Forms\Base\BaseForm.cs" />
     <Compile Include="Forms\Base\IFormControls.cs" />
     <Compile Include="JsonFileLoader.cs" />
+    <Compile Include="Models\JSON\ProjectSettingsModel.cs" />
+    <Compile Include="Mongo\MongoConnector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -108,6 +112,18 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2">
       <IncludeAssets>build</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="MongoDB.Bson">
+      <Version>2.17.1</Version>
+    </PackageReference>
+    <PackageReference Include="MongoDB.Driver">
+      <Version>2.17.1</Version>
+    </PackageReference>
+    <PackageReference Include="MongoDB.Driver.Core">
+      <Version>2.17.1</Version>
+    </PackageReference>
+    <PackageReference Include="MongoDB.Libmongocrypt">
+      <Version>1.5.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +139,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Folder Include="Models\BSON\" />
   </ItemGroup>
 </Project>
