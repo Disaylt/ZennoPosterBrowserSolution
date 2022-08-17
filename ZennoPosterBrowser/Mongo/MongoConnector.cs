@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using ZennoPosterBrowser.Configs;
 
 namespace ZennoPosterBrowser.Mongo
 {
@@ -22,8 +23,8 @@ namespace ZennoPosterBrowser.Mongo
 
         private MongoClient CreateClient()
         {
-            MongoSettings settings = new MongoSettings();
-            string connectString = settings.GetSettings().ConnectionString;
+            var settings = BaseConfig.Instance.ProjectSettingsLoader;
+            string connectString = settings.ProjectSettings.MongoConnectionString;
             MongoClient client = new MongoClient(connectString);
             return client;
         }

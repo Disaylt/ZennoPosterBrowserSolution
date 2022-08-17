@@ -15,13 +15,15 @@ namespace ZennoPosterBrowser.Configs
         private BaseConfig(IZennoPosterProjectModel project)
         {
             ProjectPath = project.Path;
-            MarketConfig = new MarketNamesStorageFileLoader(ProjectPath);
-            ProjectConfig = new ProjectNamesStorageFileLoader(ProjectPath);
+            MarketNamesStorage = new MarketNamesStorageFileLoader(ProjectPath);
+            ProjectNamesStorage = new ProjectNamesStorageFileLoader(ProjectPath);
+            ProjectSettingsLoader = new ProjectSettingsFileLoader(ProjectPath);
         }
 
         public string ProjectPath { get; }
-        public IMarketNamesStorage MarketConfig { get; }
-        public IProjectNamesStorage ProjectConfig { get; }
+        public IMarketNamesStorage MarketNamesStorage { get; }
+        public IProjectNamesStorage ProjectNamesStorage { get; }
+        public IProjectSettingsLoader ProjectSettingsLoader { get; }
 
         public static BaseConfig Instance
         {

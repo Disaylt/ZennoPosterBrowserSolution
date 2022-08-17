@@ -7,7 +7,7 @@ using ZennoPosterBrowser.Models.JSON;
 
 namespace ZennoPosterBrowser.Configs
 {
-    internal interface IProjectSettings
+    internal interface IProjectSettingsLoader
     {
         ProjectSettingsModel ProjectSettings { get; }
     }

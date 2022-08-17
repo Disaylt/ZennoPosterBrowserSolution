@@ -27,7 +27,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         {
             get
             {
-                IEnumerable<string> projectNames = BaseConfig.Instance.ProjectConfig.ProjectNames;
+                IEnumerable<string> projectNames = BaseConfig.Instance.ProjectNamesStorage.ProjectNames;
                 ComboBoxBuilder comboBoxBuilder = new SelectProjectComboBoxBuilder(projectNames);
                 return comboBoxBuilder.Create();
             }
@@ -37,7 +37,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         {
             get
             {
-                IEnumerable<string> marketNames = BaseConfig.Instance.MarketConfig.MarketsName;
+                IEnumerable<string> marketNames = BaseConfig.Instance.MarketNamesStorage.MarketsName;
                 ComboBoxBuilder comboBoxBuilder = new SelectMarketComboBoxBuilder(marketNames);
                 return comboBoxBuilder.Create();
             }
