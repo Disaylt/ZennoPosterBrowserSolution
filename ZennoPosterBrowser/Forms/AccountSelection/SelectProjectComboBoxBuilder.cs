@@ -8,20 +8,20 @@ using ZennoPosterBrowser.Forms.BaseControls;
 
 namespace ZennoPosterBrowser.Forms.AccountSelection
 {
-    internal class SelectMarketComboBoxBuilder : ComboBoxBuilder
+    internal class SelectProjectComboBoxBuilder : ComboBoxBuilder
     {
-        private readonly IEnumerable<string> _marketNames;
+        private readonly IEnumerable<string> _projectNames;
 
-        public SelectMarketComboBoxBuilder(IEnumerable<string> marketNames)
+        public SelectProjectComboBoxBuilder(IEnumerable<string> projectNames)
         {
-            _marketNames = marketNames;
+            _projectNames = projectNames;
         }
 
         public override ComboBox Create()
         {
             ComboBox comboBox = new ComboBox();
             SetSettings(comboBox);
-            comboBox.Items.AddRange(_marketNames.ToArray());
+            comboBox.Items.AddRange(_projectNames.ToArray());
             return comboBox;
         }
 

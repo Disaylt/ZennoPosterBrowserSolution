@@ -8,6 +8,6 @@ namespace ZennoPosterBrowser.Configs
 {
     internal interface IProjectConfig
     {
-        IEnumerable<string> ProjectsName { get; }
+        IEnumerable<string> ProjectNames { get; }
     }
 }

@@ -91,6 +91,7 @@
     <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
     <Compile Include="Forms\AccountSelection\FormControls.cs" />
     <Compile Include="Forms\AccountSelection\SelectMarketComboBoxBuilder.cs" />
+    <Compile Include="Forms\AccountSelection\SelectProjectComboBoxBuilder.cs" />
     <Compile Include="Forms\BaseControls\ComboBoxBuilder.cs" />
     <Compile Include="Forms\BaseControls\DataGridViewBuilder.cs" />
     <Compile Include="Forms\Base\BaseForm.cs" />

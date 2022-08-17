@@ -15,10 +15,12 @@ namespace ZennoPosterBrowser.Configs
         {
             ProjectPath = project.Path;
             MarketConfig = new MarketsConfigFromFile(ProjectPath);
+            ProjectConfig = new ProjectsConfigFromFile(ProjectPath);
         }
 
         public string ProjectPath { get; }
         public IMarketConfig MarketConfig { get; }
+        public IProjectConfig ProjectConfig { get; }
 
         public static BaseConfig Instance
         {

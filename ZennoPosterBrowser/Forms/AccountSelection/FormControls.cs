@@ -20,14 +20,25 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             Controls.Add(Grid);
             Controls.Add(TextBox);
             Controls.Add(SelectMarket);
+            Controls.Add(SelectProject);
+        }
+
+        protected virtual ComboBox SelectProject
+        {
+            get
+            {
+                IEnumerable<string> projectNames = BaseConfig.Instance.ProjectConfig.ProjectNames;
+                ComboBoxBuilder comboBoxBuilder = new SelectProjectComboBoxBuilder(projectNames);
+                return comboBoxBuilder.Create();
+            }
         }
 
         protected virtual ComboBox SelectMarket
         {
             get
             {
-                IEnumerable<string> marketsName = BaseConfig.Instance.MarketConfig.MarketsName;
-                ComboBoxBuilder comboBoxBuilder = new SelectMarketComboBoxBuilder(marketsName);
+                IEnumerable<string> marketNames = BaseConfig.Instance.MarketConfig.MarketsName;
+                ComboBoxBuilder comboBoxBuilder = new SelectMarketComboBoxBuilder(marketNames);
                 return comboBoxBuilder.Create();
             }
         }
