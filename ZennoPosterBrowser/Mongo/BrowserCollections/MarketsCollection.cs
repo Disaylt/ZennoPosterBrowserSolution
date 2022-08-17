@@ -8,15 +8,15 @@ using ZennoPosterBrowser.Models.BSON;
 
 namespace ZennoPosterBrowser.Mongo.BrowserCollections
 {
-    internal class MarketsCollection : BrowserDatabaseConnector, IMongoCollectionConnector<ProjectNameModel>
+    internal class MarketsCollection : BrowserDatabaseConnector, IMongoCollectionConnector<MarketNameModel>
     {
         private const string _collectionName = "Markets";
 
         public MarketsCollection()
         {
-            Collection = DataBase.GetCollection<ProjectNameModel>(_collectionName);
+            Collection = DataBase.GetCollection<MarketNameModel>(_collectionName);
         }
 
-        public IMongoCollection<ProjectNameModel> Collection { get; }
+        public IMongoCollection<MarketNameModel> Collection { get; }
     }
 }
