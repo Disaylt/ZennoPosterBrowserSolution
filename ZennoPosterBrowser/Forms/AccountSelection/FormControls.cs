@@ -17,7 +17,9 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         public FormControls()
         {
             Controls = new List<Control>();
-            AddAccountsSellectionControls();
+            Controls.Add(Grid);
+            Controls.Add(TextBox);
+            Controls.Add(SelectMarket);
         }
 
         protected virtual ComboBox SelectMarket
@@ -49,13 +51,6 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
                 textBoxSearch.Size = new System.Drawing.Size(150, 20);
                 return textBoxSearch;
             }
-        }
-
-        private void AddAccountsSellectionControls()
-        {
-            Controls.Add(Grid);
-            Controls.Add(TextBox);
-            Controls.Add(SelectMarket);
         }
 
         public List<Control> GetFormControls()

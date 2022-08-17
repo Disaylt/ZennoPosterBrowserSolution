@@ -83,7 +83,9 @@
   <ItemGroup>
     <Compile Include="Configs\BaseConfig.cs" />
     <Compile Include="Configs\IMarketConfig.cs" />
+    <Compile Include="Configs\IProjectConfig.cs" />
     <Compile Include="Configs\MarketsConfigFromFile.cs" />
+    <Compile Include="Configs\ProjectsConfigFromFile.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionDataGridBuilder.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionDataGridColumnsStorage.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
