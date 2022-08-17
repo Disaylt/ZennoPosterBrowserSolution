@@ -16,7 +16,7 @@ namespace ZennoPosterBrowser.Configs
         {
             ProjectPath = project.Path;
             MarketNamesStorage = new MarketNamesStorageDbLoader();
-            ProjectNamesStorage = new ProjectNamesStorageFileLoader(ProjectPath);
+            ProjectNamesStorage = new ProjectNamesStorageDbLoader();
             ProjectSettingsLoader = new ProjectSettingsFileLoader(ProjectPath);
         }
 

@@ -8,6 +8,6 @@ namespace ZennoPosterBrowser.Configs
 {
     internal interface IMarketNamesStorage
     {
-        IEnumerable<string> MarketsName { get; }
+        IEnumerable<string> MarketNames { get; }
     }
 }

@@ -11,22 +11,22 @@ using ZennoPosterBrowser.Mongo.BrowserCollections;
 
 namespace ZennoPosterBrowser.Configs
 {
-    internal class MarketNamesStorageDbLoader : IMarketNamesStorage
+    internal class ProjectNamesStorageDbLoader : IProjectNamesStorage
     {
-        public MarketNamesStorageDbLoader()
+        public ProjectNamesStorageDbLoader()
         {
-            MarketNames = LoadMarketNames();
+            ProjectNames = LoadMarketNames();
         }
 
-        public IEnumerable<string> MarketNames { get; }
+        public IEnumerable<string> ProjectNames { get; }
 
         private static IEnumerable<string> LoadMarketNames()
         {
-            IMongoCollectionConnector<MarketNameModel> markets = new MarketsCollection();
-            IMongoCollection<MarketNameModel> coll = markets.Collection;
+            IMongoCollectionConnector<ProjectNameModel> markets = new ProjectsCollection();
+            IMongoCollection<ProjectNameModel> coll = markets.Collection;
             return coll.Find(new BsonDocument())
                 .ToList()
-                .Select(x => x.MarketName);
+                .Select(x => x.ProjectName);
         }
     }
 }

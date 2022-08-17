@@ -87,6 +87,7 @@
     <Compile Include="Configs\IProjectSettingsLoader.cs" />
     <Compile Include="Configs\MarketNamesStorageDbLoader.cs" />
     <Compile Include="Configs\MarketNamesStorageFileLoader.cs" />
+    <Compile Include="Configs\ProjectNamesStorageDbLoader.cs" />
     <Compile Include="Configs\ProjectNamesStorageFileLoader.cs" />
     <Compile Include="Configs\ProjectSettingsFileLoader.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionDataGridBuilder.cs" />
