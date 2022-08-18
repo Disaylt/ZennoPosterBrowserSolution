@@ -28,9 +28,9 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         private void SetSettings(ComboBox comboBox)
         {
             comboBox.FormattingEnabled = true;
-            comboBox.Location = new System.Drawing.Point(170, 15);
+            comboBox.Location = new System.Drawing.Point(255, 15);
             comboBox.Name = "comboBoxSelectMarket";
-            comboBox.Size = new System.Drawing.Size(80, 20);
+            comboBox.Size = new System.Drawing.Size(110, 20);
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }
