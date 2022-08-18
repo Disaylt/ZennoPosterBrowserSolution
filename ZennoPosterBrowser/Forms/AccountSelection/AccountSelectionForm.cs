@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZennoPosterBrowser.Forms.Base;
+using ZennoPosterBrowser.Services.FormSettings;
 
 namespace ZennoPosterBrowser.Forms.AccountSelection
 {

@@ -7,9 +7,11 @@ using ZennoPosterBrowser.Models.JSON.FormSettings;
 
 namespace ZennoPosterBrowser.Forms.Base
 {
-    internal interface IFormSettings<T> where T : FromSettingLocationModel
+    internal interface IFormSettings<in T, out Y> 
+        where T : FromSettingLocationModel 
+        where Y : FromSettingLocationModel
     {
-        T Load();
+        Y Load();
         void Save(T setting);
     }
 }

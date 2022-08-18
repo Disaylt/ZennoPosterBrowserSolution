@@ -8,7 +8,7 @@ using ZennoPosterBrowser.Models.JSON.FormSettings;
 
 namespace ZennoPosterBrowser.Forms.AccountSelection
 {
-    internal class AccountSelectionFormSettings : FormSettingsFileLoader<AccountSelectinFormSettings>
+    internal class AccountSelectionFormSettings : FormSettingsFileLoader
     {
         private const string _fileName = "AccountSelectionFormSettings.json";
         private static AccountSelectinFormSettings DefaultSettings
