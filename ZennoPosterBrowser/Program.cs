@@ -12,6 +12,7 @@ using ZennoLab.Emulation;
 using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoLab.InterfacesLibrary.ProjectModel.Enums;
 using ZennoPosterBrowser.Configs;
+using ZennoPosterBrowser.Forms.AccountSelection;
 
 namespace ZennoPosterBrowser
 {
@@ -29,6 +30,8 @@ namespace ZennoPosterBrowser
         public int Execute(Instance instance, IZennoPosterProjectModel project)
         {
             BaseConfig.InitialConfig(project);
+            AccountSelectionForm test = new AccountSelectionForm();
+            test.Form.ShowDialog();
 
             int executionResult = 0;
             return executionResult;
