@@ -94,12 +94,14 @@
     <Compile Include="Forms\AccountSelection\AccountSelectionDataGridColumnsStorage.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
     <Compile Include="Forms\AccountSelection\FormControls.cs" />
+    <Compile Include="Forms\AccountSelection\FormEventHandler.cs" />
     <Compile Include="Forms\AccountSelection\SelectMarketComboBoxBuilder.cs" />
     <Compile Include="Forms\AccountSelection\SelectProjectComboBoxBuilder.cs" />
     <Compile Include="Forms\BaseControls\ComboBoxBuilder.cs" />
     <Compile Include="Forms\BaseControls\DataGridViewBuilder.cs" />
     <Compile Include="Forms\Base\BaseForm.cs" />
     <Compile Include="Forms\Base\IFormControls.cs" />
+    <Compile Include="Forms\Base\IFormEventHandler.cs" />
     <Compile Include="JsonFileLoader.cs" />
     <Compile Include="Models\BSON\BsonIdModel.cs" />
     <Compile Include="Models\BSON\MarketNameModel.cs" />

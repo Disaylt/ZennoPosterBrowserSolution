@@ -12,10 +12,12 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
     internal class AccountSelectionForm : BaseForm
     {
         private const string _nameForm = "Выбор аккаунтов";
-        public AccountSelectionForm() : base(new FormControls())
+        public AccountSelectionForm() : base()
         {
+            FormControls = new FormControls();
             Form.Size = new Size(400, 500);
             Form.Name = _nameForm;
         }
+        public FormControls FormControls { get; }
     }
 }

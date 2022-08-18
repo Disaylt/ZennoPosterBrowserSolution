@@ -10,21 +10,24 @@ namespace ZennoPosterBrowser.Forms.Base
     internal abstract class BaseForm
     {
         public Form Form { get; }
-        public IFormControls FormControls { get; }
 
-        public BaseForm(IFormControls formControls)
+        public BaseForm()
         {
             Form = new Form();
-            FormControls = formControls;
-            AddControls(formControls.GetFormControls());
         }
 
-        private void AddControls(IEnumerable<Control> controls)
+        protected void AddControls(IFormControls formControls)
         {
-            foreach(Control control in controls)
+            var controls = formControls.GetFormControls();
+            foreach (Control control in controls)
             {
                 Form.Controls.Add(control);
             }
+        }
+
+        protected void AddEvents(IFormEventHandler formEventHandler)
+        {
+            formEventHandler.AddControlsEvent();
         }
     }
 }
