@@ -13,7 +13,7 @@ namespace ZennoPosterBrowser.Configs
 
         public ProjectSettingsFileLoader(string projectPath)
         {
-            ProjectSettings = JsonFileLoader.Load<ProjectSettingsModel>($"{projectPath}{_fileName}");
+            ProjectSettings = JsonFile.Load<ProjectSettingsModel>($"{projectPath}{_fileName}");
         }
 
         public ProjectSettingsModel ProjectSettings { get; }
