@@ -15,9 +15,11 @@ namespace ZennoPosterBrowser.Configs
         private BaseConfig(IZennoPosterProjectModel project)
         {
             ProjectPath = project.Path;
+            ProjectSettingsLoader = new ProjectSettingsFileLoader(ProjectPath);
         }
 
         public string ProjectPath { get; }
+        public IProjectSettingsLoader ProjectSettingsLoader { get; }
 
         public static BaseConfig Instance
         {

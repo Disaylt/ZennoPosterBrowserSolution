@@ -12,15 +12,12 @@ namespace ZennoPosterBrowser.Configs
 
         private BrowserConfig()
         {
-            BaseConfig config = BaseConfig.Instance;
             MarketNamesStorage = new MarketNamesStorageDbLoader();
             ProjectNamesStorage = new ProjectNamesStorageDbLoader();
-            ProjectSettingsLoader = new ProjectSettingsFileLoader(config.ProjectPath);
         }
 
         public IMarketNamesStorage MarketNamesStorage { get; }
         public IProjectNamesStorage ProjectNamesStorage { get; }
-        public IProjectSettingsLoader ProjectSettingsLoader { get; }
 
         public static BrowserConfig Instance
         {

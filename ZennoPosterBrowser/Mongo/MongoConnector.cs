@@ -27,7 +27,7 @@ namespace ZennoPosterBrowser.Mongo
 
         private MongoClient CreateClient()
         {
-            var settings = BrowserConfig.Instance.ProjectSettingsLoader;
+            var settings = BaseConfig.Instance.ProjectSettingsLoader;
             string connectString = settings.ProjectSettings.MongoConnectionString;
             MongoClient client = new MongoClient(connectString);
             return client;
