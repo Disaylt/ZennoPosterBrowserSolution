@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZennoPosterBrowser.Models.JSON
+namespace ZennoPosterBrowser.Models.JSON.FormSettings
 {
     internal class FromSettingLocationModel
     {

@@ -108,8 +108,9 @@
     <Compile Include="Models\BSON\BsonIdModel.cs" />
     <Compile Include="Models\BSON\MarketNameModel.cs" />
     <Compile Include="Models\BSON\ProjectNameModel.cs" />
+    <Compile Include="Models\JSON\FormSettings\AccountSelectinFormSettings.cs" />
     <Compile Include="Models\JSON\ProjectSettingsModel.cs" />
-    <Compile Include="Models\JSON\FromSettingLocationModel.cs" />
+    <Compile Include="Models\JSON\FormSettings\FromSettingLocationModel.cs" />
     <Compile Include="Mongo\BrowserCollections\ProjectsCollection.cs" />
     <Compile Include="Mongo\BrowserDatabaseConnector.cs" />
     <Compile Include="Mongo\BrowserCollections\MarketsCollection.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Mongo\MongoConnector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FormSettings\FormSettingsStorage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="ValidateZennoPosterDllPath" BeforeTargets="BeforeBuild">
