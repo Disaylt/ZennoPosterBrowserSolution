@@ -10,8 +10,6 @@ using ZennoPosterBrowser.Models.JSON.FormSettings;
 namespace ZennoPosterBrowser.Forms.Base
 {
     internal class FormSettingsFileLoader<T, Y> : IFormSettings<T, Y>
-        where T : FromSettingLocationModel
-        where Y : FromSettingLocationModel
     {
         private readonly string _filePath;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZennoPosterBrowser.Models.JSON.FormSettings
 {
-    internal class AccountSelectinFormSettings : FromSettingLocationModel
+    internal class AccountSelectinFormSettings
     {
         public string LastChooseMarket { get; set; }
         public string LastChooseProject { get; set; }
