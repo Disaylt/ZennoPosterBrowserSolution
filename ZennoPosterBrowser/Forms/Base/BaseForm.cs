@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZennoPosterBrowser.Models.JSON.FormSettings;
 using ZennoPosterBrowser.Services.FormSettings;
 
 namespace ZennoPosterBrowser.Forms.Base
@@ -16,7 +17,6 @@ namespace ZennoPosterBrowser.Forms.Base
         public BaseForm()
         {
             Form = new Form();
-            Form.Load += SetSettings;
         }
 
         protected void AddControls(IFormControls formControls)
@@ -31,15 +31,6 @@ namespace ZennoPosterBrowser.Forms.Base
         protected void AddEvents(IFormEventHandler formEventHandler)
         {
             formEventHandler.AddControlsEvent();
-        }
-
-        private void SetSettings(object sender, EventArgs e)
-        {
-            FormSettingsStorage formSettingsStorage = FormSettingsStorage.Instance;
-            var type = GetType();
-            var settingsLoader = formSettingsStorage.GetFormSettings(type);
-            var setting = settingsLoader.Load();
-            Form.Location = new Point(setting.LocationX, setting.LocationY);
         }
     }
 }

@@ -9,28 +9,30 @@ using ZennoPosterBrowser.Models.JSON.FormSettings;
 
 namespace ZennoPosterBrowser.Forms.Base
 {
-    internal class FormSettingsFileLoader : IFormSettings<FromSettingLocationModel, FromSettingLocationModel>
+    internal class FormSettingsFileLoader<T, Y> : IFormSettings<T, Y>
+        where T : FromSettingLocationModel
+        where Y : FromSettingLocationModel
     {
         private readonly string _filePath;
 
-        public FormSettingsFileLoader(string fileName, FromSettingLocationModel defaultSetting)
+        public FormSettingsFileLoader(string fileName, T defaultSetting)
         {
             _filePath = $"{BaseConfig.Instance.ProjectPath}{fileName}";
             CheckExistsAndCreateDefaultSettings(defaultSetting);
         }
 
-        public FromSettingLocationModel Load()
+        public Y Load()
         {
-            var result = JsonFile.Load<FromSettingLocationModel>(_filePath);
+            var result = JsonFile.Load<Y>(_filePath);
             return result;
         }
 
-        public void Save(FromSettingLocationModel setting)
+        public void Save(T setting)
         {
             JsonFile.SaveAs(setting, _filePath);
         }
 
-        private void CheckExistsAndCreateDefaultSettings(FromSettingLocationModel setting)
+        private void CheckExistsAndCreateDefaultSettings(T setting)
         {
             if(!File.Exists(_filePath))
             {

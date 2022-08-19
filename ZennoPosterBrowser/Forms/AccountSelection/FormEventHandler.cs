@@ -5,28 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZennoPosterBrowser.Forms.Base;
+using ZennoPosterBrowser.Models.JSON.FormSettings;
 
 namespace ZennoPosterBrowser.Forms.AccountSelection
 {
     internal class FormEventHandler : IFormEventHandler
     {
-        private FormControls _formControls;
-        private Form _form;
+        private AccountSelectionForm _accountSelectionForm;
+        private AccountSelectinFormSettings _accountSelectinFormSettings;
         public FormEventHandler(BaseForm baseForm)
         {
-            var formHandler = baseForm as AccountSelectionForm;
-            _form = formHandler.Form;
-            _formControls = formHandler.FormControls;
+            _accountSelectionForm = baseForm as AccountSelectionForm;
+            _accountSelectinFormSettings = _accountSelectionForm.FormSettings.Load();
         }
 
         public void AddControlsEvent()
         {
-            _formControls.TextBox.TextChanged += LoadAccounts;
+            _accountSelectionForm.FormControls.TextBox.TextChanged += LoadAccounts;
+            _accountSelectionForm.Form.FormClosed += SaveSettings;
         }
 
         protected virtual void LoadAccounts(object sender, EventArgs e)
         {
-            _form.Close();
+            _accountSelectionForm.Form.Close();
+        }
+
+        protected virtual void SaveSettings(object sender, FormClosedEventArgs e)
+        {
+            _accountSelectinFormSettings.LastChooseMarket = "WB";
+            _accountSelectinFormSettings.LastChooseProject = "Компания";
+            _accountSelectinFormSettings.LocationY = _accountSelectionForm.Form.Location.Y;
+            _accountSelectinFormSettings.LocationX = _accountSelectionForm.Form.Location.X;
+            _accountSelectionForm.FormSettings.Save(_accountSelectinFormSettings);
         }
     }
 }

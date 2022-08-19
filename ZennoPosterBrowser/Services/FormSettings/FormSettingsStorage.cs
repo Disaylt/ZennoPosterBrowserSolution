@@ -46,7 +46,7 @@ namespace ZennoPosterBrowser.Services.FormSettings
 
         private void AddSettings()
         {
-            _storage.Add(typeof(AccountSelectionForm), new AccountSelectionFormSettings());
+
         }
     }
 }
