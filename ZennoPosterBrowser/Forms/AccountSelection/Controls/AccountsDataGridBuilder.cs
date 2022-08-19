@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZennoPosterBrowser.Forms.BaseControls;
 
-namespace ZennoPosterBrowser.Forms.AccountSelection
+namespace ZennoPosterBrowser.Forms.AccountSelection.Controls
 {
-    internal class AccountSelectionDataGridBuilder : DataGridViewBuilder
+    internal class AccountsDataGridBuilder : DataGridViewBuilder
     {
         public override DataGridView Create()
         {
             DataGridView dataGridView = new DataGridView();
             SetDataGridSettings(dataGridView);
-            AccountSelectionDataGridColumnsStorage columnStorage = new AccountSelectionDataGridColumnsStorage();
+            AccountsDataGridColumnsStorage columnStorage = new AccountsDataGridColumnsStorage();
             AddColumns(dataGridView, columnStorage.Columns);
             return dataGridView;
         }

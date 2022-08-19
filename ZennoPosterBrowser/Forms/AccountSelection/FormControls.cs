@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZennoPosterBrowser.Configs;
+using ZennoPosterBrowser.Forms.AccountSelection.Controls;
 using ZennoPosterBrowser.Forms.Base;
 using ZennoPosterBrowser.Forms.BaseControls;
 
@@ -21,6 +22,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             Controls.Add(TextBox);
             Controls.Add(SelectMarket);
             Controls.Add(SelectProject);
+            Controls.Add(FindAccount);
         }
 
         private ComboBox _selectProject;
@@ -53,6 +55,20 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             }
         }
 
+        private Button _findAccount;
+        public virtual Button FindAccount 
+        { 
+            get 
+            { 
+                if(_findAccount == null)
+                {
+                    FindAccountButtonBuilder findAccountButton = new FindAccountButtonBuilder();
+                    _findAccount = findAccountButton.Create();
+                }
+                return _findAccount; 
+            } 
+        }
+
         private DataGridView _grid;
         public virtual DataGridView Grid
         {
@@ -60,7 +76,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             {
                 if(_grid == null)
                 {
-                    AccountSelectionDataGridBuilder accountSelectionDataGrid = new AccountSelectionDataGridBuilder();
+                    AccountsDataGridBuilder accountSelectionDataGrid = new AccountsDataGridBuilder();
                     _grid = accountSelectionDataGrid.Create();
                 }
                 return _grid;
@@ -74,11 +90,8 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             {
                 if(_textBox == null)
                 {
-                    TextBox textBoxSearch = new TextBox();
-                    textBoxSearch.Location = new System.Drawing.Point(15, 15);
-                    textBoxSearch.Name = "textBoxSearch";
-                    textBoxSearch.Size = new System.Drawing.Size(150, 20);
-                    _textBox = textBoxSearch;
+                    SearchTextBoxBuilder searchTextBoxBuilder = new SearchTextBoxBuilder();
+                    _textBox = searchTextBoxBuilder.Create();
                 }
                 return _textBox;
             }

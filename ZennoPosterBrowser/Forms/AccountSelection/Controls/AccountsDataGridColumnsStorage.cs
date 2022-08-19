@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ZennoPosterBrowser.Forms.AccountSelection
+namespace ZennoPosterBrowser.Forms.AccountSelection.Controls
 {
-    internal class AccountSelectionDataGridColumnsStorage
+    internal class AccountsDataGridColumnsStorage
     {
         public IEnumerable<DataGridViewTextBoxColumn> Columns { get; }
 
-        public AccountSelectionDataGridColumnsStorage()
+        public AccountsDataGridColumnsStorage()
         {
             Columns = new List<DataGridViewTextBoxColumn>
             {

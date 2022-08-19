@@ -6,31 +6,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZennoPosterBrowser.Forms.BaseControls;
 
-namespace ZennoPosterBrowser.Forms.AccountSelection
+namespace ZennoPosterBrowser.Forms.AccountSelection.Controls
 {
-    internal class SelectProjectComboBoxBuilder : ComboBoxBuilder
+    internal class SelectMarketComboBoxBuilder : ComboBoxBuilder
     {
-        private readonly IEnumerable<string> _projectNames;
+        private readonly IEnumerable<string> _marketNames;
 
-        public SelectProjectComboBoxBuilder(IEnumerable<string> projectNames)
+        public SelectMarketComboBoxBuilder(IEnumerable<string> marketNames)
         {
-            _projectNames = projectNames;
+            _marketNames = marketNames;
         }
 
         public override ComboBox Create()
         {
             ComboBox comboBox = new ComboBox();
             SetSettings(comboBox);
-            comboBox.Items.AddRange(_projectNames.ToArray());
+            comboBox.Items.AddRange(_marketNames.ToArray());
             return comboBox;
         }
 
         private void SetSettings(ComboBox comboBox)
         {
             comboBox.FormattingEnabled = true;
-            comboBox.Location = new System.Drawing.Point(255, 15);
+            comboBox.Location = new System.Drawing.Point(210, 15);
             comboBox.Name = "comboBoxSelectMarket";
-            comboBox.Size = new System.Drawing.Size(110, 20);
+            comboBox.Size = new System.Drawing.Size(60, 20);
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }

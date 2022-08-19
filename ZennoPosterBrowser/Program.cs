@@ -21,6 +21,7 @@ namespace ZennoPosterBrowser
     /// </summary>
     public class Program : IZennoExternalCode
     {
+        private static object _locker = new object();
         /// <summary>
         /// Метод для запуска выполнения скрипта
         /// </summary>
@@ -29,12 +30,15 @@ namespace ZennoPosterBrowser
         /// <returns>Код выполнения скрипта</returns>		
         public int Execute(Instance instance, IZennoPosterProjectModel project)
         {
-            BaseConfig.InitialConfig(project);
-            AccountSelectionForm test = new AccountSelectionForm();
-            test.Form.ShowDialog();
+            lock(_locker)
+            {
+                BaseConfig.InitialConfig(project);
+                AccountSelectionForm test = new AccountSelectionForm();
+                test.Form.ShowDialog();
 
-            int executionResult = 0;
-            return executionResult;
+                int executionResult = 0;
+                return executionResult;
+            }
         }
     }
 }
