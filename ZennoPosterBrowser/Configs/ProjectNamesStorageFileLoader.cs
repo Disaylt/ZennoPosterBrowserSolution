@@ -12,9 +12,9 @@ namespace ZennoPosterBrowser.Configs
 
         public ProjectNamesStorageFileLoader(string projectPath)
         {
-            ProjectNames = JsonFile.Load<List<string>>($"{projectPath}{_fileName}");
+            AllProjectNames = JsonFile.Load<List<string>>($"{projectPath}{_fileName}");
         }
 
-        public IEnumerable<string> ProjectNames { get; }
+        public IEnumerable<string> AllProjectNames { get; }
     }
 }

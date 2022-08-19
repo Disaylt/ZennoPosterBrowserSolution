@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZennoPosterBrowser.Mongo.BrowserCollections;
 
 namespace ZennoPosterBrowser.Configs
 {
@@ -12,8 +13,8 @@ namespace ZennoPosterBrowser.Configs
 
         private BrowserConfig()
         {
-            MarketNamesStorage = new MarketNamesStorageDbLoader();
-            ProjectNamesStorage = new ProjectNamesStorageDbLoader();
+            MarketNamesStorage = new MarketsCollection();
+            ProjectNamesStorage = new ProjectsCollection();
         }
 
         public IMarketNamesStorage MarketNamesStorage { get; }

@@ -32,7 +32,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             {
                 if(_selectProject == null)
                 {
-                    IEnumerable<string> projectNames = BrowserConfig.Instance.ProjectNamesStorage.ProjectNames;
+                    IEnumerable<string> projectNames = BrowserConfig.Instance.ProjectNamesStorage.AllProjectNames;
                     ComboBoxBuilder comboBoxBuilder = new SelectProjectComboBoxBuilder(projectNames);
                     _selectProject = comboBoxBuilder.Create();
                 }
@@ -47,7 +47,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             {
                 if(_selectMarket == null)
                 {
-                    IEnumerable<string> marketNames = BrowserConfig.Instance.MarketNamesStorage.MarketNames;
+                    IEnumerable<string> marketNames = BrowserConfig.Instance.MarketNamesStorage.AllMarketNames;
                     ComboBoxBuilder comboBoxBuilder = new SelectMarketComboBoxBuilder(marketNames);
                     _selectMarket = comboBoxBuilder.Create();
                 }

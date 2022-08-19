@@ -120,7 +120,8 @@
     <Compile Include="Models\JSON\FormSettings\AccountSelectinFormSettings.cs" />
     <Compile Include="Models\JSON\ProjectSettingsModel.cs" />
     <Compile Include="Models\JSON\FormSettings\FromSettingLocationModel.cs" />
-    <Compile Include="Mongo\BrowserCollections\AccountsSettingsCollections.cs" />
+    <Compile Include="Mongo\AccountSelection\AccountsFinder.cs" />
+    <Compile Include="Mongo\BrowserCollections\AccountsSettingsCollection.cs" />
     <Compile Include="Mongo\BrowserCollections\ProjectsCollection.cs" />
     <Compile Include="Mongo\BrowserDatabaseConnector.cs" />
     <Compile Include="Mongo\BrowserCollections\MarketsCollection.cs" />
@@ -165,7 +166,5 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mongo\AccountSelection\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

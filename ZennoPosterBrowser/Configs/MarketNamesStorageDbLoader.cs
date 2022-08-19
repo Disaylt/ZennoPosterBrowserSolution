@@ -15,10 +15,10 @@ namespace ZennoPosterBrowser.Configs
     {
         public MarketNamesStorageDbLoader()
         {
-            MarketNames = LoadMarketNames();
+            AllMarketNames = LoadMarketNames();
         }
 
-        public IEnumerable<string> MarketNames { get; }
+        public IEnumerable<string> AllMarketNames { get; }
 
         private static IEnumerable<string> LoadMarketNames()
         {
