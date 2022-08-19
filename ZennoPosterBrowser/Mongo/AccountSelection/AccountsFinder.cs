@@ -10,23 +10,67 @@ using ZennoPosterBrowser.Mongo.BrowserCollections;
 
 namespace ZennoPosterBrowser.Mongo.AccountSelection
 {
-    internal class AccountsFinder
+    internal class AccountsSearchEngine
     {
         private readonly IEnumerable<AccountsSettingsModel> _accountsSettings;
+        private AccountsSettingsModel _lastAccountSetting;
+        private MongoCollectionConnector<BsonDocument> _accountsCollectionConnector;
 
-        public AccountsFinder()
+        public AccountsSearchEngine()
         {
-            _accountsSettings = LoadAccountsSettings();
+            _lastAccountSetting = new AccountsSettingsModel();
+            _accountsSettings = new AccountsSettingsCollection().AccountsSettings;
         }
 
-        private IEnumerable<AccountsSettingsModel> LoadAccountsSettings()
+        public IEnumerable<string> SearchAccounts(string market, string project, string accountName)
         {
-            AccountsSettingsCollection accountsSettingsCollection = new AccountsSettingsCollection();
-            IMongoCollection<AccountsSettingsModel> collection = accountsSettingsCollection.Collection;
-            IEnumerable<AccountsSettingsModel> accountsSettings = collection
-                .Find(new BsonDocument())
-                .ToList();
-            return accountsSettings;
+            if(!string.IsNullOrEmpty(market)
+                && !string.IsNullOrEmpty(project)
+                && !string.IsNullOrEmpty(accountName))
+            {
+                return RequestToDbForSearch(market, project, accountName);
+            }
+            else
+            {
+                return new List<string>();
+            }
+        }
+
+        private IEnumerable<string> RequestToDbForSearch(string market, string project, string accountName)
+        {
+
+            if(_accountsCollectionConnector == null
+                && _lastAccountSetting == null
+                && market != _lastAccountSetting.MarketName
+                && project != _lastAccountSetting.ProjectName)
+            {
+                SetNewAccountSettings(market, project);
+            }
+            try
+            {
+                IMongoCollection<BsonDocument> collection = _accountsCollectionConnector.Collection;
+                BsonDocument filter = new BsonDocument("session", new BsonDocument("$regex", accountName));
+                return collection.Find(filter).ToList()
+                    .Take(50)
+                    .Select(x => x[_lastAccountSetting.ColumnName].AsString);
+            }
+            catch (Exception)
+            {
+                return new List<string>();
+            }
+            
+        }
+
+        private void SetNewAccountSettings(string market, string project)
+        {
+            _lastAccountSetting = _accountsSettings
+                .Where(x => x.MarketName == market && x.ProjectName == project)
+                .FirstOrDefault();
+            if(_lastAccountSetting != null)
+            {
+                _accountsCollectionConnector = new MongoCollectionConnector<BsonDocument>(_lastAccountSetting.DataBase, _lastAccountSetting.Collection);
+            }
+
         }
     }
 }
