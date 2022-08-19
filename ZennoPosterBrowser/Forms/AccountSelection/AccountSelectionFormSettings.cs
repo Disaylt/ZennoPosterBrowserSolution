@@ -8,9 +8,8 @@ using ZennoPosterBrowser.Models.JSON.FormSettings;
 
 namespace ZennoPosterBrowser.Forms.AccountSelection
 {
-    internal class AccountSelectionFormSettings : FormSettingsFileLoader<AccountSelectinFormSettings, AccountSelectinFormSettings>
+    internal class AccountSelectionFormSettings : FormSettingsFileLoader<AccountSelectinFormSettings, AccountSelectinFormSettings, AccountSelectionForm>
     {
-        private const string _fileName = "AccountSelectionFormSettings.json";
         private static AccountSelectinFormSettings DefaultSettings
         {
             get
@@ -18,15 +17,13 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
                 AccountSelectinFormSettings accountSelectinFormSettings = new AccountSelectinFormSettings
                 {
                     LastChooseMarket = string.Empty,
-                    LastChooseProject = string.Empty,
-                    LocationX = 0,
-                    LocationY = 0
+                    LastChooseProject = string.Empty
                 };
                 return accountSelectinFormSettings;
             }
         }
 
-        public AccountSelectionFormSettings() : base(_fileName, DefaultSettings) { }
-        public AccountSelectionFormSettings(AccountSelectinFormSettings defaultSettings) : base(_fileName, defaultSettings) { }
+        public AccountSelectionFormSettings() : base(DefaultSettings) { }
+        public AccountSelectionFormSettings(AccountSelectinFormSettings defaultSettings) : base(defaultSettings) { }
     }
 }

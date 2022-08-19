@@ -12,12 +12,14 @@ namespace ZennoPosterBrowser.Forms.Base
 {
     internal abstract class BaseForm
     {
-        public Form Form { get; }
-
         public BaseForm()
         {
             Form = new Form();
+            IFormEventHandler formEventHandler = new BaseEventHandler(this);
+            AddEvents(formEventHandler);
         }
+
+        public Form Form { get; }
 
         protected void AddControls(IFormControls formControls)
         {

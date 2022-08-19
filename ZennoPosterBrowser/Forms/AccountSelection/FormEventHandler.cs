@@ -33,7 +33,6 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
 
         protected virtual void LoadSettings(object sender, EventArgs e)
         {
-            _accountSelectionForm.Form.Location = new Point(_accountSelectinFormSettings.LocationX, _accountSelectinFormSettings.LocationY);
             _accountSelectionForm.FormControls.SelectMarket.SelectedItem = _accountSelectinFormSettings.LastChooseMarket;
             _accountSelectionForm.FormControls.SelectProject.SelectedItem = _accountSelectinFormSettings.LastChooseProject;
         }
@@ -42,8 +41,6 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         {
             _accountSelectinFormSettings.LastChooseMarket = _accountSelectionForm.FormControls.SelectMarket.SelectedItem as string ?? string.Empty;
             _accountSelectinFormSettings.LastChooseProject = _accountSelectionForm.FormControls.SelectProject.SelectedItem as string ?? string.Empty;
-            _accountSelectinFormSettings.LocationY = _accountSelectionForm.Form.Location.Y;
-            _accountSelectinFormSettings.LocationX = _accountSelectionForm.Form.Location.X;
             _accountSelectionForm.FormSettings.Save(_accountSelectinFormSettings);
         }
     }
