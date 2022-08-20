@@ -11,6 +11,8 @@ using ZennoLab.CommandCenter;
 using ZennoLab.Emulation;
 using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoLab.InterfacesLibrary.ProjectModel.Enums;
+using ZennoPosterBrowser.Configs;
+using ZennoPosterBrowser.Forms.AccountSelection;
 
 namespace ZennoPosterBrowser
 {
@@ -19,6 +21,7 @@ namespace ZennoPosterBrowser
     /// </summary>
     public class Program : IZennoExternalCode
     {
+        private static object _locker = new object();
         /// <summary>
         /// Метод для запуска выполнения скрипта
         /// </summary>
@@ -27,9 +30,15 @@ namespace ZennoPosterBrowser
         /// <returns>Код выполнения скрипта</returns>		
         public int Execute(Instance instance, IZennoPosterProjectModel project)
         {
-            int executionResult = 0;
+            lock(_locker)
+            {
+                BaseConfig.InitialConfig(project);
+                AccountSelectionForm test = new AccountSelectionForm();
+                test.Form.ShowDialog();
 
-            return executionResult;
+                int executionResult = 0;
+                return executionResult;
+            }
         }
     }
 }
