@@ -17,7 +17,7 @@ namespace ZennoPosterBrowser.Services.Accounts
             _project = project;
         }
 
-        public Configs.BrowserActions LoadAccount()
+        public BrowserProjectActions LoadAccount()
         {
             BrowserConfig browserConfig = BrowserConfig.Instance;
             if(browserConfig.IsAccountLoad == false 
@@ -25,11 +25,11 @@ namespace ZennoPosterBrowser.Services.Accounts
                 && !string.IsNullOrEmpty(browserConfig.PathToSession))
             {
                 _project.Profile.Load(browserConfig.PathToSession);
-                return Configs.BrowserActions.BrowserWaitUserAction;
+                return BrowserProjectActions.BrowserWaitUserAction;
             }
             else
             {
-                return Configs.BrowserActions.CloseBrowser;
+                return BrowserProjectActions.CloseBrowser;
             }
         }
     }

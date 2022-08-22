@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZennoPosterBrowser.Configs
 {
-    enum BrowserActions
+    enum BrowserProjectActions
     {
         SelectionSession,
         LoadingSession,

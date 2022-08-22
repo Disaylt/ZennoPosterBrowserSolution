@@ -15,7 +15,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             _accountSelectionForm = new AccountSelectionForm();
         }
 
-        public Configs.BrowserActions Run()
+        public Configs.BrowserProjectActions Run()
         {
             try
             {
@@ -24,7 +24,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             }
             catch (Exception)
             {
-                return Configs.BrowserActions.CloseBrowser;
+                return Configs.BrowserProjectActions.CloseBrowser;
             }
         }
     }

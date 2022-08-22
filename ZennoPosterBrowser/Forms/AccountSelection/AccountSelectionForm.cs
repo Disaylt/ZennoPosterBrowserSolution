@@ -24,9 +24,9 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             Form.Name = _nameForm;
             AddControls(FormControls);
             AddEvents(_formEventHandler);
-            NextAction = Configs.BrowserActions.CloseBrowser;
+            NextAction = Configs.BrowserProjectActions.CloseBrowser;
         }
-        public Configs.BrowserActions NextAction { get; set; }
+        public Configs.BrowserProjectActions NextAction { get; set; }
         public FormControls FormControls { get; }
         public IFormSettings<AccountSelectinFormSettings, AccountSelectinFormSettings> FormSettings { get; }
     }

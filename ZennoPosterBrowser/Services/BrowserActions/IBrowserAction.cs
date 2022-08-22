@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZennoPosterBrowser.Configs;
 
 namespace ZennoPosterBrowser.Services.BrowserActions
 {
     internal interface IBrowserAction
     {
-        Configs.BrowserActions Run();
+        BrowserProjectActions Run();
     }
 }

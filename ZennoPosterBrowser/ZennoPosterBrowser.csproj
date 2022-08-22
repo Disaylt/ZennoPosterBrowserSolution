@@ -114,6 +114,8 @@
     <Compile Include="Forms\Base\IFormControls.cs" />
     <Compile Include="Forms\Base\IFormEventHandler.cs" />
     <Compile Include="Forms\Base\IFormSettings.cs" />
+    <Compile Include="Forms\MainMenu\MenuForm.cs" />
+    <Compile Include="Forms\MainMenu\MenuFormBrowserAction.cs" />
     <Compile Include="JsonFile.cs" />
     <Compile Include="Models\BSON\AccountsSettingsModel.cs" />
     <Compile Include="Models\BSON\BsonIdModel.cs" />

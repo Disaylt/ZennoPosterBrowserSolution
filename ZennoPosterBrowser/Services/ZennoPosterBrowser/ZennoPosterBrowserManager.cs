@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZennoLab.CommandCenter;
+using ZennoPosterBrowser.Configs;
 
 namespace ZennoPosterBrowser.Services.ZennoPosterBrowser
 {
@@ -15,10 +16,10 @@ namespace ZennoPosterBrowser.Services.ZennoPosterBrowser
             _instance = instance;
         }
 
-        public Configs.BrowserActions WaitUserAction()
+        public BrowserProjectActions WaitUserAction()
         {
             _instance.WaitForUserAction(3600, "Нажмите продолжить для дальнейших действий!");
-            return Configs.BrowserActions.OpenMenu;
+            return BrowserProjectActions.OpenMenu;
         }
     }
 }
