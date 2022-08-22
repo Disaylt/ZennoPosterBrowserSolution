@@ -50,12 +50,26 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
 
         protected virtual void FindAccounts(object sender, EventArgs e)
         {
-            var accounts = _accountsSearchEngine.SearchAccounts(
+            IEnumerable<string> accounts = _accountsSearchEngine.SearchAccounts(
                 _accountSelectionForm.FormControls.SelectMarket.SelectedItem as string,
                 _accountSelectionForm.FormControls.SelectProject.SelectedItem as string,
                 _accountSelectionForm.FormControls.TextBox.Text
                 );
-            int i = 1;
+            FillAccountToDataGrid(accounts);
+        }
+
+        protected virtual void ChooseAccount(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void FillAccountToDataGrid(IEnumerable<string> accounts)
+        {
+            _accountSelectionForm.FormControls.Grid.Rows.Clear();
+            foreach (string account in accounts)
+            {
+                _accountSelectionForm.FormControls.Grid.Rows.Add(account);
+            }
         }
     }
 }

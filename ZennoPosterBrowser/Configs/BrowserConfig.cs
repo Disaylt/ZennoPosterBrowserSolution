@@ -15,10 +15,13 @@ namespace ZennoPosterBrowser.Configs
         {
             MarketNamesStorage = new MarketsCollection();
             ProjectNamesStorage = new ProjectsCollection();
+            CurrentSession = string.Empty;
         }
 
         public IMarketNamesStorage MarketNamesStorage { get; }
         public IProjectNamesStorage ProjectNamesStorage { get; }
+        public BrowserActions NextAction { get; set; }
+        public string CurrentSession { get; set; }
 
         public static BrowserConfig Instance
         {

@@ -40,9 +40,9 @@ namespace ZennoPosterBrowser.Mongo.AccountSelection
         {
 
             if(_accountsCollectionConnector == null
-                && _lastAccountSetting == null
-                && market != _lastAccountSetting.MarketName
-                && project != _lastAccountSetting.ProjectName)
+                || _lastAccountSetting == null
+                || market != _lastAccountSetting.MarketName
+                || project != _lastAccountSetting.ProjectName)
             {
                 SetNewAccountSettings(market, project);
             }
@@ -66,11 +66,14 @@ namespace ZennoPosterBrowser.Mongo.AccountSelection
             _lastAccountSetting = _accountsSettings
                 .Where(x => x.MarketName == market && x.ProjectName == project)
                 .FirstOrDefault();
-            if(_lastAccountSetting != null)
+            if (_lastAccountSetting != null)
             {
                 _accountsCollectionConnector = new MongoCollectionConnector<BsonDocument>(_lastAccountSetting.DataBase, _lastAccountSetting.Collection);
             }
-
+            else
+            {
+                _accountsCollectionConnector = null;
+            }
         }
     }
 }

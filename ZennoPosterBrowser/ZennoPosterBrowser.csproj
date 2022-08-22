@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Configs\BaseConfig.cs" />
     <Compile Include="Configs\BrowserConfig.cs" />
+    <Compile Include="Configs\EnumBrowserActions.cs" />
     <Compile Include="Configs\IMarketNamesStorage.cs" />
     <Compile Include="Configs\IProjectNamesStorage.cs" />
     <Compile Include="Configs\IProjectSettingsLoader.cs" />
