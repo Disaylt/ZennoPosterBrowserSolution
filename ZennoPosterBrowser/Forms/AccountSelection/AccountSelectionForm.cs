@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZennoPosterBrowser.Configs;
 using ZennoPosterBrowser.Forms.Base;
 using ZennoPosterBrowser.Models.JSON.FormSettings;
 using ZennoPosterBrowser.Services.FormSettings;
@@ -24,9 +25,9 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             Form.Name = _nameForm;
             AddControls(FormControls);
             AddEvents(_formEventHandler);
-            NextAction = Configs.BrowserProjectActions.CloseBrowser;
+            NextAction = BrowserProjectActions.CloseBrowser;
         }
-        public Configs.BrowserProjectActions NextAction { get; set; }
+        public BrowserProjectActions NextAction { get; set; }
         public FormControls FormControls { get; }
         public IFormSettings<AccountSelectinFormSettings, AccountSelectinFormSettings> FormSettings { get; }
     }

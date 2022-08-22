@@ -25,7 +25,7 @@ namespace ZennoPosterBrowser.Services.Accounts
                 && !string.IsNullOrEmpty(browserConfig.PathToSession))
             {
                 _project.Profile.Load(browserConfig.PathToSession);
-                return BrowserProjectActions.BrowserWaitUserAction;
+                return BrowserProjectActions.OpenMenu;
             }
             else
             {
