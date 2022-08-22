@@ -13,14 +13,15 @@ namespace ZennoPosterBrowser.Mongo.AccountSelection
     internal class AccountsSearchEngine
     {
         private readonly IEnumerable<AccountsSettingsModel> _accountsSettings;
-        private AccountsSettingsModel _lastAccountSetting;
         private MongoCollectionConnector<BsonDocument> _accountsCollectionConnector;
 
         public AccountsSearchEngine()
         {
-            _lastAccountSetting = new AccountsSettingsModel();
+            LastAccountSetting = new AccountsSettingsModel();
             _accountsSettings = new AccountsSettingsCollection().AccountsSettings;
         }
+
+        public AccountsSettingsModel LastAccountSetting { get; private set; }
 
         public IEnumerable<string> SearchAccounts(string market, string project, string accountName)
         {
@@ -40,9 +41,9 @@ namespace ZennoPosterBrowser.Mongo.AccountSelection
         {
 
             if(_accountsCollectionConnector == null
-                || _lastAccountSetting == null
-                || market != _lastAccountSetting.MarketName
-                || project != _lastAccountSetting.ProjectName)
+                || LastAccountSetting == null
+                || market != LastAccountSetting.MarketName
+                || project != LastAccountSetting.ProjectName)
             {
                 SetNewAccountSettings(market, project);
             }
@@ -52,7 +53,7 @@ namespace ZennoPosterBrowser.Mongo.AccountSelection
                 BsonDocument filter = new BsonDocument("session", new BsonDocument("$regex", accountName));
                 return collection.Find(filter).ToList()
                     .Take(50)
-                    .Select(x => x[_lastAccountSetting.ColumnName].AsString);
+                    .Select(x => x[LastAccountSetting.ColumnName].AsString);
             }
             catch (Exception)
             {
@@ -63,12 +64,12 @@ namespace ZennoPosterBrowser.Mongo.AccountSelection
 
         private void SetNewAccountSettings(string market, string project)
         {
-            _lastAccountSetting = _accountsSettings
+            LastAccountSetting = _accountsSettings
                 .Where(x => x.MarketName == market && x.ProjectName == project)
                 .FirstOrDefault();
-            if (_lastAccountSetting != null)
+            if (LastAccountSetting != null)
             {
-                _accountsCollectionConnector = new MongoCollectionConnector<BsonDocument>(_lastAccountSetting.DataBase, _lastAccountSetting.Collection);
+                _accountsCollectionConnector = new MongoCollectionConnector<BsonDocument>(LastAccountSetting.DataBase, LastAccountSetting.Collection);
             }
             else
             {

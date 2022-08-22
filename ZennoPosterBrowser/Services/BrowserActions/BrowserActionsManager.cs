@@ -8,6 +8,7 @@ using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoPosterBrowser.Configs;
 using ZennoPosterBrowser.Forms.AccountSelection;
 using ZennoPosterBrowser.Services.Accounts;
+using ZennoPosterBrowser.Services.ZennoPosterBrowser;
 
 namespace ZennoPosterBrowser.Services.BrowserActions
 {
@@ -26,24 +27,18 @@ namespace ZennoPosterBrowser.Services.BrowserActions
             _actions = new Dictionary<Configs.BrowserActions, GetBrowserAction>();
             _instance = instance;
             _project = project;
-            AddActionsExcecutor();
+            FillActionsExcecutor();
+            FillActions();
         }
 
         public void ExecuteActions()
         {
-            try
+            var nextAction = Configs.BrowserActions.SelectionSession;
+            do
             {
-                var nextAction = Configs.BrowserActions.SelectionSession;
-                do
-                {
-                    nextAction = ExecuteCurrentActionAndReturnNextAction(nextAction);
-                }
-                while (nextAction != Configs.BrowserActions.CloseBrowser);
+                nextAction = ExecuteCurrentActionAndReturnNextAction(nextAction);
             }
-            catch(Exception)
-            {
-
-            }
+            while (nextAction != Configs.BrowserActions.CloseBrowser);
         }
 
         private Configs.BrowserActions ExecuteCurrentActionAndReturnNextAction(Configs.BrowserActions currentAction)
@@ -62,10 +57,18 @@ namespace ZennoPosterBrowser.Services.BrowserActions
             throw new Exception($"Action {currentAction} not exists!");
         }
 
-        private void AddActionsExcecutor()
+        private void FillActionsExcecutor()
         {
             _actionsExecutor.Add(Configs.BrowserActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
-            _actionsExecutor.Add(Configs.BrowserActions.LoadingSession, () => new SessionLoader(_project));
+        }
+
+        private void FillActions()
+        {
+            var sessionManager = new SessionManager(_project);
+            _actions.Add(Configs.BrowserActions.LoadingSession, sessionManager.LoadAccount);
+
+            var zennposterActionManager = new ZennoPosterBrowserManager(_instance);
+            _actions.Add(Configs.BrowserActions.BrowserWaitUserAction, zennposterActionManager.WaitUserAction);
         }
     }
 }

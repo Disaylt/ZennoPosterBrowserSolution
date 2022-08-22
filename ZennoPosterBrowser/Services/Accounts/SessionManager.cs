@@ -9,15 +9,15 @@ using ZennoPosterBrowser.Services.BrowserActions;
 
 namespace ZennoPosterBrowser.Services.Accounts
 {
-    internal class SessionLoader : IBrowserAction
+    internal class SessionManager
     {
         private readonly IZennoPosterProjectModel _project;
-        public SessionLoader(IZennoPosterProjectModel project)
+        public SessionManager(IZennoPosterProjectModel project)
         {
             _project = project;
         }
 
-        public Configs.BrowserActions Run()
+        public Configs.BrowserActions LoadAccount()
         {
             BrowserConfig browserConfig = BrowserConfig.Instance;
             if(browserConfig.IsAccountLoad == false 
@@ -25,7 +25,7 @@ namespace ZennoPosterBrowser.Services.Accounts
                 && !string.IsNullOrEmpty(browserConfig.PathToSession))
             {
                 _project.Profile.Load(browserConfig.PathToSession);
-                return Configs.BrowserActions.CloseBrowser;
+                return Configs.BrowserActions.BrowserWaitUserAction;
             }
             else
             {

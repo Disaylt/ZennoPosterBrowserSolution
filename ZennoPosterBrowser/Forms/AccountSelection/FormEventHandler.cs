@@ -64,6 +64,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         {
             BrowserConfig browserConfig = BrowserConfig.Instance;
             browserConfig.CurrentSession = (string)_accountSelectionForm.FormControls.Grid.SelectedCells[0].Value;
+            browserConfig.PathToSession = _accountsSearchEngine.LastAccountSetting.FolderPath;
             _accountSelectionForm.Form.Close();
         }
 
