@@ -33,8 +33,6 @@ namespace ZennoPosterBrowser
             lock(_locker)
             {
                 BaseConfig.InitialConfig(project);
-                AccountSelectionForm test = new AccountSelectionForm();
-                test.Form.ShowDialog();
 
                 int executionResult = 0;
                 return executionResult;

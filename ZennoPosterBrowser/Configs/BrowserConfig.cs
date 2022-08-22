@@ -15,6 +15,7 @@ namespace ZennoPosterBrowser.Configs
         {
             MarketNamesStorage = new MarketsCollection();
             ProjectNamesStorage = new ProjectsCollection();
+            NextAction = BrowserActions.SelectionSession;
             CurrentSession = string.Empty;
         }
 

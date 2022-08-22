@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZennoPosterBrowser.Configs
+namespace ZennoPosterBrowser.Services.BrowserActions
 {
-    enum BrowserActions
+    internal interface IBrowserAction
     {
-        SelectionSession,
-        LoadingSession,
-        CloseBrowser
+        void Run();
     }
 }

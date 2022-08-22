@@ -92,6 +92,7 @@
     <Compile Include="Configs\ProjectNamesStorageDbLoader.cs" />
     <Compile Include="Configs\ProjectNamesStorageFileLoader.cs" />
     <Compile Include="Configs\ProjectSettingsFileLoader.cs" />
+    <Compile Include="Forms\AccountSelection\AccountSelectionFormBrowserAction.cs" />
     <Compile Include="Forms\AccountSelection\Controls\AccountsDataGridBuilder.cs" />
     <Compile Include="Forms\AccountSelection\Controls\AccountsDataGridColumnsStorage.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
@@ -131,6 +132,8 @@
     <Compile Include="Mongo\MongoConnector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BrowserActions\BrowserActionsStorage.cs" />
+    <Compile Include="Services\BrowserActions\IBrowserAction.cs" />
     <Compile Include="Services\FormSettings\FormSettingsStorage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
