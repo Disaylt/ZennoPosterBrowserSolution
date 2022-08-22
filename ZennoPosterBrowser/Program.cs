@@ -13,6 +13,7 @@ using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoLab.InterfacesLibrary.ProjectModel.Enums;
 using ZennoPosterBrowser.Configs;
 using ZennoPosterBrowser.Forms.AccountSelection;
+using ZennoPosterBrowser.Services.BrowserActions;
 
 namespace ZennoPosterBrowser
 {
@@ -33,6 +34,9 @@ namespace ZennoPosterBrowser
             lock(_locker)
             {
                 BaseConfig.InitialConfig(project);
+
+                BrowserActionsStorage browserActionsStorage = new BrowserActionsStorage();
+                browserActionsStorage.ExecuteActions();
 
                 int executionResult = 0;
                 return executionResult;

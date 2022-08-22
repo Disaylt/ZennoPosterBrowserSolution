@@ -64,7 +64,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
         {
             BrowserConfig browserConfig = BrowserConfig.Instance;
             browserConfig.CurrentSession = (string)_accountSelectionForm.FormControls.Grid.SelectedCells[0].Value;
-            browserConfig.NextAction = BrowserActions.LoadingSession;
+            browserConfig.NextAction = BrowserActions.CloseBrowser;
             _accountSelectionForm.Form.Close();
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZennoPosterBrowser.Configs;
+using ZennoPosterBrowser.Forms.AccountSelection;
 
 namespace ZennoPosterBrowser.Services.BrowserActions
 {
@@ -15,6 +16,7 @@ namespace ZennoPosterBrowser.Services.BrowserActions
         public BrowserActionsStorage()
         {
             _actions = new Dictionary<Configs.BrowserActions, GetBrowserAction>();
+            AddActions();
         }
 
         public void ExecuteActions()
@@ -24,7 +26,8 @@ namespace ZennoPosterBrowser.Services.BrowserActions
                 BrowserConfig browserConfig = BrowserConfig.Instance;
                 while (browserConfig.NextAction != Configs.BrowserActions.CloseBrowser)
                 {
-
+                    IBrowserAction browserAction = _actions[browserConfig.NextAction].Invoke();
+                    browserAction.Run();
                 }
             }
             catch(Exception)
@@ -35,7 +38,7 @@ namespace ZennoPosterBrowser.Services.BrowserActions
 
         private void AddActions()
         {
-
+            _actions.Add(Configs.BrowserActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
         }
     }
 }
