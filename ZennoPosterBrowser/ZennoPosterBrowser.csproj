@@ -132,7 +132,8 @@
     <Compile Include="Mongo\MongoConnector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BrowserActions\BrowserActionsStorage.cs" />
+    <Compile Include="Services\Accounts\SessionLoader.cs" />
+    <Compile Include="Services\BrowserActions\BrowserActionsManager.cs" />
     <Compile Include="Services\BrowserActions\IBrowserAction.cs" />
     <Compile Include="Services\FormSettings\FormSettingsStorage.cs" />
   </ItemGroup>

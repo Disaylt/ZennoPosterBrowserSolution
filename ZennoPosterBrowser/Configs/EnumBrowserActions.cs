@@ -10,6 +10,7 @@ namespace ZennoPosterBrowser.Configs
     {
         SelectionSession,
         LoadingSession,
-        CloseBrowser
+        CloseBrowser,
+        OpenMenu
     }
 }

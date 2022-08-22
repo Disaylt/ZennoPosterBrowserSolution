@@ -15,14 +15,16 @@ namespace ZennoPosterBrowser.Configs
         {
             MarketNamesStorage = new MarketsCollection();
             ProjectNamesStorage = new ProjectsCollection();
-            NextAction = BrowserActions.SelectionSession;
             CurrentSession = string.Empty;
+            PathToSession = string.Empty;
+            IsAccountLoad = false;
         }
 
         public IMarketNamesStorage MarketNamesStorage { get; }
         public IProjectNamesStorage ProjectNamesStorage { get; }
-        public BrowserActions NextAction { get; set; }
         public string CurrentSession { get; set; }
+        public string PathToSession { get; set; }
+        public bool IsAccountLoad { get; set; }
 
         public static BrowserConfig Instance
         {
@@ -34,6 +36,12 @@ namespace ZennoPosterBrowser.Configs
                 }
                 return _instance;
             }
+        }
+
+        public void ResetBrowserProperies()
+        {
+            CurrentSession = null;
+            IsAccountLoad = false;
         }
     }
 }

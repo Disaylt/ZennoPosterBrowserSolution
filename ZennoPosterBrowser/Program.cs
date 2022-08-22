@@ -23,6 +23,7 @@ namespace ZennoPosterBrowser
     public class Program : IZennoExternalCode
     {
         private static object _locker = new object();
+
         /// <summary>
         /// Метод для запуска выполнения скрипта
         /// </summary>
@@ -35,7 +36,7 @@ namespace ZennoPosterBrowser
             {
                 BaseConfig.InitialConfig(project);
 
-                BrowserActionsStorage browserActionsStorage = new BrowserActionsStorage();
+                BrowserActionsManager browserActionsStorage = new BrowserActionsManager(instance, project);
                 browserActionsStorage.ExecuteActions();
 
                 int executionResult = 0;

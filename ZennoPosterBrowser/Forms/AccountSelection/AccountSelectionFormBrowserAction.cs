@@ -15,9 +15,17 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             _accountSelectionForm = new AccountSelectionForm();
         }
 
-        public void Run()
+        public Configs.BrowserActions Run()
         {
-            _accountSelectionForm.Form.ShowDialog();
+            try
+            {
+                _accountSelectionForm.Form.ShowDialog();
+                return Configs.BrowserActions.LoadingSession;
+            }
+            catch (Exception)
+            {
+                return Configs.BrowserActions.CloseBrowser;
+            }
         }
     }
 }

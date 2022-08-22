@@ -8,6 +8,6 @@ namespace ZennoPosterBrowser.Services.BrowserActions
 {
     internal interface IBrowserAction
     {
-        void Run();
+        Configs.BrowserActions Run();
     }
 }
