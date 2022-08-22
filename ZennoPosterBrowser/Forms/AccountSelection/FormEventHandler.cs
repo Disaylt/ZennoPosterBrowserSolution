@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZennoPosterBrowser.Configs;
 using ZennoPosterBrowser.Forms.Base;
 using ZennoPosterBrowser.Models.JSON.FormSettings;
 using ZennoPosterBrowser.Mongo.AccountSelection;
@@ -28,6 +29,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             _accountSelectionForm.Form.Load += LoadSettings;
             _accountSelectionForm.Form.FormClosed += SaveSettings;
             _accountSelectionForm.FormControls.FindAccount.Click += FindAccounts;
+            _accountSelectionForm.FormControls.Grid.MouseDoubleClick += ChooseAccount;
         }
 
         protected virtual void LoadAccounts(object sender, EventArgs e)
@@ -60,7 +62,10 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
 
         protected virtual void ChooseAccount(object sender, MouseEventArgs e)
         {
-            
+            BrowserConfig browserConfig = BrowserConfig.Instance;
+            browserConfig.CurrentSession = (string)_accountSelectionForm.FormControls.Grid.SelectedCells[0].Value;
+            browserConfig.NextAction = BrowserActions.LoadingSession;
+            _accountSelectionForm.Form.Close();
         }
 
         private void FillAccountToDataGrid(IEnumerable<string> accounts)

@@ -8,6 +8,7 @@ namespace ZennoPosterBrowser.Configs
 {
     enum BrowserActions
     {
-        LoadSession
+        SelectionSession,
+        LoadingSession
     }
 }
