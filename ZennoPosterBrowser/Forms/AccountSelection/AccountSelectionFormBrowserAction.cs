@@ -20,7 +20,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             try
             {
                 _accountSelectionForm.Form.ShowDialog();
-                return Configs.BrowserActions.LoadingSession;
+                return _accountSelectionForm.NextAction;
             }
             catch (Exception)
             {
