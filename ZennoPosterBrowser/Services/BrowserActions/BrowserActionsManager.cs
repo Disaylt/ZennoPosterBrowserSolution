@@ -11,32 +11,34 @@ using ZennoPosterBrowser.Services.Accounts;
 
 namespace ZennoPosterBrowser.Services.BrowserActions
 {
-    internal delegate IBrowserAction GetBrowserAction();
+    internal delegate IBrowserAction GetBrowserActionExecutor();
+    internal delegate Configs.BrowserActions GetBrowserAction();
     internal class BrowserActionsManager
     {
+        private readonly Dictionary<Configs.BrowserActions, GetBrowserActionExecutor> _actionsExecutor;
         private readonly Dictionary<Configs.BrowserActions, GetBrowserAction> _actions;
         private readonly Instance _instance;
         private readonly IZennoPosterProjectModel _project;
 
         public BrowserActionsManager(Instance instance, IZennoPosterProjectModel project)
         {
+            _actionsExecutor = new Dictionary<Configs.BrowserActions, GetBrowserActionExecutor>();
             _actions = new Dictionary<Configs.BrowserActions, GetBrowserAction>();
             _instance = instance;
             _project = project;
-            AddActions();
+            AddActionsExcecutor();
         }
 
         public void ExecuteActions()
         {
             try
             {
-                var currentAction = Configs.BrowserActions.SelectionSession;
+                var nextAction = Configs.BrowserActions.SelectionSession;
                 do
                 {
-                    IBrowserAction browserAction = _actions[currentAction].Invoke();
-                    currentAction = browserAction.Run();
+                    nextAction = ExecuteCurrentActionAndReturnNextAction(nextAction);
                 }
-                while (currentAction != Configs.BrowserActions.CloseBrowser);
+                while (nextAction != Configs.BrowserActions.CloseBrowser);
             }
             catch(Exception)
             {
@@ -44,10 +46,26 @@ namespace ZennoPosterBrowser.Services.BrowserActions
             }
         }
 
-        private void AddActions()
+        private Configs.BrowserActions ExecuteCurrentActionAndReturnNextAction(Configs.BrowserActions currentAction)
         {
-            _actions.Add(Configs.BrowserActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
-            _actions.Add(Configs.BrowserActions.LoadingSession, () => new SessionLoader(_project));
+            if(_actions.ContainsKey(currentAction))
+            {
+                var nextAction = _actions[currentAction].Invoke();
+                return nextAction;
+            }
+            if(_actionsExecutor.ContainsKey(currentAction))
+            {
+                var browserActionHandler = _actionsExecutor[currentAction].Invoke();
+                var nextAction = browserActionHandler.Run();
+                return nextAction;
+            }
+            throw new Exception($"Action {currentAction} not exists!");
+        }
+
+        private void AddActionsExcecutor()
+        {
+            _actionsExecutor.Add(Configs.BrowserActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
+            _actionsExecutor.Add(Configs.BrowserActions.LoadingSession, () => new SessionLoader(_project));
         }
     }
 }
