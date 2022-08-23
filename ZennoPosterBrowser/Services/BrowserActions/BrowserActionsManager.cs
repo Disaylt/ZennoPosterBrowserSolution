@@ -13,19 +13,19 @@ using ZennoPosterBrowser.Services.ZennoPosterBrowser;
 
 namespace ZennoPosterBrowser.Services.BrowserActions
 {
-    internal delegate IBrowserAction GetBrowserActionExecutor();
-    internal delegate BrowserProjectActions GetBrowserAction();
+    internal delegate IBrowserAction GetObjectActionExecutor();
+    internal delegate BrowserProjectActions GetActionExecutor();
     internal class BrowserActionsManager
     {
-        private readonly Dictionary<BrowserProjectActions, GetBrowserActionExecutor> _actionsExecutor;
-        private readonly Dictionary<BrowserProjectActions, GetBrowserAction> _actions;
+        private readonly Dictionary<BrowserProjectActions, GetObjectActionExecutor> _objectsActionExecutor;
+        private readonly Dictionary<BrowserProjectActions, GetActionExecutor> _executors;
         private readonly Instance _instance;
         private readonly IZennoPosterProjectModel _project;
 
         public BrowserActionsManager(Instance instance, IZennoPosterProjectModel project)
         {
-            _actionsExecutor = new Dictionary<BrowserProjectActions, GetBrowserActionExecutor>();
-            _actions = new Dictionary<BrowserProjectActions, GetBrowserAction>();
+            _objectsActionExecutor = new Dictionary<BrowserProjectActions, GetObjectActionExecutor>();
+            _executors = new Dictionary<BrowserProjectActions, GetActionExecutor>();
             _instance = instance;
             _project = project;
             FillActionsExcecutor();
@@ -42,16 +42,26 @@ namespace ZennoPosterBrowser.Services.BrowserActions
             while (nextAction != BrowserProjectActions.CloseBrowser);
         }
 
+        public void AddService(BrowserProjectActions action, GetActionExecutor executor)
+        {
+            _executors.Add(action, executor);
+        }
+
+        public void AddService(BrowserProjectActions action, GetObjectActionExecutor objectExecutor)
+        {
+            _objectsActionExecutor.Add(action, objectExecutor);
+        }
+
         private BrowserProjectActions ExecuteCurrentActionAndReturnNextAction(BrowserProjectActions currentAction)
         {
-            if(_actions.ContainsKey(currentAction))
+            if(_executors.ContainsKey(currentAction))
             {
-                var nextAction = _actions[currentAction].Invoke();
+                var nextAction = _executors[currentAction].Invoke();
                 return nextAction;
             }
-            if(_actionsExecutor.ContainsKey(currentAction))
+            if(_objectsActionExecutor.ContainsKey(currentAction))
             {
-                var browserActionHandler = _actionsExecutor[currentAction].Invoke();
+                var browserActionHandler = _objectsActionExecutor[currentAction].Invoke();
                 var nextAction = browserActionHandler.Run();
                 return nextAction;
             }
@@ -60,17 +70,17 @@ namespace ZennoPosterBrowser.Services.BrowserActions
 
         private void FillActionsExcecutor()
         {
-            _actionsExecutor.Add(BrowserProjectActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
-            _actionsExecutor.Add(BrowserProjectActions.OpenMenu, () => new MenuFormBrowserAction());
+            _objectsActionExecutor.Add(BrowserProjectActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
+            _objectsActionExecutor.Add(BrowserProjectActions.OpenMenu, () => new MenuFormBrowserAction());
         }
 
         private void FillActions()
         {
             var sessionManager = new SessionManager(_project);
-            _actions.Add(BrowserProjectActions.LoadingSession, sessionManager.LoadAccount);
+            _executors.Add(BrowserProjectActions.LoadingSession, sessionManager.LoadAccount);
 
             var zennposterActionManager = new ZennoPosterBrowserManager(_instance);
-            _actions.Add(BrowserProjectActions.BrowserWaitUserAction, zennposterActionManager.WaitUserAction);
+            _executors.Add(BrowserProjectActions.BrowserWaitUserAction, zennposterActionManager.WaitUserAction);
         }
     }
 }
