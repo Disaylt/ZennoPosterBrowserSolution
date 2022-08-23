@@ -17,6 +17,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
         {
             _controls = new List<Control>();
             _controls.Add(WaitUserAction);
+            _controls.Add(UpdateProxy);
         }
 
         public List<Control> GetFormControls()
@@ -35,6 +36,20 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                     _waitUserAction = findAccountButton.Create();
                 }
                 return _waitUserAction;
+            }
+        }
+
+        private Button _updateProxy;
+        public virtual Button UpdateProxy
+        {
+            get
+            {
+                if (_updateProxy == null)
+                {
+                    UpdateProxyButton findAccountButton = new UpdateProxyButton();
+                    _updateProxy = findAccountButton.Create();
+                }
+                return _updateProxy;
             }
         }
     }
