@@ -17,14 +17,12 @@ namespace ZennoPosterBrowser.Configs
             ProjectNamesStorage = new ProjectsCollection();
             CurrentSession = string.Empty;
             PathToSession = string.Empty;
-            IsAccountLoad = false;
         }
 
         public IMarketNamesStorage MarketNamesStorage { get; }
         public IProjectNamesStorage ProjectNamesStorage { get; }
         public string CurrentSession { get; set; }
         public string PathToSession { get; set; }
-        public bool IsAccountLoad { get; set; }
 
         public static BrowserConfig Instance
         {
@@ -41,7 +39,6 @@ namespace ZennoPosterBrowser.Configs
         public void ResetBrowserProperies()
         {
             CurrentSession = null;
-            IsAccountLoad = false;
         }
     }
 }

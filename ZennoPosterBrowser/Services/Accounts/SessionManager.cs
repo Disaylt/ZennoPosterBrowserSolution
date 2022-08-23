@@ -12,25 +12,47 @@ namespace ZennoPosterBrowser.Services.Accounts
     internal class SessionManager
     {
         private readonly IZennoPosterProjectModel _project;
+        private bool _isLoad;
         public SessionManager(IZennoPosterProjectModel project)
         {
             _project = project;
+            _isLoad = false;
         }
 
         public BrowserProjectActions LoadAccount()
         {
             BrowserConfig browserConfig = BrowserConfig.Instance;
-            if(browserConfig.IsAccountLoad == false 
-                && !string.IsNullOrEmpty(browserConfig.CurrentSession)
-                && !string.IsNullOrEmpty(browserConfig.PathToSession))
+            if(!string.IsNullOrEmpty(browserConfig.CurrentSession)
+                && !string.IsNullOrEmpty(browserConfig.PathToSession)
+                && _isLoad == false)
             {
-                _project.Profile.Load(browserConfig.PathToSession);
+                _project.Profile.Load($"{browserConfig.PathToSession}{browserConfig.CurrentSession}");
+                _isLoad = true;
                 return BrowserProjectActions.OpenMenu;
             }
             else
             {
                 return BrowserProjectActions.CloseBrowser;
             }
+        }
+
+        public BrowserProjectActions SaveAccount()
+        {
+            if(_isLoad)
+            {
+                BrowserConfig browserConfig = BrowserConfig.Instance;
+                _project.Profile.Save($"{browserConfig.PathToSession}{browserConfig.CurrentSession}",
+                    false,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    true,
+                    true,
+                    true);
+            }
+            return BrowserProjectActions.CloseBrowser;
         }
     }
 }
