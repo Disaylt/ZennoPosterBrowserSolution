@@ -35,7 +35,6 @@ namespace ZennoPosterBrowser
             lock(_locker)
             {
                 BaseConfig.InitialConfig(project);
-
                 BrowserActionsManager browserActionsStorage = new BrowserActionsManager(instance, project);
                 browserActionsStorage.ExecuteActions();
 

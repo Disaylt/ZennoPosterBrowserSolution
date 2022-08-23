@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SmartProxyV2_ZennoLabVersion">
+      <HintPath>Libs\SmartProxyV2_ZennoLabVersion.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -141,6 +144,9 @@
     <Compile Include="Services\BrowserActions\BrowserActionsManager.cs" />
     <Compile Include="Services\BrowserActions\IBrowserAction.cs" />
     <Compile Include="Services\FormSettings\FormSettingsStorage.cs" />
+    <Compile Include="Services\VPN\IProxyActions.cs" />
+    <Compile Include="Services\VPN\IVPN.cs" />
+    <Compile Include="Services\VPN\SmartProxyV2Handler.cs" />
     <Compile Include="Services\ZennoPosterBrowser\ZennoPosterBrowserManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -177,5 +183,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
 </Project>
