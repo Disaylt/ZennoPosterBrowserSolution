@@ -19,22 +19,18 @@ namespace ZennoPosterBrowser.Services.BrowserActions
     {
         private readonly Dictionary<BrowserProjectActions, GetObjectActionExecutor> _objectsActionExecutor;
         private readonly Dictionary<BrowserProjectActions, GetActionExecutor> _executors;
-        private readonly Instance _instance;
-        private readonly IZennoPosterProjectModel _project;
+        private readonly BrowserProjectActions _firsstAction;
 
-        public BrowserActionsManager(Instance instance, IZennoPosterProjectModel project)
+        public BrowserActionsManager(BrowserProjectActions firstAction)
         {
             _objectsActionExecutor = new Dictionary<BrowserProjectActions, GetObjectActionExecutor>();
             _executors = new Dictionary<BrowserProjectActions, GetActionExecutor>();
-            _instance = instance;
-            _project = project;
-            FillActionsExcecutor();
-            FillActions();
+            _firsstAction = firstAction;
         }
 
         public void ExecuteActions()
         {
-            var nextAction = BrowserProjectActions.SelectionSession;
+            var nextAction = _firsstAction;
             do
             {
                 nextAction = ExecuteCurrentActionAndReturnNextAction(nextAction);
@@ -66,21 +62,6 @@ namespace ZennoPosterBrowser.Services.BrowserActions
                 return nextAction;
             }
             throw new Exception($"Action {currentAction} not exists!");
-        }
-
-        private void FillActionsExcecutor()
-        {
-            _objectsActionExecutor.Add(BrowserProjectActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
-            _objectsActionExecutor.Add(BrowserProjectActions.OpenMenu, () => new MenuFormBrowserAction());
-        }
-
-        private void FillActions()
-        {
-            var sessionManager = new SessionManager(_project);
-            _executors.Add(BrowserProjectActions.LoadingSession, sessionManager.LoadAccount);
-
-            var zennposterActionManager = new ZennoPosterBrowserManager(_instance);
-            _executors.Add(BrowserProjectActions.BrowserWaitUserAction, zennposterActionManager.WaitUserAction);
         }
     }
 }

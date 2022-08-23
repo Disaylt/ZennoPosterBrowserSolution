@@ -9,5 +9,6 @@ namespace ZennoPosterBrowser.Models.JSON
     internal class ProjectSettingsModel
     {
         public string MongoConnectionString { get; set; }
+        public bool IsEnableVPN { get; set; }
     }
 }

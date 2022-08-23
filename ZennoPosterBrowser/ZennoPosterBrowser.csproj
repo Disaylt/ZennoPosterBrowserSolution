@@ -144,6 +144,7 @@
     <Compile Include="Services\BrowserActions\BrowserActionsManager.cs" />
     <Compile Include="Services\BrowserActions\IBrowserAction.cs" />
     <Compile Include="Services\FormSettings\FormSettingsStorage.cs" />
+    <Compile Include="Services\VPN\InstanceProxyUpdater.cs" />
     <Compile Include="Services\VPN\IProxyActions.cs" />
     <Compile Include="Services\VPN\IVPN.cs" />
     <Compile Include="Services\VPN\SmartProxyV2Handler.cs" />

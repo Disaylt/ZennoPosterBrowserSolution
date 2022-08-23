@@ -12,6 +12,7 @@ namespace ZennoPosterBrowser.Configs
         LoadingSession,
         CloseBrowser,
         OpenMenu,
-        BrowserWaitUserAction
+        BrowserWaitUserAction,
+        UpdateProxy
     }
 }
