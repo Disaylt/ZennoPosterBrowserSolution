@@ -15,8 +15,6 @@ namespace ZennoPosterBrowser.Configs
         {
             MarketNamesStorage = new MarketsCollection();
             ProjectNamesStorage = new ProjectsCollection();
-            CurrentSession = string.Empty;
-            PathToSession = string.Empty;
         }
 
         public IMarketNamesStorage MarketNamesStorage { get; }
@@ -39,6 +37,7 @@ namespace ZennoPosterBrowser.Configs
         public void ResetBrowserProperies()
         {
             CurrentSession = null;
+            PathToSession = null;
         }
     }
 }

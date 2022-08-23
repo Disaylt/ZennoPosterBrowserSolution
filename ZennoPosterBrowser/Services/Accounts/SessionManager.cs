@@ -30,13 +30,17 @@ namespace ZennoPosterBrowser.Services.Accounts
                 _isLoad = true;
                 return BrowserProjectActions.OpenMenu;
             }
+            else if(_isLoad)
+            {
+                return BrowserProjectActions.OpenMenu;
+            }
             else
             {
                 return BrowserProjectActions.CloseBrowser;
             }
         }
 
-        public BrowserProjectActions SaveAccount()
+        public void SaveAccount()
         {
             if(_isLoad)
             {
@@ -52,7 +56,6 @@ namespace ZennoPosterBrowser.Services.Accounts
                     true,
                     true);
             }
-            return BrowserProjectActions.CloseBrowser;
         }
     }
 }

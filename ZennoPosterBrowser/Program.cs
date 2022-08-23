@@ -44,12 +44,19 @@ namespace ZennoPosterBrowser
                 _project = project;
                 BaseConfig.InitialConfig(project);
 
-                BrowserActionsManager browserActionsStorage = new BrowserActionsManager();
-                IVPN vpn = new SmartProxyV2Handler(instance);
-                AddServices(browserActionsStorage);
-                AddVPNService(browserActionsStorage, vpn);
+                try
+                {
+                    BrowserActionsManager browserActionsStorage = new BrowserActionsManager();
+                    IVPN vpn = new SmartProxyV2Handler(instance);
+                    AddServices(browserActionsStorage);
+                    AddVPNService(browserActionsStorage, vpn);
 
-                browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
+                    browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
+                }
+                finally
+                {
+                    BrowserConfig.Instance.ResetBrowserProperies();
+                }
 
                 int executionResult = 0;
                 return executionResult;
@@ -63,6 +70,7 @@ namespace ZennoPosterBrowser
 
             var sessionManager = new SessionManager(_project);
             browserActionsStorage.AddService(BrowserProjectActions.LoadingSession, sessionManager.LoadAccount);
+            browserActionsStorage.AddLastServices(sessionManager.SaveAccount);
 
             var zennposterActionManager = new ZennoPosterBrowserManager(_instance);
             browserActionsStorage.AddService(BrowserProjectActions.BrowserWaitUserAction, zennposterActionManager.WaitUserAction);
