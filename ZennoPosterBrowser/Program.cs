@@ -45,17 +45,11 @@ namespace ZennoPosterBrowser
                 BaseConfig.InitialConfig(project);
 
                 BrowserActionsManager browserActionsStorage = new BrowserActionsManager();
+                IVPN vpn = new SmartProxyV2Handler(instance);
                 AddServices(browserActionsStorage);
+                AddVPNService(browserActionsStorage, vpn);
 
-                var settings = BaseConfig.Instance.ProjectSettingsLoader.ProjectSettings;
-                if (settings.IsEnableVPN)
-                {
-                    StartWithVPN(browserActionsStorage);
-                }
-                else
-                {
-                    browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
-                }
+                browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
 
                 int executionResult = 0;
                 return executionResult;
@@ -74,24 +68,19 @@ namespace ZennoPosterBrowser
             browserActionsStorage.AddService(BrowserProjectActions.BrowserWaitUserAction, zennposterActionManager.WaitUserAction);
         }
 
-        private void StartWithVPN(BrowserActionsManager browserActionsStorage)
+        private void AddVPNService(BrowserActionsManager browserActionsStorage, IVPN VPNService)
         {
-            IVPN vpn = new SmartProxyV2Handler(_instance);
-
-            if(vpn is IProxyActions proxyActions)
+            var settings = BaseConfig.Instance.ProjectSettingsLoader.ProjectSettings;
+            if (settings.IsEnableVPN)
             {
-                browserActionsStorage.AddService(BrowserProjectActions.UpdateProxy, () => new InstanceProxyUpdater(proxyActions));
+                if (VPNService is IProxyActions proxyActions)
+                {
+                    browserActionsStorage.AddService(BrowserProjectActions.UpdateProxy, () => new InstanceProxyUpdater(proxyActions));
+                }
+                browserActionsStorage.AddFirstServices(VPNService.TurnOnProxy);
+                browserActionsStorage.AddLastServices(VPNService.TurnOffProxy);
             }
 
-            try
-            {
-                vpn.TurnOnProxy();
-                browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
-            }
-            finally
-            {
-                vpn.TurnOffProxy();
-            }
         }
     }
 }

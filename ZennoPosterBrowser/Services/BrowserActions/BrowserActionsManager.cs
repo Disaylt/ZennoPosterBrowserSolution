@@ -20,22 +20,16 @@ namespace ZennoPosterBrowser.Services.BrowserActions
         private readonly Dictionary<BrowserProjectActions, GetObjectActionExecutor> _objectsActionExecutor;
         private readonly Dictionary<BrowserProjectActions, GetActionExecutor> _executors;
 
-        private readonly Dictionary<BrowserProjectActions, GetObjectActionExecutor> _firstObjectsActionExecutor;
-        private readonly Dictionary<BrowserProjectActions, GetActionExecutor> _firstExecutors;
-
-        private readonly Dictionary<BrowserProjectActions, GetObjectActionExecutor> _lastObjectsActionExecutor;
-        private readonly Dictionary<BrowserProjectActions, GetActionExecutor> _lastExecutors;
+        private readonly List<Action> _firstActions;
+        private readonly List<Action> _lastActions;
 
         public BrowserActionsManager()
         {
             _objectsActionExecutor = new Dictionary<BrowserProjectActions, GetObjectActionExecutor>();
             _executors = new Dictionary<BrowserProjectActions, GetActionExecutor>();
 
-            _firstObjectsActionExecutor = new Dictionary<BrowserProjectActions, GetObjectActionExecutor>();
-            _firstExecutors = new Dictionary<BrowserProjectActions, GetActionExecutor>();
-
-            _lastObjectsActionExecutor = new Dictionary<BrowserProjectActions, GetObjectActionExecutor>();
-            _lastExecutors = new Dictionary<BrowserProjectActions, GetActionExecutor>();
+            _firstActions = new List<Action>();
+            _lastActions = new List<Action>();
         }
 
         public void ExecuteActions(BrowserProjectActions firstAction)
@@ -60,24 +54,14 @@ namespace ZennoPosterBrowser.Services.BrowserActions
             }
         }
 
-        public void AddLastServices(BrowserProjectActions action, GetActionExecutor executor)
+        public void AddLastServices(Action action)
         {
-            _lastExecutors.Add(action, executor);
+            _lastActions.Add(action);
         }
 
-        public void AddLastServices(BrowserProjectActions action, GetObjectActionExecutor objectExecutor)
+        public void AddFirstServices(Action action)
         {
-            _lastObjectsActionExecutor.Add(action, objectExecutor);
-        }
-
-        public void AddFirstServices(BrowserProjectActions action, GetActionExecutor executor)
-        {
-            _firstExecutors.Add(action, executor);
-        }
-
-        public void AddFirstServices(BrowserProjectActions action, GetObjectActionExecutor objectExecutor)
-        {
-            _firstObjectsActionExecutor.Add(action, objectExecutor);
+            _firstActions.Add(action);
         }
 
         public void AddService(BrowserProjectActions action, GetActionExecutor executor)
@@ -92,25 +76,13 @@ namespace ZennoPosterBrowser.Services.BrowserActions
 
         private void ExecuteFirstActions()
         {
-            foreach (var action in _firstObjectsActionExecutor)
+            foreach (var action in _firstActions)
             {
                 try
                 {
-                    var obj = action.Value.Invoke();
-                    obj.Run();
+                    action?.Invoke();
                 }
                 catch (Exception)
-                {
-
-                }
-            }
-            foreach (var action in _lastExecutors)
-            {
-                try
-                {
-                    action.Value.Invoke();
-                }
-                catch
                 {
 
                 }
@@ -119,14 +91,9 @@ namespace ZennoPosterBrowser.Services.BrowserActions
 
         private void ExecuteLastActions()
         {
-            foreach (var action in _lastObjectsActionExecutor)
+            foreach (var action in _lastActions)
             {
-                var obj = action.Value.Invoke();
-                obj.Run();
-            }
-            foreach (var action in _firstExecutors)
-            {
-                action.Value.Invoke();
+                action?.Invoke();
             }
         }
 
