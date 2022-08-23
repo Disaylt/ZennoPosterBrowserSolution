@@ -19,23 +19,65 @@ namespace ZennoPosterBrowser.Services.BrowserActions
     {
         private readonly Dictionary<BrowserProjectActions, GetObjectActionExecutor> _objectsActionExecutor;
         private readonly Dictionary<BrowserProjectActions, GetActionExecutor> _executors;
-        private readonly BrowserProjectActions _firsstAction;
 
-        public BrowserActionsManager(BrowserProjectActions firstAction)
+        private readonly Dictionary<BrowserProjectActions, GetObjectActionExecutor> _firstObjectsActionExecutor;
+        private readonly Dictionary<BrowserProjectActions, GetActionExecutor> _firstExecutors;
+
+        private readonly Dictionary<BrowserProjectActions, GetObjectActionExecutor> _lastObjectsActionExecutor;
+        private readonly Dictionary<BrowserProjectActions, GetActionExecutor> _lastExecutors;
+
+        public BrowserActionsManager()
         {
             _objectsActionExecutor = new Dictionary<BrowserProjectActions, GetObjectActionExecutor>();
             _executors = new Dictionary<BrowserProjectActions, GetActionExecutor>();
-            _firsstAction = firstAction;
+
+            _firstObjectsActionExecutor = new Dictionary<BrowserProjectActions, GetObjectActionExecutor>();
+            _firstExecutors = new Dictionary<BrowserProjectActions, GetActionExecutor>();
+
+            _lastObjectsActionExecutor = new Dictionary<BrowserProjectActions, GetObjectActionExecutor>();
+            _lastExecutors = new Dictionary<BrowserProjectActions, GetActionExecutor>();
         }
 
-        public void ExecuteActions()
+        public void ExecuteActions(BrowserProjectActions firstAction)
         {
-            var nextAction = _firsstAction;
-            do
+            try
             {
-                nextAction = ExecuteCurrentActionAndReturnNextAction(nextAction);
+                ExecuteFirstActions();
+                var nextAction = firstAction;
+                do
+                {
+                    nextAction = ExecuteCurrentActionAndReturnNextAction(nextAction);
+                }
+                while (nextAction != BrowserProjectActions.CloseBrowser);
             }
-            while (nextAction != BrowserProjectActions.CloseBrowser);
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                ExecuteLastActions();
+            }
+        }
+
+        public void AddLastServices(BrowserProjectActions action, GetActionExecutor executor)
+        {
+            _lastExecutors.Add(action, executor);
+        }
+
+        public void AddLastServices(BrowserProjectActions action, GetObjectActionExecutor objectExecutor)
+        {
+            _lastObjectsActionExecutor.Add(action, objectExecutor);
+        }
+
+        public void AddFirstServices(BrowserProjectActions action, GetActionExecutor executor)
+        {
+            _firstExecutors.Add(action, executor);
+        }
+
+        public void AddFirstServices(BrowserProjectActions action, GetObjectActionExecutor objectExecutor)
+        {
+            _firstObjectsActionExecutor.Add(action, objectExecutor);
         }
 
         public void AddService(BrowserProjectActions action, GetActionExecutor executor)
@@ -46,6 +88,46 @@ namespace ZennoPosterBrowser.Services.BrowserActions
         public void AddService(BrowserProjectActions action, GetObjectActionExecutor objectExecutor)
         {
             _objectsActionExecutor.Add(action, objectExecutor);
+        }
+
+        private void ExecuteFirstActions()
+        {
+            foreach (var action in _firstObjectsActionExecutor)
+            {
+                try
+                {
+                    var obj = action.Value.Invoke();
+                    obj.Run();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            foreach (var action in _lastExecutors)
+            {
+                try
+                {
+                    action.Value.Invoke();
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void ExecuteLastActions()
+        {
+            foreach (var action in _lastObjectsActionExecutor)
+            {
+                var obj = action.Value.Invoke();
+                obj.Run();
+            }
+            foreach (var action in _firstExecutors)
+            {
+                action.Value.Invoke();
+            }
         }
 
         private BrowserProjectActions ExecuteCurrentActionAndReturnNextAction(BrowserProjectActions currentAction)

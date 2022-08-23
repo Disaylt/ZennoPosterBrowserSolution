@@ -44,7 +44,7 @@ namespace ZennoPosterBrowser
                 _project = project;
                 BaseConfig.InitialConfig(project);
 
-                BrowserActionsManager browserActionsStorage = new BrowserActionsManager(BrowserProjectActions.SelectionSession);
+                BrowserActionsManager browserActionsStorage = new BrowserActionsManager();
                 AddServices(browserActionsStorage);
 
                 var settings = BaseConfig.Instance.ProjectSettingsLoader.ProjectSettings;
@@ -54,7 +54,7 @@ namespace ZennoPosterBrowser
                 }
                 else
                 {
-                    browserActionsStorage.ExecuteActions();
+                    browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
                 }
 
                 int executionResult = 0;
@@ -86,7 +86,7 @@ namespace ZennoPosterBrowser
             try
             {
                 vpn.TurnOnProxy();
-                browserActionsStorage.ExecuteActions();
+                browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
             }
             finally
             {
