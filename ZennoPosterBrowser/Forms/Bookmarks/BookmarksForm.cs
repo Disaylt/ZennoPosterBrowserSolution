@@ -15,7 +15,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
         public BookmarksForm()
         {
             BookmarksStorage = new BookmarksJsonStorage();
-            FormControls = new FormControls();
+            FormControls = new FormControls(BookmarksStorage);
             AddControls(FormControls);
             NextAction = BrowserProjectActions.OpenMenu;
             Form.Size = new Size(400, 500);

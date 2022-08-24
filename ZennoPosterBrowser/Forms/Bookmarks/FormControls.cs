@@ -12,13 +12,19 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
     internal class FormControls : IFormControls
     {
         private readonly List<Control> _controls;
+        private readonly IBookmarksStorage _bookmarksStorage;
 
-        public FormControls()
+        public FormControls(IBookmarksStorage bookmarksStorage)
         {
+            _bookmarksStorage = bookmarksStorage;
             _controls = new List<Control>();
-            _controls.Add(AddBookmark);
+            _controls.Add(AdditionBookmark);
             _controls.Add(BookmarkName);
             _controls.Add(BookmarkNewUrl);
+            _controls.Add(BookmarketComboBox);
+            _controls.Add(BookmarkCurrentUrl);
+            _controls.Add(UpdationBookmark);
+            _controls.Add(DeletionBookmark);
         }
 
         public List<Control> GetFormControls()
@@ -26,17 +32,45 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
             return _controls;
         }
 
-        private Button _addBookmark;
-        protected virtual Button AddBookmark
+        private Button _additionBookmark;
+        protected virtual Button AdditionBookmark
         {
             get
             {
-                if (_addBookmark == null)
+                if (_additionBookmark == null)
                 {
-                    BookmarkAddingButtonBuilder addBookmarkButton = new BookmarkAddingButtonBuilder();
-                    _addBookmark = addBookmarkButton.Create();
+                    BookmarkAdditionButtonBuilder addBookmarkButton = new BookmarkAdditionButtonBuilder();
+                    _additionBookmark = addBookmarkButton.Create();
                 }
-                return _addBookmark;
+                return _additionBookmark;
+            }
+        }
+
+        private Button _deletionBookmark;
+        protected virtual Button DeletionBookmark
+        {
+            get
+            {
+                if (_deletionBookmark == null)
+                {
+                    BookmarkDeletionButtonBuilder addBookmarkButton = new BookmarkDeletionButtonBuilder();
+                    _deletionBookmark = addBookmarkButton.Create();
+                }
+                return _deletionBookmark;
+            }
+        }
+
+        private Button _updationBookmark;
+        protected virtual Button UpdationBookmark
+        {
+            get
+            {
+                if (_updationBookmark == null)
+                {
+                    BookmarkUpdationButtonBuilder addBookmarkButton = new BookmarkUpdationButtonBuilder();
+                    _updationBookmark = addBookmarkButton.Create();
+                }
+                return _updationBookmark;
             }
         }
 
@@ -65,6 +99,34 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
                     _bookmarkNewUrl = bookmarkNameTextBox.Create();
                 }
                 return _bookmarkNewUrl;
+            }
+        }
+
+        private TextBox _bookmarkCurrentUrl;
+        protected virtual TextBox BookmarkCurrentUrl
+        {
+            get
+            {
+                if (_bookmarkCurrentUrl == null)
+                {
+                    BookmarkCurrentUrlTextBox bookmarkNameTextBox = new BookmarkCurrentUrlTextBox();
+                    _bookmarkCurrentUrl = bookmarkNameTextBox.Create();
+                }
+                return _bookmarkCurrentUrl;
+            }
+        }
+
+        private ComboBox _bookmarketComboBox;
+        protected virtual ComboBox BookmarketComboBox
+        {
+            get
+            {
+                if (_bookmarketComboBox == null)
+                {
+                    BookmarkNameComboBox bookmarkNameTextBox = new BookmarkNameComboBox(_bookmarksStorage.Bookmarks);
+                    _bookmarketComboBox = bookmarkNameTextBox.Create();
+                }
+                return _bookmarketComboBox;
             }
         }
     }

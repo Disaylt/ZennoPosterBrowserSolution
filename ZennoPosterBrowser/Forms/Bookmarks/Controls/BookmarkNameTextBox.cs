@@ -12,11 +12,12 @@ namespace ZennoPosterBrowser.Forms.Bookmarks.Controls
     {
         public override TextBox Create()
         {
-            TextBox textBoxSearch = new TextBox();
-            textBoxSearch.Location = new System.Drawing.Point(15, 15);
-            textBoxSearch.Name = "bookmarkName";
-            textBoxSearch.Size = new System.Drawing.Size(300, 20);
-            return textBoxSearch;
+            TextBox textBox = new TextBox();
+            textBox.Location = new System.Drawing.Point(15, 15);
+            textBox.Name = "bookmarkName";
+            textBox.Size = new System.Drawing.Size(260, 20);
+            return textBox;
         }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,7 +66,15 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
 
         private List<BookmarkModel> LoadBookmarks()
         {
-            List<BookmarkModel> bookmarks = JsonFile.Load<List<BookmarkModel>>(_filePath);
+            List<BookmarkModel> bookmarks;
+            try
+            {
+                bookmarks = JsonFile.Load<List<BookmarkModel>>(_filePath);
+            }
+            catch(Exception)
+            {
+                bookmarks = new List<BookmarkModel>();
+            }
             return bookmarks;
         }
     }

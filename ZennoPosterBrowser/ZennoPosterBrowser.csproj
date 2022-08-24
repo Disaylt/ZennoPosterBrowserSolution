@@ -120,9 +120,13 @@
     <Compile Include="Forms\Bookmarks\BookmarksForm.cs" />
     <Compile Include="Forms\Bookmarks\BookmarksFormAction.cs" />
     <Compile Include="Forms\Bookmarks\BookmarksJsonStorage.cs" />
-    <Compile Include="Forms\Bookmarks\Controls\BookmarkAddingButtonBuilder.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkAdditionButtonBuilder.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkDeletionButtonBuilder.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkNameComboBox.cs" />
     <Compile Include="Forms\Bookmarks\Controls\BookmarkNameTextBox.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkCurrentUrlTextBox.cs" />
     <Compile Include="Forms\Bookmarks\Controls\BookmarkNewUrlTextBox.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkUpdationButtonBuilder.cs" />
     <Compile Include="Forms\Bookmarks\FormControls.cs" />
     <Compile Include="Forms\Bookmarks\IBookmarksStorage.cs" />
     <Compile Include="Forms\MainMenu\Controls\UpdateProxyButton.cs" />
