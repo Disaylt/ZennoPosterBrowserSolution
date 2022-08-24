@@ -9,6 +9,11 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
 {
     internal class BookmarksForm : BaseForm
     {
+        public BookmarksForm()
+        {
+            BookmarksStorage = new BookmarksJsonStorage();
+        }
 
+        public IBookmarksStorage BookmarksStorage { get; }
     }
 }

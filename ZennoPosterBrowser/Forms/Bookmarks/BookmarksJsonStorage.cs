@@ -51,6 +51,18 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
             }
         }
 
+        public void UpdateBookmark(BookmarkModel newBookmark)
+        {
+            BookmarkModel oldBookmark = Bookmarks
+                .FirstOrDefault(x => x.Name == newBookmark.Name);
+            if(oldBookmark != null)
+            {
+                _bookmarks.Remove(oldBookmark);
+                _bookmarks.Add(newBookmark);
+                JsonFile.SaveAs(Bookmarks, _filePath);
+            }
+        }
+
         private List<BookmarkModel> LoadBookmarks()
         {
             List<BookmarkModel> bookmarks = JsonFile.Load<List<BookmarkModel>>(_filePath);

@@ -12,5 +12,6 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
         IEnumerable<BookmarkModel> Bookmarks { get; }
         void AddBookmark(BookmarkModel bookmark);
         void DeleteBookmark(string bookmarkName);
+        void UpdateBookmark(BookmarkModel bookmark);
     }
 }
