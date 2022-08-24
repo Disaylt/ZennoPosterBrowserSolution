@@ -11,24 +11,49 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
     internal class BookmarksJsonStorage : IBookmarksStorage
     {
         private const string _fileName = "BookmarksStorage.json";
-        
+        private readonly string _filePath;
+        private readonly List<BookmarkModel> _bookmarks;
+
+
         public BookmarksJsonStorage()
         {
-            Bookmarks = LoadBookmarks();
+            BaseConfig baseConfig = BaseConfig.Instance;
+            _filePath = $"{baseConfig.ProjectPath}{_fileName}";
+            _bookmarks = LoadBookmarks();
         }
 
-        public IEnumerable<BookmarkModel> Bookmarks { get; }
+        public IEnumerable<BookmarkModel> Bookmarks
+        {
+            get
+            {
+                return _bookmarks;
+            }
+        }
 
         public void AddBookmark(BookmarkModel bookmark)
         {
-            throw new NotImplementedException();
+            if(Bookmarks.Any(x=> x.Name != bookmark.Name))
+            {
+                _bookmarks.Add(bookmark);
+                JsonFile.SaveAs(Bookmarks, _filePath);
+            }
+        }
+
+        public void DeleteBookmark(string bookmarkName)
+        {
+            BookmarkModel bookmark = Bookmarks
+                .Where(x=> x.Name == bookmarkName)
+                .FirstOrDefault();
+            if(bookmark != null)
+            {
+                _bookmarks.Remove(bookmark);
+                JsonFile.SaveAs(Bookmarks, _filePath);
+            }
         }
 
         private List<BookmarkModel> LoadBookmarks()
         {
-            BaseConfig baseConfig = BaseConfig.Instance;
-            string filePath = $"{baseConfig.ProjectPath}{_fileName}";
-            List<BookmarkModel> bookmarks = JsonFile.Load<List<BookmarkModel>>(filePath);
+            List<BookmarkModel> bookmarks = JsonFile.Load<List<BookmarkModel>>(_filePath);
             return bookmarks;
         }
     }
