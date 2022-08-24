@@ -12,13 +12,16 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
     internal class BookmarksForm : BaseForm
     {
         private const string _nameForm = "Закладки";
+        private readonly IFormEventHandler _formEventHandler;
         public BookmarksForm()
         {
             BookmarksStorage = new BookmarksJsonStorage();
-            FormControls = new FormControls(BookmarksStorage);
+            FormControls = new BookmarksFormControls(BookmarksStorage);
+            _formEventHandler = new BookmarksEventHandler(this);
             AddControls(FormControls);
+            AddEvents(_formEventHandler);
             NextAction = BrowserProjectActions.OpenMenu;
-            Form.Size = new Size(400, 500);
+            Form.Size = new Size(400, 300);
             Form.Name = _nameForm;
         }
         public BrowserProjectActions NextAction { get; set; }

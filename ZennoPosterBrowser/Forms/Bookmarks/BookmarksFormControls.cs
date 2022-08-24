@@ -9,12 +9,12 @@ using ZennoPosterBrowser.Forms.Bookmarks.Controls;
 
 namespace ZennoPosterBrowser.Forms.Bookmarks
 {
-    internal class FormControls : IFormControls
+    internal class BookmarksFormControls : IFormControls
     {
         private readonly List<Control> _controls;
         private readonly IBookmarksStorage _bookmarksStorage;
 
-        public FormControls(IBookmarksStorage bookmarksStorage)
+        public BookmarksFormControls(IBookmarksStorage bookmarksStorage)
         {
             _bookmarksStorage = bookmarksStorage;
             _controls = new List<Control>();
@@ -33,7 +33,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
         }
 
         private Button _additionBookmark;
-        protected virtual Button AdditionBookmark
+        public virtual Button AdditionBookmark
         {
             get
             {
@@ -47,7 +47,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
         }
 
         private Button _deletionBookmark;
-        protected virtual Button DeletionBookmark
+        public virtual Button DeletionBookmark
         {
             get
             {
@@ -61,7 +61,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
         }
 
         private Button _updationBookmark;
-        protected virtual Button UpdationBookmark
+        public virtual Button UpdationBookmark
         {
             get
             {
@@ -75,7 +75,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
         }
 
         private TextBox _bookmarkName;
-        protected virtual TextBox BookmarkName
+        public virtual TextBox BookmarkName
         {
             get
             {
@@ -89,7 +89,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
         }
 
         private TextBox _bookmarkNewUrl;
-        protected virtual TextBox BookmarkNewUrl
+        public virtual TextBox BookmarkNewUrl
         {
             get
             {
@@ -103,7 +103,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
         }
 
         private TextBox _bookmarkCurrentUrl;
-        protected virtual TextBox BookmarkCurrentUrl
+        public virtual TextBox BookmarkCurrentUrl
         {
             get
             {
@@ -117,7 +117,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
         }
 
         private ComboBox _bookmarketComboBox;
-        protected virtual ComboBox BookmarketComboBox
+        public virtual ComboBox BookmarketComboBox
         {
             get
             {

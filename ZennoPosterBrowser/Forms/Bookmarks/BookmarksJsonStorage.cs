@@ -33,7 +33,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
 
         public void AddBookmark(BookmarkModel bookmark)
         {
-            if(Bookmarks.Any(x=> x.Name != bookmark.Name))
+            if(!Bookmarks.Any(x=> x.Name == bookmark.Name))
             {
                 _bookmarks.Add(bookmark);
                 JsonFile.SaveAs(Bookmarks, _filePath);
