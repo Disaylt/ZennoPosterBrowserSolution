@@ -18,7 +18,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu.Controls
             button.Name = "FreeAction";
             button.Font = new Font(button.Font.Name, 9f, button.Font.Unit);
             button.Location = new Point(15, 15);
-            button.Size = new Size(100, 40);
+            button.Size = new Size(110, 40);
             return button;
         }
     }

@@ -18,6 +18,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
             _controls = new List<Control>();
             _controls.Add(WaitUserAction);
             _controls.Add(UpdateProxy);
+            _controls.Add(Bookmarks);
         }
 
         public List<Control> GetFormControls()
@@ -50,6 +51,20 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                     _updateProxy = findAccountButton.Create();
                 }
                 return _updateProxy;
+            }
+        }
+
+        private Button _bookmarks;
+        public virtual Button Bookmarks
+        {
+            get
+            {
+                if(_bookmarks == null)
+                {
+                    BookmarksButton bookmarksButton = new BookmarksButton();
+                    _bookmarks = bookmarksButton.Create();
+                }
+                return _bookmarks;
             }
         }
     }
