@@ -16,14 +16,14 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
         public FormControls()
         {
             _controls = new List<Control>();
-            _controls.Add(_addBookmark);
+            _controls.Add(AddBookmark);
             _controls.Add(BookmarkName);
             _controls.Add(BookmarkNewUrl);
         }
 
         public List<Control> GetFormControls()
         {
-            throw new NotImplementedException();
+            return _controls;
         }
 
         private Button _addBookmark;

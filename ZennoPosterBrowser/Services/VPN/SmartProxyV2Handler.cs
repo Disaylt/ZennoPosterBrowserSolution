@@ -22,14 +22,14 @@ namespace ZennoPosterBrowser.Services.VPN
 
         public virtual void TurnOffProxy()
         {
-            SmartProxyHandler.OpenPortAsync(Proxy.PortData).Wait();
+            SmartProxyHandler.OpenPort(Proxy.PortData);
         }
 
         public virtual void TurnOnProxy()
         {
             if(Proxy == null)
             {
-                Proxy = SmartProxyHandler.GetMoscowProxyAsync().Result;
+                Proxy = SmartProxyHandler.GetMoscowProxy();
             }
             UpdateInstanceProxy();
         }
@@ -37,7 +37,7 @@ namespace ZennoPosterBrowser.Services.VPN
         public virtual void UpdateBroswerProxy()
         {
             TurnOffProxy();
-            Proxy = SmartProxyHandler.GetMoscowProxyAsync().Result;
+            Proxy = SmartProxyHandler.GetMoscowProxy();
             UpdateInstanceProxy();
         }
 

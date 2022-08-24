@@ -52,7 +52,7 @@ namespace ZennoPosterBrowser
                     AddServices(browserActionsStorage);
                     AddVPNService(browserActionsStorage, vpn);
 
-                    browserActionsStorage.ExecuteActions(BrowserProjectActions.OpenMenu);
+                    browserActionsStorage.ExecuteActions(BrowserProjectActions.OpenBookmarkMenu);
                 }
                 finally
                 {

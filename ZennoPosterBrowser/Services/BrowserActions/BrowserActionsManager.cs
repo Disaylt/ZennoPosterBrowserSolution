@@ -44,7 +44,7 @@ namespace ZennoPosterBrowser.Services.BrowserActions
                 }
                 while (nextAction != BrowserProjectActions.CloseBrowser);
             }
-            catch (Exception)
+            catch
             {
 
             }
