@@ -78,14 +78,7 @@ namespace ZennoPosterBrowser.Services.BrowserActions
         {
             foreach (var action in _firstActions)
             {
-                try
-                {
-                    action?.Invoke();
-                }
-                catch (Exception)
-                {
-
-                }
+                action?.Invoke();
             }
         }
 
@@ -93,7 +86,14 @@ namespace ZennoPosterBrowser.Services.BrowserActions
         {
             foreach (var action in _lastActions)
             {
-                action?.Invoke();
+                try
+                {
+                    action?.Invoke();
+                }
+                catch
+                {
+
+                }
             }
         }
 

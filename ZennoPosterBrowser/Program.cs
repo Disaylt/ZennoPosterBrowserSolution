@@ -13,6 +13,7 @@ using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoLab.InterfacesLibrary.ProjectModel.Enums;
 using ZennoPosterBrowser.Configs;
 using ZennoPosterBrowser.Forms.AccountSelection;
+using ZennoPosterBrowser.Forms.Bookmarks;
 using ZennoPosterBrowser.Forms.MainMenu;
 using ZennoPosterBrowser.Services.Accounts;
 using ZennoPosterBrowser.Services.BrowserActions;
@@ -51,7 +52,7 @@ namespace ZennoPosterBrowser
                     AddServices(browserActionsStorage);
                     AddVPNService(browserActionsStorage, vpn);
 
-                    browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
+                    browserActionsStorage.ExecuteActions(BrowserProjectActions.OpenMenu);
                 }
                 finally
                 {
@@ -67,6 +68,7 @@ namespace ZennoPosterBrowser
         {
             browserActionsStorage.AddService(BrowserProjectActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
             browserActionsStorage.AddService(BrowserProjectActions.OpenMenu, () => new MenuFormBrowserAction());
+            browserActionsStorage.AddService(BrowserProjectActions.OpenBookmarkMenu, () => new BookmarksFormAction());
 
             var sessionManager = new SessionManager(_project);
             browserActionsStorage.AddService(BrowserProjectActions.LoadingSession, sessionManager.LoadAccount);

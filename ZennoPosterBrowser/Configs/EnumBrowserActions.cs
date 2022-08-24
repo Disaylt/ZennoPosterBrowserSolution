@@ -13,6 +13,7 @@ namespace ZennoPosterBrowser.Configs
         CloseBrowser,
         OpenMenu,
         BrowserWaitUserAction,
-        UpdateProxy
+        UpdateProxy,
+        OpenBookmarkMenu
     }
 }
