@@ -39,7 +39,7 @@ namespace ZennoPosterBrowser
         /// <returns>Код выполнения скрипта</returns>		
         public int Execute(Instance instance, IZennoPosterProjectModel project)
         {
-            lock(_locker)
+            lock (_locker)
             {
                 _instance = instance;
                 _project = project;
@@ -67,7 +67,7 @@ namespace ZennoPosterBrowser
         private void AddServices(BrowserActionsManager browserActionsStorage)
         {
             browserActionsStorage.AddService(BrowserProjectActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
-            browserActionsStorage.AddService(BrowserProjectActions.OpenMenu, () => new MainMenuFormBrowserAction());
+            browserActionsStorage.AddService(BrowserProjectActions.OpenMenu, () => new MainMenuFormBrowserAction(_instance));
             browserActionsStorage.AddService(BrowserProjectActions.OpenBookmarkMenu, () => new BookmarksFormAction());
 
             var sessionManager = new SessionManager(_project);

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZennoLab.CommandCenter;
 using ZennoPosterBrowser.Configs;
 using ZennoPosterBrowser.Forms.Base;
 using ZennoPosterBrowser.Forms.Bookmarks;
@@ -15,8 +16,9 @@ namespace ZennoPosterBrowser.Forms.MainMenu
     {
         private const string _nameForm = "Главное меню";
         private readonly IFormEventHandler _formEventHandler;
-        public MainMenuForm()
+        public MainMenuForm(Instance instance)
         {
+            Instance = instance;
             BookmarksJsonStorage = new BookmarksJsonStorage();
             FormSettings = new MainMenuSettingsHandler();
             FormControls = new MainMenuFormControls(BookmarksJsonStorage);
@@ -29,7 +31,8 @@ namespace ZennoPosterBrowser.Forms.MainMenu
         }
         public IFormControls FormControls { get; }
         public BrowserProjectActions NextAction { get; set; }
-        public IFormSettings<MainMenuSettingsModel, MainMenuSettingsModel> FormSettings { get; set; }
-        public IBookmarksStorage BookmarksJsonStorage { get; set; }
+        public IFormSettings<MainMenuSettingsModel, MainMenuSettingsModel> FormSettings { get;  }
+        public IBookmarksStorage BookmarksJsonStorage { get; }
+        public Instance Instance { get; }
     }
 }
