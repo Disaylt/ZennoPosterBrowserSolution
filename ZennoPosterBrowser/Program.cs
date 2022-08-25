@@ -52,7 +52,7 @@ namespace ZennoPosterBrowser
                     AddServices(browserActionsStorage);
                     AddVPNService(browserActionsStorage, vpn);
 
-                    browserActionsStorage.ExecuteActions(BrowserProjectActions.OpenBookmarkMenu);
+                    browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
                 }
                 finally
                 {
@@ -67,7 +67,7 @@ namespace ZennoPosterBrowser
         private void AddServices(BrowserActionsManager browserActionsStorage)
         {
             browserActionsStorage.AddService(BrowserProjectActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
-            browserActionsStorage.AddService(BrowserProjectActions.OpenMenu, () => new MenuFormBrowserAction());
+            browserActionsStorage.AddService(BrowserProjectActions.OpenMenu, () => new MainMenuFormBrowserAction());
             browserActionsStorage.AddService(BrowserProjectActions.OpenBookmarkMenu, () => new BookmarksFormAction());
 
             var sessionManager = new SessionManager(_project);

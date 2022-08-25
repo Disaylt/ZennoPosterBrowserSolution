@@ -21,7 +21,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
             _controls.Add(AdditionBookmark);
             _controls.Add(BookmarkName);
             _controls.Add(BookmarkNewUrl);
-            _controls.Add(BookmarketComboBox);
+            _controls.Add(BookmarkComboBox);
             _controls.Add(BookmarkCurrentUrl);
             _controls.Add(UpdationBookmark);
             _controls.Add(DeletionBookmark);
@@ -116,17 +116,17 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
             }
         }
 
-        private ComboBox _bookmarketComboBox;
-        public virtual ComboBox BookmarketComboBox
+        private ComboBox _bookmarkComboBox;
+        public virtual ComboBox BookmarkComboBox
         {
             get
             {
-                if (_bookmarketComboBox == null)
+                if (_bookmarkComboBox == null)
                 {
                     BookmarkNameComboBox bookmarkNameTextBox = new BookmarkNameComboBox(_bookmarksStorage.Bookmarks);
-                    _bookmarketComboBox = bookmarkNameTextBox.Create();
+                    _bookmarkComboBox = bookmarkNameTextBox.Create();
                 }
-                return _bookmarketComboBox;
+                return _bookmarkComboBox;
             }
         }
     }

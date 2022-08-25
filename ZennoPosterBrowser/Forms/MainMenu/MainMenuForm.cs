@@ -9,14 +9,14 @@ using ZennoPosterBrowser.Forms.Base;
 
 namespace ZennoPosterBrowser.Forms.MainMenu
 {
-    internal class MenuForm : BaseForm
+    internal class MainMenuForm : BaseForm
     {
         private const string _nameForm = "Главное меню";
         private readonly IFormEventHandler _formEventHandler;
-        public MenuForm()
+        public MainMenuForm()
         {
-            FormControls = new FormControls();
-            _formEventHandler = new FormEventHandler(this);
+            FormControls = new MainMenuFormControls();
+            _formEventHandler = new MainMenuFormEventHandler(this);
             NextAction = BrowserProjectActions.CloseBrowser;
             Form.Size = new Size(400, 500);
             Form.Name = _nameForm;

@@ -8,12 +8,12 @@ using ZennoPosterBrowser.Services.BrowserActions;
 
 namespace ZennoPosterBrowser.Forms.MainMenu
 {
-    internal class MenuFormBrowserAction : IBrowserAction
+    internal class MainMenuFormBrowserAction : IBrowserAction
     {
-        private readonly MenuForm _menuForm;
-        public MenuFormBrowserAction()
+        private readonly MainMenuForm _menuForm;
+        public MainMenuFormBrowserAction()
         {
-            _menuForm = new MenuForm();
+            _menuForm = new MainMenuForm();
         }
 
         public BrowserProjectActions Run()

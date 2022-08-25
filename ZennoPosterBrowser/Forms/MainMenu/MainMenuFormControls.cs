@@ -9,11 +9,11 @@ using ZennoPosterBrowser.Forms.MainMenu.Controls;
 
 namespace ZennoPosterBrowser.Forms.MainMenu
 {
-    internal class FormControls : IFormControls
+    internal class MainMenuFormControls : IFormControls
     {
         private List<Control> _controls;
 
-        public FormControls()
+        public MainMenuFormControls()
         {
             _controls = new List<Control>();
             _controls.Add(WaitUserAction);

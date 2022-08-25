@@ -133,10 +133,11 @@
     <Compile Include="Forms\MainMenu\Controls\BookmarksButton.cs" />
     <Compile Include="Forms\MainMenu\Controls\UpdateProxyButton.cs" />
     <Compile Include="Forms\MainMenu\Controls\UserWaitActionButton.cs" />
-    <Compile Include="Forms\MainMenu\FormControls.cs" />
-    <Compile Include="Forms\MainMenu\FormEventHandler.cs" />
-    <Compile Include="Forms\MainMenu\MenuForm.cs" />
-    <Compile Include="Forms\MainMenu\MenuFormBrowserAction.cs" />
+    <Compile Include="Forms\MainMenu\MainMenuFormControls.cs" />
+    <Compile Include="Forms\MainMenu\MainMenuFormEventHandler.cs" />
+    <Compile Include="Forms\MainMenu\MainMenuSettingsHandler.cs" />
+    <Compile Include="Forms\MainMenu\MainMenuForm.cs" />
+    <Compile Include="Forms\MainMenu\MainMenuFormBrowserAction.cs" />
     <Compile Include="JsonFile.cs" />
     <Compile Include="Models\BSON\AccountsSettingsModel.cs" />
     <Compile Include="Models\BSON\BsonIdModel.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Models\BSON\ProjectNameModel.cs" />
     <Compile Include="Models\JSON\BookmarksForm\BookmarkModel.cs" />
     <Compile Include="Models\JSON\FormSettings\AccountSelectinFormSettings.cs" />
+    <Compile Include="Models\JSON\MainMenu\MainMenuSettingsModel.cs" />
     <Compile Include="Models\JSON\ProjectSettingsModel.cs" />
     <Compile Include="Models\JSON\FormSettings\FromSettingLocationModel.cs" />
     <Compile Include="Mongo\AccountSelection\AccountsFinder.cs" />

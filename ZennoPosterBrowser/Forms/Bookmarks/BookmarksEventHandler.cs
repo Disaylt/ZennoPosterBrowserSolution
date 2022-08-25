@@ -26,7 +26,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
             _bookmarksFormControls.AdditionBookmark.Click += AddBookmark;
             _bookmarksFormControls.DeletionBookmark.Click += DeleteBookmark;
             _bookmarksFormControls.UpdationBookmark.Click += UpdateBookmark;
-            _bookmarksFormControls.BookmarketComboBox.SelectedIndexChanged += ChangeBookmarkName;
+            _bookmarksFormControls.BookmarkComboBox.SelectedIndexChanged += ChangeBookmarkName;
         }
 
         protected virtual void AddBookmark(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
                     Url = _bookmarksFormControls.BookmarkNewUrl.Text
                 };
                 _bookmarksForm.BookmarksStorage.AddBookmark(bookmark);
-                _bookmarksFormControls.BookmarketComboBox.Items.Add(_bookmarksFormControls.BookmarkName.Text);
+                _bookmarksFormControls.BookmarkComboBox.Items.Add(_bookmarksFormControls.BookmarkName.Text);
                 _bookmarksFormControls.BookmarkName.Text = string.Empty;
                 _bookmarksFormControls.BookmarkNewUrl.Text = string.Empty;
             }
@@ -51,18 +51,18 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
 
         protected virtual void DeleteBookmark(object sender, EventArgs e)
         {
-            if (_bookmarksFormControls.BookmarketComboBox.SelectedItem is string bookmark
+            if (_bookmarksFormControls.BookmarkComboBox.SelectedItem is string bookmark
                 && !string.IsNullOrEmpty(bookmark))
             {
                 _bookmarksForm.BookmarksStorage.DeleteBookmark(bookmark);
-                _bookmarksFormControls.BookmarketComboBox.Items.Remove(_bookmarksFormControls.BookmarketComboBox.SelectedItem);
+                _bookmarksFormControls.BookmarkComboBox.Items.Remove(_bookmarksFormControls.BookmarkComboBox.SelectedItem);
                 _bookmarksFormControls.BookmarkCurrentUrl.Text = string.Empty;
             }
         }
 
         protected virtual void ChangeBookmarkName(object sender, EventArgs e)
         {
-            if (_bookmarksFormControls.BookmarketComboBox.SelectedItem is string bookmark
+            if (_bookmarksFormControls.BookmarkComboBox.SelectedItem is string bookmark
                 && !string.IsNullOrEmpty(bookmark))
             {
                 string url = _bookmarksForm
@@ -76,7 +76,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
 
         protected virtual void UpdateBookmark(object sender, EventArgs e)
         {
-            if (_bookmarksFormControls.BookmarketComboBox.SelectedItem is string bookmarkName
+            if (_bookmarksFormControls.BookmarkComboBox.SelectedItem is string bookmarkName
                 && !string.IsNullOrEmpty(bookmarkName)
                 && _bookmarksForm.BookmarksStorage.Bookmarks.Any(x=> x.Name == bookmarkName))
             {

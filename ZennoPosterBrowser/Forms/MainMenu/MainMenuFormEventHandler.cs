@@ -8,19 +8,20 @@ using ZennoPosterBrowser.Forms.Base;
 
 namespace ZennoPosterBrowser.Forms.MainMenu
 {
-    internal class FormEventHandler : IFormEventHandler
+    internal class MainMenuFormEventHandler : IFormEventHandler
     {
-        private MenuForm _menuForm;
-        public FormEventHandler(MenuForm menuForm)
+        private MainMenuForm _menuForm;
+        public MainMenuFormEventHandler(MainMenuForm menuForm)
         {
             _menuForm = menuForm;
         }
 
         public void AddControlsEvent()
         {
-            FormControls formControls = _menuForm.FormControls as FormControls;
+            MainMenuFormControls formControls = _menuForm.FormControls as MainMenuFormControls;
             formControls.WaitUserAction.Click += WaitUserAction;
             formControls.UpdateProxy.Click += UpdateProxy;
+            formControls.Bookmarks.Click += OpenBookmarksForm;
         }
 
         protected virtual void WaitUserAction(object sender, EventArgs e)
@@ -32,6 +33,12 @@ namespace ZennoPosterBrowser.Forms.MainMenu
         protected virtual void UpdateProxy(object sender, EventArgs e)
         {
             _menuForm.NextAction = BrowserProjectActions.UpdateProxy;
+            _menuForm.Form.Close();
+        }
+
+        protected virtual void OpenBookmarksForm(object sender, EventArgs e)
+        {
+            _menuForm.NextAction = BrowserProjectActions.OpenBookmarkMenu;
             _menuForm.Form.Close();
         }
     }
