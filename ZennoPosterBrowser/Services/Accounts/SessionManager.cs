@@ -26,7 +26,7 @@ namespace ZennoPosterBrowser.Services.Accounts
                 && !string.IsNullOrEmpty(browserConfig.PathToSession)
                 && _isLoad == false)
             {
-                _project.Profile.Load($"{browserConfig.PathToSession}{browserConfig.CurrentSession}");
+                _project.Profile.Load($"{browserConfig.PathToSession}{browserConfig.CurrentSession}.zpprofile");
                 _isLoad = true;
                 return BrowserProjectActions.OpenMenu;
             }
@@ -45,7 +45,7 @@ namespace ZennoPosterBrowser.Services.Accounts
             if(_isLoad)
             {
                 BrowserConfig browserConfig = BrowserConfig.Instance;
-                _project.Profile.Save($"{browserConfig.PathToSession}{browserConfig.CurrentSession}",
+                _project.Profile.Save($"{browserConfig.PathToSession}{browserConfig.CurrentSession}.zpprofile",
                     false,
                     true,
                     true,
