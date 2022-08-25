@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZennoPosterBrowser.Forms.Base;
+using ZennoPosterBrowser.Forms.Bookmarks;
 using ZennoPosterBrowser.Forms.MainMenu.Controls;
 
 namespace ZennoPosterBrowser.Forms.MainMenu
@@ -12,13 +14,23 @@ namespace ZennoPosterBrowser.Forms.MainMenu
     internal class MainMenuFormControls : IFormControls
     {
         private List<Control> _controls;
+        private readonly IBookmarksStorage _bookmarksStorage;
 
-        public MainMenuFormControls()
+        public MainMenuFormControls(IBookmarksStorage bookmarksStorage)
         {
+            _bookmarksStorage = bookmarksStorage;
             _controls = new List<Control>();
             _controls.Add(WaitUserAction);
             _controls.Add(UpdateProxy);
             _controls.Add(Bookmarks);
+            _controls.Add(BookmarksNames1);
+            _controls.Add(BookmarksGoToPage1);
+            _controls.Add(BookmarksNames2);
+            _controls.Add(BookmarksGoToPage2);
+            _controls.Add(BookmarksNames3);
+            _controls.Add(BookmarksGoToPage3);
+            _controls.Add(BookmarksNames4);
+            _controls.Add(BookmarksGoToPage4);
         }
 
         public List<Control> GetFormControls()
@@ -33,7 +45,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
             {
                 if (_waitUserAction == null)
                 {
-                    UserWaitActionButton findAccountButton = new UserWaitActionButton();
+                    UserWaitActionButtonBuilder findAccountButton = new UserWaitActionButtonBuilder();
                     _waitUserAction = findAccountButton.Create();
                 }
                 return _waitUserAction;
@@ -47,7 +59,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
             {
                 if (_updateProxy == null)
                 {
-                    UpdateProxyButton findAccountButton = new UpdateProxyButton();
+                    UpdateProxyButtonBuilder findAccountButton = new UpdateProxyButtonBuilder();
                     _updateProxy = findAccountButton.Create();
                 }
                 return _updateProxy;
@@ -61,10 +73,130 @@ namespace ZennoPosterBrowser.Forms.MainMenu
             {
                 if(_bookmarks == null)
                 {
-                    BookmarksButton bookmarksButton = new BookmarksButton();
+                    BookmarksButtonBuilder bookmarksButton = new BookmarksButtonBuilder();
                     _bookmarks = bookmarksButton.Create();
                 }
                 return _bookmarks;
+            }
+        }
+
+        private ComboBox _bookmarkNames1;
+        public virtual ComboBox BookmarksNames1
+        {
+            get
+            {
+                if(_bookmarkNames1 == null)
+                {
+                    Point location = new Point(15, 70);
+                    BookmarkComboBoxBuilder bookmarkComboBox = new BookmarkComboBoxBuilder(_bookmarksStorage.Bookmarks, location);
+                    _bookmarkNames1 = bookmarkComboBox.Create();
+                }
+                return _bookmarkNames1;
+            }
+        }
+
+        private Button _bookmarkGoToPage1;
+        public virtual Button BookmarksGoToPage1
+        {
+            get
+            {
+                if(_bookmarkGoToPage1 == null)
+                {
+                    Point location = new Point(255,70);
+                    BookmarkGoToPageButtonBuilder bookmarkGoToPageButtonBuilder = new BookmarkGoToPageButtonBuilder(location);
+                    _bookmarkGoToPage1 = bookmarkGoToPageButtonBuilder.Create();
+                }
+                return _bookmarkGoToPage1;
+            }
+        }
+
+        private ComboBox _bookmarkNames2;
+        public virtual ComboBox BookmarksNames2
+        {
+            get
+            {
+                if (_bookmarkNames2 == null)
+                {
+                    Point location = new Point(15, 90);
+                    BookmarkComboBoxBuilder bookmarkComboBox = new BookmarkComboBoxBuilder(_bookmarksStorage.Bookmarks, location);
+                    _bookmarkNames2 = bookmarkComboBox.Create();
+                }
+                return _bookmarkNames2;
+            }
+        }
+
+        private Button _bookmarkGoToPage2;
+        public virtual Button BookmarksGoToPage2
+        {
+            get
+            {
+                if (_bookmarkGoToPage2 == null)
+                {
+                    Point location = new Point(255, 90);
+                    BookmarkGoToPageButtonBuilder bookmarkGoToPageButtonBuilder = new BookmarkGoToPageButtonBuilder(location);
+                    _bookmarkGoToPage2 = bookmarkGoToPageButtonBuilder.Create();
+                }
+                return _bookmarkGoToPage2;
+            }
+        }
+
+        private ComboBox _bookmarkNames3;
+        public virtual ComboBox BookmarksNames3
+        {
+            get
+            {
+                if (_bookmarkNames3 == null)
+                {
+                    Point location = new Point(15, 110);
+                    BookmarkComboBoxBuilder bookmarkComboBox = new BookmarkComboBoxBuilder(_bookmarksStorage.Bookmarks, location);
+                    _bookmarkNames3 = bookmarkComboBox.Create();
+                }
+                return _bookmarkNames3;
+            }
+        }
+
+        private Button _bookmarkGoToPage3;
+        public virtual Button BookmarksGoToPage3
+        {
+            get
+            {
+                if (_bookmarkGoToPage3 == null)
+                {
+                    Point location = new Point(255, 110);
+                    BookmarkGoToPageButtonBuilder bookmarkGoToPageButtonBuilder = new BookmarkGoToPageButtonBuilder(location);
+                    _bookmarkGoToPage3 = bookmarkGoToPageButtonBuilder.Create();
+                }
+                return _bookmarkGoToPage3;
+            }
+        }
+
+        private ComboBox _bookmarkNames4;
+        public virtual ComboBox BookmarksNames4
+        {
+            get
+            {
+                if (_bookmarkNames4 == null)
+                {
+                    Point location = new Point(15, 130);
+                    BookmarkComboBoxBuilder bookmarkComboBox = new BookmarkComboBoxBuilder(_bookmarksStorage.Bookmarks, location);
+                    _bookmarkNames4 = bookmarkComboBox.Create();
+                }
+                return _bookmarkNames4;
+            }
+        }
+
+        private Button _bookmarkGoToPage4;
+        public virtual Button BookmarksGoToPage4dd 
+        {
+            get
+            {
+                if (_bookmarkGoToPage4 == null)
+                {
+                    Point location = new Point(255, 130);
+                    BookmarkGoToPageButtonBuilder bookmarkGoToPageButtonBuilder = new BookmarkGoToPageButtonBuilder(location);
+                    _bookmarkGoToPage4 = bookmarkGoToPageButtonBuilder.Create();
+                }
+                return _bookmarkGoToPage4;
             }
         }
     }

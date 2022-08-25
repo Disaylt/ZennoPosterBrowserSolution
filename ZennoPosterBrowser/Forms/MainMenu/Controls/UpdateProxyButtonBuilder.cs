@@ -9,15 +9,15 @@ using ZennoPosterBrowser.Forms.BaseControls;
 
 namespace ZennoPosterBrowser.Forms.MainMenu.Controls
 {
-    internal class UserWaitActionButton : ButtonBuilder
+    internal class UpdateProxyButtonBuilder : ButtonBuilder
     {
         public override Button Create()
         {
             Button button = new Button();
-            button.Text = "Свободные\nдействия";
-            button.Name = "FreeAction";
+            button.Text = "Обновить\nпрокси";
+            button.Name = "UpdateProxy";
             button.Font = new Font(button.Font.Name, 9f, button.Font.Unit);
-            button.Location = new Point(15, 15);
+            button.Location = new Point(135, 15);
             button.Size = new Size(110, 40);
             return button;
         }

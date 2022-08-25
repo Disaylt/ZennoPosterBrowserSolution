@@ -130,9 +130,11 @@
     <Compile Include="Forms\Bookmarks\Controls\BookmarkUpdationButtonBuilder.cs" />
     <Compile Include="Forms\Bookmarks\BookmarksFormControls.cs" />
     <Compile Include="Forms\Bookmarks\IBookmarksStorage.cs" />
-    <Compile Include="Forms\MainMenu\Controls\BookmarksButton.cs" />
-    <Compile Include="Forms\MainMenu\Controls\UpdateProxyButton.cs" />
-    <Compile Include="Forms\MainMenu\Controls\UserWaitActionButton.cs" />
+    <Compile Include="Forms\MainMenu\Controls\BookmarkComboBoxBuilder.cs" />
+    <Compile Include="Forms\MainMenu\Controls\BookmarkGoToPageButtonBuilder.cs" />
+    <Compile Include="Forms\MainMenu\Controls\BookmarksButtonBuilder.cs" />
+    <Compile Include="Forms\MainMenu\Controls\UpdateProxyButtonBuilder.cs" />
+    <Compile Include="Forms\MainMenu\Controls\UserWaitActionButtonBuilder.cs" />
     <Compile Include="Forms\MainMenu\MainMenuFormControls.cs" />
     <Compile Include="Forms\MainMenu\MainMenuFormEventHandler.cs" />
     <Compile Include="Forms\MainMenu\MainMenuSettingsHandler.cs" />

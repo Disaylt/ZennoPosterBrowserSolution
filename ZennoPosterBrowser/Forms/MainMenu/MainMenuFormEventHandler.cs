@@ -22,6 +22,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
             formControls.WaitUserAction.Click += WaitUserAction;
             formControls.UpdateProxy.Click += UpdateProxy;
             formControls.Bookmarks.Click += OpenBookmarksForm;
+            _menuForm.Form.Load += LoadSettings;
         }
 
         protected virtual void WaitUserAction(object sender, EventArgs e)
@@ -40,6 +41,15 @@ namespace ZennoPosterBrowser.Forms.MainMenu
         {
             _menuForm.NextAction = BrowserProjectActions.OpenBookmarkMenu;
             _menuForm.Form.Close();
+        }
+
+        protected virtual void LoadSettings(object sender, EventArgs e)
+        {
+            if(_menuForm.FormControls is MainMenuFormControls controls)
+            {
+                
+            }
+            //_accountSelectionForm.FormControls.SelectMarket.SelectedItem = _accountSelectinFormSettings.LastChooseMarket;
         }
     }
 }

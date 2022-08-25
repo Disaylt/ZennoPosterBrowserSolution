@@ -9,16 +9,20 @@ using ZennoPosterBrowser.Forms.BaseControls;
 
 namespace ZennoPosterBrowser.Forms.MainMenu.Controls
 {
-    internal class BookmarksButton : ButtonBuilder
+    internal class BookmarkGoToPageButtonBuilder : ButtonBuilder
     {
+        private readonly Point _location;
+        public BookmarkGoToPageButtonBuilder(Point location)
+        {
+            _location = location;
+        }
         public override Button Create()
         {
             Button button = new Button();
-            button.Text = "Закладки";
-            button.Name = "Bookmarks";
+            button.Text = "Перейти";
             button.Font = new Font(button.Font.Name, 9f, button.Font.Unit);
-            button.Location = new Point(255, 15);
-            button.Size = new Size(110, 40);
+            button.Location = _location;
+            button.Size = new Size(110, 20);
             return button;
         }
     }
