@@ -38,7 +38,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
                 || string.IsNullOrEmpty(projectName)
                 || string.IsNullOrEmpty(marketName))
             {
-                throw new NullReferenceException();
+                return;
             }
 
             AccountsSettingsCollection accountsSettings = new AccountsSettingsCollection();
@@ -46,10 +46,15 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
 
             if(settings == null)
             {
-                throw new NullReferenceException();
+                return;
             }
 
+            if(!_accountsSearchEngine.IsAccountExists(marketName,projectName, accountName)
+                && settings.IsEnableCreate)
+            {
 
+                _form.FormControls.TextBoxForWriteAccountName.Text = string.Empty;
+            }
         }
     }
 }

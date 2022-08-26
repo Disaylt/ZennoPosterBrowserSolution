@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoPosterBrowser.Configs;
 using ZennoPosterBrowser.Services.BrowserActions;
 
@@ -11,9 +12,9 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
     internal class AccountCreatorFormBrowserAction : IBrowserAction
     {
         private AccountCreatorForm _accountCreatorForm;
-        public AccountCreatorFormBrowserAction()
+        public AccountCreatorFormBrowserAction(IZennoPosterProjectModel project)
         {
-            _accountCreatorForm = new AccountCreatorForm();
+            _accountCreatorForm = new AccountCreatorForm(project);
         }
 
         public BrowserProjectActions Run()

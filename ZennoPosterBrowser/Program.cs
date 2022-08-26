@@ -70,7 +70,7 @@ namespace ZennoPosterBrowser
             browserActionsStorage.AddService(BrowserProjectActions.SelectionSession, () => new AccountSelectionFormBrowserAction());
             browserActionsStorage.AddService(BrowserProjectActions.OpenMenu, () => new MainMenuFormBrowserAction(_instance));
             browserActionsStorage.AddService(BrowserProjectActions.OpenBookmarkMenu, () => new BookmarksFormAction());
-            browserActionsStorage.AddService(BrowserProjectActions.AddNewAccount, () => new AccountCreatorFormBrowserAction());
+            browserActionsStorage.AddService(BrowserProjectActions.AddNewAccount, () => new AccountCreatorFormBrowserAction(_project));
 
             var sessionManager = new SessionManager(_project);
             browserActionsStorage.AddService(BrowserProjectActions.LoadingSession, sessionManager.LoadAccount);

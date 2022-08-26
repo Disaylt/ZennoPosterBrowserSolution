@@ -158,7 +158,8 @@
     <Compile Include="Models\JSON\MainMenu\MainMenuSettingsModel.cs" />
     <Compile Include="Models\JSON\ProjectSettingsModel.cs" />
     <Compile Include="Models\JSON\FormSettings\FromSettingLocationModel.cs" />
-    <Compile Include="Mongo\AccountSelection\AccountsFinder.cs" />
+    <Compile Include="Mongo\AccountsCreator\MongoAccountCreator.cs" />
+    <Compile Include="Mongo\AccountSelection\AccountsSearchEngine.cs" />
     <Compile Include="Mongo\BrowserCollections\AccountsSettingsCollection.cs" />
     <Compile Include="Mongo\BrowserCollections\ProjectsCollection.cs" />
     <Compile Include="Mongo\BrowserDatabaseConnector.cs" />
