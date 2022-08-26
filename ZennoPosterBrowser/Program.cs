@@ -53,7 +53,7 @@ namespace ZennoPosterBrowser
                     AddServices(browserActionsStorage);
                     AddVPNService(browserActionsStorage, vpn);
 
-                    browserActionsStorage.ExecuteActions(BrowserProjectActions.AddNewAccount);
+                    browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
                 }
                 finally
                 {

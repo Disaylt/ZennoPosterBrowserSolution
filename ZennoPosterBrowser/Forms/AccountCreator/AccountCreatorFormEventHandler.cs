@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoPosterBrowser.Forms.Base;
 using ZennoPosterBrowser.Models.BSON;
+using ZennoPosterBrowser.Mongo.AccountsCreator;
 using ZennoPosterBrowser.Mongo.AccountSelection;
 using ZennoPosterBrowser.Mongo.BrowserCollections;
+using ZennoPosterBrowser.Services.Accounts;
 
 namespace ZennoPosterBrowser.Forms.AccountCreator
 {
@@ -52,7 +54,9 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
             if(!_accountsSearchEngine.IsAccountExists(marketName,projectName, accountName)
                 && settings.IsEnableCreate)
             {
-
+                MongoAccountCreator mongoAccountCreator = new MongoAccountCreator(settings);
+                mongoAccountCreator.AddSession(accountName);
+                SessionManager.SaveAccount(settings.FolderPath, accountName, _project);
                 _form.FormControls.TextBoxForWriteAccountName.Text = string.Empty;
             }
         }
