@@ -14,6 +14,7 @@ namespace ZennoPosterBrowser.Configs
         OpenMenu,
         BrowserWaitUserAction,
         UpdateProxy,
-        OpenBookmarkMenu
+        OpenBookmarkMenu,
+        AddNewAccount
     }
 }

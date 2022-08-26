@@ -67,7 +67,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
                 {
                     var projectNamesLoader = BrowserConfig.Instance.ProjectNamesStorage;
                     ComboBoxForSelectProjectBuilder comboBoxForSelectProjectBuilder = new ComboBoxForSelectProjectBuilder(projectNamesLoader.AllProjectNames);
-                    comboBoxForSelectProjectBuilder.Create();
+                    _comboBoxForSelectProject = comboBoxForSelectProjectBuilder.Create();
                 }
                 return _comboBoxForSelectProject;
             }

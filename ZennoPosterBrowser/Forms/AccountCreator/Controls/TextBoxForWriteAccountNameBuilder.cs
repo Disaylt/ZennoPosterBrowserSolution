@@ -14,7 +14,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator.Controls
         {
             TextBox textBoxSearch = new TextBox();
             textBoxSearch.Location = new System.Drawing.Point(15, 15);
-            textBoxSearch.Size = new System.Drawing.Size(200, 20);
+            textBoxSearch.Size = new System.Drawing.Size(230, 20);
             return textBoxSearch;
         }
     }

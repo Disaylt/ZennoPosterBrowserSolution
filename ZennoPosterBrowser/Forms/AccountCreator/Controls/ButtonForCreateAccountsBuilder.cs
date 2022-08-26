@@ -17,8 +17,8 @@ namespace ZennoPosterBrowser.Forms.AccountCreator.Controls
             Button button = new Button();
             button.Text = "Создать";
             button.Font = new Font(button.Font.Name, 9f, button.Font.Unit);
-            button.Location = new Point(250, 15);
-            button.Size = new Size(55, 50);
+            button.Location = new Point(255, 15);
+            button.Size = new Size(110, 70);
             return button;
         }
     }

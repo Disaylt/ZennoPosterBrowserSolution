@@ -28,8 +28,8 @@ namespace ZennoPosterBrowser.Forms.AccountCreator.Controls
         private void SetSettings(ComboBox comboBox)
         {
             comboBox.FormattingEnabled = true;
-            comboBox.Location = new System.Drawing.Point(15, 50);
-            comboBox.Size = new System.Drawing.Size(60, 20);
+            comboBox.Location = new System.Drawing.Point(15, 40);
+            comboBox.Size = new System.Drawing.Size(230, 20);
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }

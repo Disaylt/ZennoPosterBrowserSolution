@@ -16,7 +16,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
         public AccountCreatorForm()
         {
             NextAction = BrowserProjectActions.CloseBrowser;
-            Form.Size = new Size(400, 500);
+            Form.Size = new Size(400, 250);
             Form.Name = _nameForm;
             FormControls = new AccountCreatorFormControls();
             AddControls(FormControls);
