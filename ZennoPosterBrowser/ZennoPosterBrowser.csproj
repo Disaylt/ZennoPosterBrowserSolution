@@ -95,6 +95,11 @@
     <Compile Include="Configs\ProjectNamesStorageDbLoader.cs" />
     <Compile Include="Configs\ProjectNamesStorageFileLoader.cs" />
     <Compile Include="Configs\ProjectSettingsFileLoader.cs" />
+    <Compile Include="Forms\AccountCreator\AccountCreatorForm.cs" />
+    <Compile Include="Forms\AccountCreator\Controls\ButtonForCreateAccountsBuilder.cs" />
+    <Compile Include="Forms\AccountCreator\Controls\ComboBoxForSelectMarketBuilder.cs" />
+    <Compile Include="Forms\AccountCreator\Controls\ComboBoxForSelectProjectBuilder.cs" />
+    <Compile Include="Forms\AccountCreator\Controls\TextBoxForWriteAccountNameBuilder.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionFormBrowserAction.cs" />
     <Compile Include="Forms\AccountSelection\Controls\AccountsDataGridBuilder.cs" />
     <Compile Include="Forms\AccountSelection\Controls\AccountsDataGridColumnsStorage.cs" />
@@ -207,7 +212,5 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\AccountCreator\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
