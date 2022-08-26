@@ -11,18 +11,20 @@ using ZennoPosterBrowser.Forms.BaseControls;
 
 namespace ZennoPosterBrowser.Forms.AccountSelection
 {
-    internal class FormControls : IFormControls
+    internal class AccountSelectionFormControls : IFormControls
     {
         public List<Control> Controls { get; }
 
-        public FormControls()
+        public AccountSelectionFormControls()
         {
-            Controls = new List<Control>();
-            Controls.Add(Grid);
-            Controls.Add(TextBox);
-            Controls.Add(SelectMarket);
-            Controls.Add(SelectProject);
-            Controls.Add(FindAccount);
+            Controls = new List<Control>
+            {
+                Grid,
+                TextBox,
+                SelectMarket,
+                SelectProject,
+                FindAccount
+            };
         }
 
         private ComboBox _selectProject;

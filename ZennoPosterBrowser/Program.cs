@@ -29,7 +29,7 @@ namespace ZennoPosterBrowser
     {
         private Instance _instance;
         private IZennoPosterProjectModel _project;
-        private static object _locker = new object();
+        private static readonly object _locker = new object();
 
         /// <summary>
         /// Метод для запуска выполнения скрипта

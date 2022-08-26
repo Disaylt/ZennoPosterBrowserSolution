@@ -12,12 +12,12 @@ using ZennoPosterBrowser.Mongo.AccountSelection;
 
 namespace ZennoPosterBrowser.Forms.AccountSelection
 {
-    internal class FormEventHandler : IFormEventHandler
+    internal class AccountSelectionFormEventHandler : IFormEventHandler
     {
-        private AccountSelectionForm _accountSelectionForm;
-        private AccountSelectinFormSettings _accountSelectinFormSettings;
-        private AccountsSearchEngine _accountsSearchEngine;
-        public FormEventHandler(BaseForm baseForm)
+        private readonly AccountSelectionForm _accountSelectionForm;
+        private readonly AccountSelectinFormSettings _accountSelectinFormSettings;
+        private readonly AccountsSearchEngine _accountsSearchEngine;
+        public AccountSelectionFormEventHandler(BaseForm baseForm)
         {
             _accountSelectionForm = baseForm as AccountSelectionForm;
             _accountSelectinFormSettings = _accountSelectionForm.FormSettings.Load();

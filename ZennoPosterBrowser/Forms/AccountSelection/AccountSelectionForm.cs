@@ -15,12 +15,12 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
     internal class AccountSelectionForm : BaseForm
     {
         private const string _nameForm = "Выбор аккаунтов";
-        private readonly FormEventHandler _formEventHandler;
+        private readonly AccountSelectionFormEventHandler _formEventHandler;
         public AccountSelectionForm() : base()
         {
             FormSettings = new AccountSelectionFormSettings();
-            FormControls = new FormControls();
-            _formEventHandler = new FormEventHandler(this);
+            FormControls = new AccountSelectionFormControls();
+            _formEventHandler = new AccountSelectionFormEventHandler(this);
             Form.Size = new Size(400, 500);
             Form.Name = _nameForm;
             AddControls(FormControls);
@@ -28,7 +28,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             NextAction = BrowserProjectActions.CloseBrowser;
         }
         public BrowserProjectActions NextAction { get; set; }
-        public FormControls FormControls { get; }
+        public AccountSelectionFormControls FormControls { get; }
         public IFormSettings<AccountSelectinFormSettings, AccountSelectinFormSettings> FormSettings { get; }
     }
 }

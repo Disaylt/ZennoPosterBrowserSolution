@@ -102,8 +102,8 @@
     <Compile Include="Forms\AccountSelection\AccountSelectionFormSettings.cs" />
     <Compile Include="Forms\AccountSelection\Controls\FindAccountButtonBuilder.cs" />
     <Compile Include="Forms\AccountSelection\Controls\SearchTextBoxBuilder.cs" />
-    <Compile Include="Forms\AccountSelection\FormControls.cs" />
-    <Compile Include="Forms\AccountSelection\FormEventHandler.cs" />
+    <Compile Include="Forms\AccountSelection\AccountSelectionFormControls.cs" />
+    <Compile Include="Forms\AccountSelection\AccountSelectionFormEventHandler.cs" />
     <Compile Include="Forms\AccountSelection\Controls\SelectMarketComboBoxBuilder.cs" />
     <Compile Include="Forms\AccountSelection\Controls\SelectProjectComboBoxBuilder.cs" />
     <Compile Include="Forms\BaseControls\ButtonBuilder.cs" />
@@ -207,5 +207,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Forms\AccountCreator\" />
+  </ItemGroup>
 </Project>

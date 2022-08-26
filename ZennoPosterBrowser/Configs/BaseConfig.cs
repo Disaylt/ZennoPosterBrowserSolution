@@ -9,7 +9,7 @@ namespace ZennoPosterBrowser.Configs
 {
     internal class BaseConfig
     {
-        private static object _locker = new object();
+        private static readonly object _locker = new object();
         private static BaseConfig _instance;
 
         private BaseConfig(IZennoPosterProjectModel project)
