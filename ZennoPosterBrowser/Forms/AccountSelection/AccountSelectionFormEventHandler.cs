@@ -52,7 +52,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
 
         protected virtual void FindAccounts(object sender, EventArgs e)
         {
-            IEnumerable<string> accounts = _accountsSearchEngine.SearchAccounts(
+            IEnumerable<string> accounts = _accountsSearchEngine.FreeSearchAccounts(
                 _accountSelectionForm.FormControls.SelectMarket.SelectedItem as string,
                 _accountSelectionForm.FormControls.SelectProject.SelectedItem as string,
                 _accountSelectionForm.FormControls.TextBox.Text

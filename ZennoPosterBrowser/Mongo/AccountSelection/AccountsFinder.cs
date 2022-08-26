@@ -23,13 +23,15 @@ namespace ZennoPosterBrowser.Mongo.AccountSelection
 
         public AccountsSettingsModel LastAccountSetting { get; private set; }
 
-        public IEnumerable<string> SearchAccounts(string market, string project, string accountName)
+        public IEnumerable<string> FreeSearchAccounts(string market, string project, string accountName)
         {
             if(!string.IsNullOrEmpty(market)
                 && !string.IsNullOrEmpty(project)
                 && !string.IsNullOrEmpty(accountName))
             {
-                return RequestToDbForSearch(market, project, accountName);
+                UpdateAccountSettings(market, project);
+                BsonDocument filter = new BsonDocument(LastAccountSetting.ColumnName, new BsonDocument("$regex", accountName));
+                return RequestToDbForSearch(filter);
             }
             else
             {
@@ -37,21 +39,36 @@ namespace ZennoPosterBrowser.Mongo.AccountSelection
             }
         }
 
-        private IEnumerable<string> RequestToDbForSearch(string market, string project, string accountName)
+        public IEnumerable<string> ExactSearchAccounts(string market, string project, string accountName)
+        {
+            if (!string.IsNullOrEmpty(market)
+                && !string.IsNullOrEmpty(project)
+                && !string.IsNullOrEmpty(accountName))
+            {
+                UpdateAccountSettings(market, project);
+                BsonDocument filter = new BsonDocument(LastAccountSetting.ColumnName, accountName);
+                return RequestToDbForSearch(filter);
+            }
+            else
+            {
+                return new List<string>();
+            }
+        }
+
+        public bool IsAccountExists(string market, string project, string accountName)
+        {
+            IEnumerable<string> accounts = ExactSearchAccounts(market, project, accountName);
+            bool isExists = accounts.Any(a => a.Contains(accountName));
+            return isExists;
+        }
+
+        private IEnumerable<string> RequestToDbForSearch(BsonDocument accountSearchFilter)
         {
 
-            if(_accountsCollectionConnector == null
-                || LastAccountSetting == null
-                || market != LastAccountSetting.MarketName
-                || project != LastAccountSetting.ProjectName)
-            {
-                SetNewAccountSettings(market, project);
-            }
             try
             {
                 IMongoCollection<BsonDocument> collection = _accountsCollectionConnector.Collection;
-                BsonDocument filter = new BsonDocument("session", new BsonDocument("$regex", accountName));
-                return collection.Find(filter).ToList()
+                return collection.Find(accountSearchFilter).ToList()
                     .Take(50)
                     .Select(x => x[LastAccountSetting.ColumnName].AsString);
             }
@@ -60,6 +77,17 @@ namespace ZennoPosterBrowser.Mongo.AccountSelection
                 return new List<string>();
             }
             
+        }
+
+        private void UpdateAccountSettings(string market, string project)
+        {
+            if (_accountsCollectionConnector == null
+                || LastAccountSetting == null
+                || market != LastAccountSetting.MarketName
+                || project != LastAccountSetting.ProjectName)
+            {
+                SetNewAccountSettings(market, project);
+            }
         }
 
         private void SetNewAccountSettings(string market, string project)
