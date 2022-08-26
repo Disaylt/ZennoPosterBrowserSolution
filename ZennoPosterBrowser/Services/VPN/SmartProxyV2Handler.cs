@@ -44,7 +44,7 @@ namespace ZennoPosterBrowser.Services.VPN
         private void UpdateInstanceProxy()
         {
             string proxyString = $"{Proxy.User}:{Proxy.Password}@{Proxy.Ip}:{Proxy.PortData.PortNum}";
-            Instance.SetProxy(proxyString, false, true, true, true);
+            Instance.SetProxy(proxyString);
         }
     }
 }
