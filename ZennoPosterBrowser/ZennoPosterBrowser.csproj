@@ -98,6 +98,7 @@
     <Compile Include="Forms\AccountCreator\AccountCreatorForm.cs" />
     <Compile Include="Forms\AccountCreator\AccountCreatorFormBrowserAction.cs" />
     <Compile Include="Forms\AccountCreator\AccountCreatorFormControls.cs" />
+    <Compile Include="Forms\AccountCreator\AccountCreatorFormEventHandler.cs" />
     <Compile Include="Forms\AccountCreator\Controls\ButtonForCreateAccountsBuilder.cs" />
     <Compile Include="Forms\AccountCreator\Controls\ComboBoxForSelectMarketBuilder.cs" />
     <Compile Include="Forms\AccountCreator\Controls\ComboBoxForSelectProjectBuilder.cs" />

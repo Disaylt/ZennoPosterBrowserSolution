@@ -21,6 +21,12 @@ namespace ZennoPosterBrowser.Mongo.BrowserCollections
 
         public IEnumerable<AccountsSettingsModel> AccountsSettings { get; }
         public IMongoCollection<AccountsSettingsModel> Collection { get; }
+        public AccountsSettingsModel FindSettings(string marketName, string projectName)
+        {
+            AccountsSettingsModel accountsSettings = AccountsSettings
+                .FirstOrDefault(x=> x.MarketName == marketName && x.ProjectName == projectName);
+            return accountsSettings;
+        }
 
         private IEnumerable<AccountsSettingsModel> LoadAccountsSettings()
         {

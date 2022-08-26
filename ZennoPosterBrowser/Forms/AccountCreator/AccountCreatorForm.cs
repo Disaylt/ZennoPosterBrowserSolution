@@ -21,6 +21,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
             FormControls = new AccountCreatorFormControls();
             AddControls(FormControls);
         }
+
         public BrowserProjectActions NextAction { get; set; }
         public AccountCreatorFormControls FormControls { get; }
     }
