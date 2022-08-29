@@ -149,6 +149,12 @@
     <Compile Include="Forms\MainMenu\MainMenuForm.cs" />
     <Compile Include="Forms\MainMenu\MainMenuFormBrowserAction.cs" />
     <Compile Include="JsonFile.cs" />
+    <Compile Include="Logger\ErrorMessage.cs" />
+    <Compile Include="Logger\FileErrorMessageBuilder.cs" />
+    <Compile Include="Logger\FileInfoMessageBuilder.cs" />
+    <Compile Include="Logger\FileLogger.cs" />
+    <Compile Include="Logger\ILogger.cs" />
+    <Compile Include="Logger\InfoMessage.cs" />
     <Compile Include="Models\BSON\AccountsSettingsModel.cs" />
     <Compile Include="Models\BSON\BsonIdModel.cs" />
     <Compile Include="Models\BSON\MarketNameModel.cs" />
