@@ -72,7 +72,7 @@ namespace ZennoPosterBrowser.Mongo.AccountSelection
                     .Take(50)
                     .Select(x => x[LastAccountSetting.ColumnName].AsString);
             }
-            catch (Exception)
+            catch
             {
                 return new List<string>();
             }

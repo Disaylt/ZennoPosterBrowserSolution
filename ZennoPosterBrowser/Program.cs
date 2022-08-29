@@ -16,6 +16,7 @@ using ZennoPosterBrowser.Forms.AccountCreator;
 using ZennoPosterBrowser.Forms.AccountSelection;
 using ZennoPosterBrowser.Forms.Bookmarks;
 using ZennoPosterBrowser.Forms.MainMenu;
+using ZennoPosterBrowser.Logger;
 using ZennoPosterBrowser.Services.Accounts;
 using ZennoPosterBrowser.Services.BrowserActions;
 using ZennoPosterBrowser.Services.VPN;
@@ -44,7 +45,9 @@ namespace ZennoPosterBrowser
             {
                 _instance = instance;
                 _project = project;
-                BaseConfig.InitialConfig(project);
+                BaseConfig config =  BaseConfig.InitialConfig(project);
+                bool isGoodEnd = true;
+                Guid guid = Guid.NewGuid();
 
                 try
                 {
@@ -55,9 +58,25 @@ namespace ZennoPosterBrowser
 
                     browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
                 }
+                catch (Exception ex)
+                {
+                    isGoodEnd = false;
+                    ErrorMessage errorMessage = new FileErrorMessageBuilder(ex, guid.ToString());
+                    config.Logger.WriteError(errorMessage);
+                }
                 finally
                 {
                     BrowserConfig.Instance.ResetBrowserProperies();
+                    if(isGoodEnd)
+                    {
+                        InfoMessage message = new FileInfoMessageBuilder($"Guid: {guid} выполнен успешно.");
+                        config.Logger.WriteInfo(message);
+                    }
+                    else
+                    {
+                        InfoMessage message = new FileInfoMessageBuilder($"Guid: {guid} завершился с ошибкой.");
+                        config.Logger.WriteInfo(message);
+                    }
                 }
 
                 int executionResult = 0;
