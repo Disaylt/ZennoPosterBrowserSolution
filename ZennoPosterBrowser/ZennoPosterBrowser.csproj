@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SmartProxyV2_ZennoLabVersion">
+      <HintPath>Libs\SmartProxyV2_ZennoLabVersion.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -83,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Configs\BaseConfig.cs" />
     <Compile Include="Configs\BrowserConfig.cs" />
+    <Compile Include="Configs\EnumBrowserActions.cs" />
     <Compile Include="Configs\IMarketNamesStorage.cs" />
     <Compile Include="Configs\IProjectNamesStorage.cs" />
     <Compile Include="Configs\IProjectSettingsLoader.cs" />
@@ -91,14 +95,23 @@
     <Compile Include="Configs\ProjectNamesStorageDbLoader.cs" />
     <Compile Include="Configs\ProjectNamesStorageFileLoader.cs" />
     <Compile Include="Configs\ProjectSettingsFileLoader.cs" />
+    <Compile Include="Forms\AccountCreator\AccountCreatorForm.cs" />
+    <Compile Include="Forms\AccountCreator\AccountCreatorFormBrowserAction.cs" />
+    <Compile Include="Forms\AccountCreator\AccountCreatorFormControls.cs" />
+    <Compile Include="Forms\AccountCreator\AccountCreatorFormEventHandler.cs" />
+    <Compile Include="Forms\AccountCreator\Controls\ButtonForCreateAccountsBuilder.cs" />
+    <Compile Include="Forms\AccountCreator\Controls\ComboBoxForSelectMarketBuilder.cs" />
+    <Compile Include="Forms\AccountCreator\Controls\ComboBoxForSelectProjectBuilder.cs" />
+    <Compile Include="Forms\AccountCreator\Controls\TextBoxForWriteAccountNameBuilder.cs" />
+    <Compile Include="Forms\AccountSelection\AccountSelectionFormBrowserAction.cs" />
     <Compile Include="Forms\AccountSelection\Controls\AccountsDataGridBuilder.cs" />
     <Compile Include="Forms\AccountSelection\Controls\AccountsDataGridColumnsStorage.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionFormSettings.cs" />
     <Compile Include="Forms\AccountSelection\Controls\FindAccountButtonBuilder.cs" />
     <Compile Include="Forms\AccountSelection\Controls\SearchTextBoxBuilder.cs" />
-    <Compile Include="Forms\AccountSelection\FormControls.cs" />
-    <Compile Include="Forms\AccountSelection\FormEventHandler.cs" />
+    <Compile Include="Forms\AccountSelection\AccountSelectionFormControls.cs" />
+    <Compile Include="Forms\AccountSelection\AccountSelectionFormEventHandler.cs" />
     <Compile Include="Forms\AccountSelection\Controls\SelectMarketComboBoxBuilder.cs" />
     <Compile Include="Forms\AccountSelection\Controls\SelectProjectComboBoxBuilder.cs" />
     <Compile Include="Forms\BaseControls\ButtonBuilder.cs" />
@@ -112,15 +125,41 @@
     <Compile Include="Forms\Base\IFormControls.cs" />
     <Compile Include="Forms\Base\IFormEventHandler.cs" />
     <Compile Include="Forms\Base\IFormSettings.cs" />
+    <Compile Include="Forms\Bookmarks\BookmarksEventHandler.cs" />
+    <Compile Include="Forms\Bookmarks\BookmarksForm.cs" />
+    <Compile Include="Forms\Bookmarks\BookmarksFormAction.cs" />
+    <Compile Include="Forms\Bookmarks\BookmarksJsonStorage.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkAdditionButtonBuilder.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkDeletionButtonBuilder.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkNameComboBox.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkNameTextBox.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkCurrentUrlTextBox.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkNewUrlTextBox.cs" />
+    <Compile Include="Forms\Bookmarks\Controls\BookmarkUpdationButtonBuilder.cs" />
+    <Compile Include="Forms\Bookmarks\BookmarksFormControls.cs" />
+    <Compile Include="Forms\Bookmarks\IBookmarksStorage.cs" />
+    <Compile Include="Forms\MainMenu\Controls\BookmarkComboBoxBuilder.cs" />
+    <Compile Include="Forms\MainMenu\Controls\BookmarkGoToPageButtonBuilder.cs" />
+    <Compile Include="Forms\MainMenu\Controls\BookmarksButtonBuilder.cs" />
+    <Compile Include="Forms\MainMenu\Controls\UpdateProxyButtonBuilder.cs" />
+    <Compile Include="Forms\MainMenu\Controls\UserWaitActionButtonBuilder.cs" />
+    <Compile Include="Forms\MainMenu\MainMenuFormControls.cs" />
+    <Compile Include="Forms\MainMenu\MainMenuFormEventHandler.cs" />
+    <Compile Include="Forms\MainMenu\MainMenuSettingsHandler.cs" />
+    <Compile Include="Forms\MainMenu\MainMenuForm.cs" />
+    <Compile Include="Forms\MainMenu\MainMenuFormBrowserAction.cs" />
     <Compile Include="JsonFile.cs" />
     <Compile Include="Models\BSON\AccountsSettingsModel.cs" />
     <Compile Include="Models\BSON\BsonIdModel.cs" />
     <Compile Include="Models\BSON\MarketNameModel.cs" />
     <Compile Include="Models\BSON\ProjectNameModel.cs" />
+    <Compile Include="Models\JSON\BookmarksForm\BookmarkModel.cs" />
     <Compile Include="Models\JSON\FormSettings\AccountSelectinFormSettings.cs" />
+    <Compile Include="Models\JSON\MainMenu\MainMenuSettingsModel.cs" />
     <Compile Include="Models\JSON\ProjectSettingsModel.cs" />
     <Compile Include="Models\JSON\FormSettings\FromSettingLocationModel.cs" />
-    <Compile Include="Mongo\AccountSelection\AccountsFinder.cs" />
+    <Compile Include="Mongo\AccountsCreator\MongoAccountCreator.cs" />
+    <Compile Include="Mongo\AccountSelection\AccountsSearchEngine.cs" />
     <Compile Include="Mongo\BrowserCollections\AccountsSettingsCollection.cs" />
     <Compile Include="Mongo\BrowserCollections\ProjectsCollection.cs" />
     <Compile Include="Mongo\BrowserDatabaseConnector.cs" />
@@ -130,7 +169,15 @@
     <Compile Include="Mongo\MongoConnector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Accounts\SessionManager.cs" />
+    <Compile Include="Services\BrowserActions\BrowserActionsManager.cs" />
+    <Compile Include="Services\BrowserActions\IBrowserAction.cs" />
     <Compile Include="Services\FormSettings\FormSettingsStorage.cs" />
+    <Compile Include="Services\VPN\InstanceProxyUpdater.cs" />
+    <Compile Include="Services\VPN\IProxyActions.cs" />
+    <Compile Include="Services\VPN\IVPN.cs" />
+    <Compile Include="Services\VPN\SmartProxyV2Handler.cs" />
+    <Compile Include="Services\ZennoPosterBrowser\ZennoPosterBrowserManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="ValidateZennoPosterDllPath" BeforeTargets="BeforeBuild">
@@ -165,6 +212,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup />
 </Project>

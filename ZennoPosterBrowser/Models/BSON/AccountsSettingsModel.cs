@@ -14,5 +14,6 @@ namespace ZennoPosterBrowser.Models.BSON
         public string Collection { get; set; }
         public string FolderPath { get; set; }
         public string ColumnName { get; set; }
+        public bool IsEnableCreate { get; set; }
     }
 }

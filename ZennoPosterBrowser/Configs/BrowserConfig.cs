@@ -19,6 +19,8 @@ namespace ZennoPosterBrowser.Configs
 
         public IMarketNamesStorage MarketNamesStorage { get; }
         public IProjectNamesStorage ProjectNamesStorage { get; }
+        public string CurrentSession { get; set; }
+        public string PathToSession { get; set; }
 
         public static BrowserConfig Instance
         {
@@ -30,6 +32,12 @@ namespace ZennoPosterBrowser.Configs
                 }
                 return _instance;
             }
+        }
+
+        public void ResetBrowserProperies()
+        {
+            CurrentSession = null;
+            PathToSession = null;
         }
     }
 }
