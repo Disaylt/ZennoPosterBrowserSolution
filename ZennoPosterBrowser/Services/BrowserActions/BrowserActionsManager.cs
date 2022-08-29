@@ -8,6 +8,7 @@ using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoPosterBrowser.Configs;
 using ZennoPosterBrowser.Forms.AccountSelection;
 using ZennoPosterBrowser.Forms.MainMenu;
+using ZennoPosterBrowser.Logger;
 using ZennoPosterBrowser.Services.Accounts;
 using ZennoPosterBrowser.Services.ZennoPosterBrowser;
 
@@ -22,6 +23,8 @@ namespace ZennoPosterBrowser.Services.BrowserActions
 
         private readonly List<Action> _firstActions;
         private readonly List<Action> _lastActions;
+
+        private readonly ILogger<InfoMessage, ErrorMessage> _logger;
 
         public BrowserActionsManager()
         {
@@ -44,9 +47,10 @@ namespace ZennoPosterBrowser.Services.BrowserActions
                 }
                 while (nextAction != BrowserProjectActions.CloseBrowser);
             }
-            catch
+            catch(Exception ex)
             {
-
+                ErrorMessage errorMessage = new FileErrorMessageBuilder(ex);
+                _logger.WriteError(errorMessage);
             }
             finally
             {
@@ -90,9 +94,10 @@ namespace ZennoPosterBrowser.Services.BrowserActions
                 {
                     action?.Invoke();
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    ErrorMessage errorMessage = new FileErrorMessageBuilder(ex);
+                    _logger.WriteError(errorMessage);
                 }
             }
         }
