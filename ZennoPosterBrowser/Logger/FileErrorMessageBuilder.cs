@@ -8,8 +8,10 @@ namespace ZennoPosterBrowser.Logger
 {
     internal class FileErrorMessageBuilder : ErrorMessage
     {
-        public FileErrorMessageBuilder(Exception exception) : base(exception)
+        private readonly string _descriptionError;
+        public FileErrorMessageBuilder(Exception exception, string descriptionError = "") : base(exception)
         {
+            _descriptionError = descriptionError;
         }
 
         public override string GetMessage()
@@ -20,6 +22,7 @@ namespace ZennoPosterBrowser.Logger
             stringBuilder.AppendLine("Error");
             stringBuilder.AppendLine($"Date: {DateTime.Now}");
             stringBuilder.AppendLine($"Message: {Exception.Message}");
+            stringBuilder.AppendLine($"Description: {_descriptionError}");
             stringBuilder.AppendLine($"StackTrace: {Exception.StackTrace}");
             stringBuilder.AppendLine(firstAndLastLine);
             return stringBuilder.ToString();

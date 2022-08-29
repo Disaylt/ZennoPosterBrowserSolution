@@ -39,7 +39,7 @@ namespace ZennoPosterBrowser.Configs
             }
         }
 
-        public static void InitialConfig(IZennoPosterProjectModel project)
+        public static BaseConfig InitialConfig(IZennoPosterProjectModel project)
         {
             lock(_locker)
             {
@@ -47,6 +47,7 @@ namespace ZennoPosterBrowser.Configs
                 {
                     _instance = new BaseConfig(project);
                 }
+                return _instance;
             }
         }
     }
