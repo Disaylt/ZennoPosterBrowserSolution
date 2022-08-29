@@ -55,6 +55,10 @@ namespace ZennoPosterBrowser
 
                     browserActionsStorage.ExecuteActions(BrowserProjectActions.SelectionSession);
                 }
+                catch (Exception ex)
+                {
+
+                }
                 finally
                 {
                     BrowserConfig.Instance.ResetBrowserProperies();

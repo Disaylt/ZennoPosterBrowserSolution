@@ -8,7 +8,7 @@ using ZennoPosterBrowser.Configs;
 
 namespace ZennoPosterBrowser.Logger
 {
-    internal class FileLogger : ILogger<FileInfoMessageBuilder, FileErrorMessageBuilder>
+    internal class FileLogger : ILogger<InfoMessage, ErrorMessage>
     {
         private readonly string _loggerDirectory;
         private static FileLogger _instance;
@@ -35,7 +35,7 @@ namespace ZennoPosterBrowser.Logger
             }
         }
 
-        public void WriteError(FileErrorMessageBuilder error)
+        public void WriteError(ErrorMessage error)
         {
             lock (_lock)
             {
@@ -44,7 +44,7 @@ namespace ZennoPosterBrowser.Logger
             }
         }
 
-        public void WriteInfo(FileInfoMessageBuilder info)
+        public void WriteInfo(InfoMessage info)
         {
             lock(_lock)
             {

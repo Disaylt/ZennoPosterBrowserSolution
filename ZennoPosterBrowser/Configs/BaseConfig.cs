@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZennoLab.InterfacesLibrary.ProjectModel;
+using ZennoPosterBrowser.Logger;
 
 namespace ZennoPosterBrowser.Configs
 {
@@ -16,10 +17,12 @@ namespace ZennoPosterBrowser.Configs
         {
             ProjectPath = project.Path;
             ProjectSettingsLoader = new ProjectSettingsFileLoader(ProjectPath);
+            Logger = FileLogger.Instance;
         }
 
         public string ProjectPath { get; }
         public IProjectSettingsLoader ProjectSettingsLoader { get; }
+        public ILogger<InfoMessage, ErrorMessage> Logger { get; }
 
         public static BaseConfig Instance
         {
