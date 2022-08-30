@@ -12,6 +12,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator.Controls
     {
         public ComboBoxForSelectProjectBuilder(IEnumerable<string> projectNames)
         {
+            SetSettings();
             Control.Items.AddRange(projectNames.ToArray());
         }
 
