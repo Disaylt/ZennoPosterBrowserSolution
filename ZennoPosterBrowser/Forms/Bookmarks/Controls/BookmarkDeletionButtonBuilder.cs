@@ -11,14 +11,22 @@ namespace ZennoPosterBrowser.Forms.Bookmarks.Controls
 {
     internal class BookmarkDeletionButtonBuilder : ButtonBuilder
     {
+        public BookmarkDeletionButtonBuilder()
+        {
+            SetSettings();
+        }
+
         public override Button GetButton()
         {
-            Button button = new Button();
-            button.Text = "Удалить";
-            button.Font = new Font(button.Font.Name, 9f, button.Font.Unit);
-            button.Location = new Point(280, 190);
-            button.Size = new Size(95, 40);
-            return button;
+            return Control;
+        }
+
+        private void SetSettings()
+        {
+            Control.Text = "Удалить";
+            Control.Font = new Font(Control.Font.Name, 9f, Control.Font.Unit);
+            Control.Location = new Point(280, 190);
+            Control.Size = new Size(95, 40);
         }
     }
 }
