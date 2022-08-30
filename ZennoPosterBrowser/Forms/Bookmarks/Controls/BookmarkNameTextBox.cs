@@ -10,7 +10,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks.Controls
 {
     internal class BookmarkNameTextBox : TextBoxBuilder
     {
-        public override TextBox Create()
+        public override TextBox GetTextBox()
         {
             TextBox textBox = new TextBox();
             textBox.Location = new System.Drawing.Point(15, 15);

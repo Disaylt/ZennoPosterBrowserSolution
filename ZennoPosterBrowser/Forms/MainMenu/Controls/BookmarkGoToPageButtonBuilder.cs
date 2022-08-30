@@ -16,7 +16,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu.Controls
         {
             _location = location;
         }
-        public override Button Create()
+        public override Button GetButton()
         {
             Button button = new Button();
             button.Text = "Перейти";

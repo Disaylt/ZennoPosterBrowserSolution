@@ -10,7 +10,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection.Controls
 {
     internal class AccountsDataGridBuilder : DataGridViewBuilder
     {
-        public override DataGridView Create()
+        public override DataGridView GetDataGrid()
         {
             DataGridView dataGridView = new DataGridView();
             SetDataGridSettings(dataGridView);

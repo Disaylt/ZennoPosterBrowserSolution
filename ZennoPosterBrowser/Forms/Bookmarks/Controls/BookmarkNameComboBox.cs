@@ -19,7 +19,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks.Controls
                 .Select(x=> x.Name);
         }
 
-        public override ComboBox Create()
+        public override ComboBox GetComboBox()
         {
             ComboBox comboBox = new ComboBox();
             SetSettings(comboBox);

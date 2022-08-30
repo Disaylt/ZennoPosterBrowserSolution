@@ -11,7 +11,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks.Controls
 {
     internal class BookmarkAdditionButtonBuilder : ButtonBuilder
     {
-        public override Button Create()
+        public override Button GetButton()
         {
             Button button = new Button();
             button.Text = "Добавить";

@@ -22,7 +22,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu.Controls
             _location = location;
         }
 
-        public override ComboBox Create()
+        public override ComboBox GetComboBox()
         {
             ComboBox comboBox = new ComboBox();
             SetSettings(comboBox);

@@ -40,7 +40,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
                 if (_additionBookmark == null)
                 {
                     BookmarkAdditionButtonBuilder addBookmarkButton = new BookmarkAdditionButtonBuilder();
-                    _additionBookmark = addBookmarkButton.Create();
+                    _additionBookmark = addBookmarkButton.GetButton();
                 }
                 return _additionBookmark;
             }
@@ -54,7 +54,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
                 if (_deletionBookmark == null)
                 {
                     BookmarkDeletionButtonBuilder addBookmarkButton = new BookmarkDeletionButtonBuilder();
-                    _deletionBookmark = addBookmarkButton.Create();
+                    _deletionBookmark = addBookmarkButton.GetButton();
                 }
                 return _deletionBookmark;
             }
@@ -68,7 +68,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
                 if (_updationBookmark == null)
                 {
                     BookmarkUpdationButtonBuilder addBookmarkButton = new BookmarkUpdationButtonBuilder();
-                    _updationBookmark = addBookmarkButton.Create();
+                    _updationBookmark = addBookmarkButton.GetButton();
                 }
                 return _updationBookmark;
             }
@@ -82,7 +82,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
                 if(_bookmarkName == null)
                 {
                     BookmarkNameTextBox bookmarkNameTextBox = new BookmarkNameTextBox();
-                    _bookmarkName = bookmarkNameTextBox.Create();
+                    _bookmarkName = bookmarkNameTextBox.GetTextBox();
                 }
                 return _bookmarkName;
             }
@@ -96,7 +96,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
                 if (_bookmarkNewUrl == null)
                 {
                     BookmarkNewUrlTextBox bookmarkNameTextBox = new BookmarkNewUrlTextBox();
-                    _bookmarkNewUrl = bookmarkNameTextBox.Create();
+                    _bookmarkNewUrl = bookmarkNameTextBox.GetTextBox();
                 }
                 return _bookmarkNewUrl;
             }
@@ -110,7 +110,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
                 if (_bookmarkCurrentUrl == null)
                 {
                     BookmarkCurrentUrlTextBox bookmarkNameTextBox = new BookmarkCurrentUrlTextBox();
-                    _bookmarkCurrentUrl = bookmarkNameTextBox.Create();
+                    _bookmarkCurrentUrl = bookmarkNameTextBox.GetTextBox();
                 }
                 return _bookmarkCurrentUrl;
             }
@@ -124,7 +124,7 @@ namespace ZennoPosterBrowser.Forms.Bookmarks
                 if (_bookmarkComboBox == null)
                 {
                     BookmarkNameComboBox bookmarkNameTextBox = new BookmarkNameComboBox(_bookmarksStorage.Bookmarks);
-                    _bookmarkComboBox = bookmarkNameTextBox.Create();
+                    _bookmarkComboBox = bookmarkNameTextBox.GetComboBox();
                 }
                 return _bookmarkComboBox;
             }

@@ -46,7 +46,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 if (_waitUserAction == null)
                 {
                     UserWaitActionButtonBuilder findAccountButton = new UserWaitActionButtonBuilder();
-                    _waitUserAction = findAccountButton.Create();
+                    _waitUserAction = findAccountButton.GetButton();
                 }
                 return _waitUserAction;
             }
@@ -60,7 +60,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 if (_updateProxy == null)
                 {
                     UpdateProxyButtonBuilder findAccountButton = new UpdateProxyButtonBuilder();
-                    _updateProxy = findAccountButton.Create();
+                    _updateProxy = findAccountButton.GetButton();
                 }
                 return _updateProxy;
             }
@@ -74,7 +74,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 if(_bookmarks == null)
                 {
                     BookmarksButtonBuilder bookmarksButton = new BookmarksButtonBuilder();
-                    _bookmarks = bookmarksButton.Create();
+                    _bookmarks = bookmarksButton.GetButton();
                 }
                 return _bookmarks;
             }
@@ -89,7 +89,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 {
                     Point location = new Point(15, 70);
                     BookmarkComboBoxBuilder bookmarkComboBox = new BookmarkComboBoxBuilder(_bookmarksStorage.Bookmarks, location);
-                    _bookmarkNames1 = bookmarkComboBox.Create();
+                    _bookmarkNames1 = bookmarkComboBox.GetComboBox();
                 }
                 return _bookmarkNames1;
             }
@@ -104,7 +104,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 {
                     Point location = new Point(255,70);
                     BookmarkGoToPageButtonBuilder bookmarkGoToPageButtonBuilder = new BookmarkGoToPageButtonBuilder(location);
-                    _bookmarkGoToPage1 = bookmarkGoToPageButtonBuilder.Create();
+                    _bookmarkGoToPage1 = bookmarkGoToPageButtonBuilder.GetButton();
                 }
                 return _bookmarkGoToPage1;
             }
@@ -119,7 +119,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 {
                     Point location = new Point(15, 95);
                     BookmarkComboBoxBuilder bookmarkComboBox = new BookmarkComboBoxBuilder(_bookmarksStorage.Bookmarks, location);
-                    _bookmarkNames2 = bookmarkComboBox.Create();
+                    _bookmarkNames2 = bookmarkComboBox.GetComboBox();
                 }
                 return _bookmarkNames2;
             }
@@ -134,7 +134,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 {
                     Point location = new Point(255, 95);
                     BookmarkGoToPageButtonBuilder bookmarkGoToPageButtonBuilder = new BookmarkGoToPageButtonBuilder(location);
-                    _bookmarkGoToPage2 = bookmarkGoToPageButtonBuilder.Create();
+                    _bookmarkGoToPage2 = bookmarkGoToPageButtonBuilder.GetButton();
                 }
                 return _bookmarkGoToPage2;
             }
@@ -149,7 +149,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 {
                     Point location = new Point(15, 120);
                     BookmarkComboBoxBuilder bookmarkComboBox = new BookmarkComboBoxBuilder(_bookmarksStorage.Bookmarks, location);
-                    _bookmarkNames3 = bookmarkComboBox.Create();
+                    _bookmarkNames3 = bookmarkComboBox.GetComboBox();
                 }
                 return _bookmarkNames3;
             }
@@ -164,7 +164,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 {
                     Point location = new Point(255, 120);
                     BookmarkGoToPageButtonBuilder bookmarkGoToPageButtonBuilder = new BookmarkGoToPageButtonBuilder(location);
-                    _bookmarkGoToPage3 = bookmarkGoToPageButtonBuilder.Create();
+                    _bookmarkGoToPage3 = bookmarkGoToPageButtonBuilder.GetButton();
                 }
                 return _bookmarkGoToPage3;
             }
@@ -179,7 +179,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 {
                     Point location = new Point(15, 145);
                     BookmarkComboBoxBuilder bookmarkComboBox = new BookmarkComboBoxBuilder(_bookmarksStorage.Bookmarks, location);
-                    _bookmarkNames4 = bookmarkComboBox.Create();
+                    _bookmarkNames4 = bookmarkComboBox.GetComboBox();
                 }
                 return _bookmarkNames4;
             }
@@ -194,7 +194,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
                 {
                     Point location = new Point(255, 145);
                     BookmarkGoToPageButtonBuilder bookmarkGoToPageButtonBuilder = new BookmarkGoToPageButtonBuilder(location);
-                    _bookmarkGoToPage4 = bookmarkGoToPageButtonBuilder.Create();
+                    _bookmarkGoToPage4 = bookmarkGoToPageButtonBuilder.GetButton();
                 }
                 return _bookmarkGoToPage4;
             }

@@ -11,7 +11,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection.Controls
 {
     internal class FindAccountButtonBuilder : ButtonBuilder
     {
-        public override Button Create()
+        public override Button GetButton()
         {
             Button button = new Button();
             button.Text = "Поиск";

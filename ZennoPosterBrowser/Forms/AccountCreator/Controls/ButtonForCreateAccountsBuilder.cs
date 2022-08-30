@@ -12,7 +12,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator.Controls
     internal class ButtonForCreateAccountsBuilder : ButtonBuilder
     {
 
-        public override Button Create()
+        public override Button GetButton()
         {
             Button button = new Button();
             button.Text = "Создать";

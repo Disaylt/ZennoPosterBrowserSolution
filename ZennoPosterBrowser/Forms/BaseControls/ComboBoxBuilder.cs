@@ -9,6 +9,6 @@ namespace ZennoPosterBrowser.Forms.BaseControls
 {
     internal abstract class ComboBoxBuilder
     {
-        public abstract ComboBox Create();
+        public abstract ComboBox GetComboBox();
     }
 }

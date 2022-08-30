@@ -37,7 +37,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
                 {
                     IEnumerable<string> projectNames = BrowserConfig.Instance.ProjectNamesStorage.AllProjectNames;
                     ComboBoxBuilder comboBoxBuilder = new SelectProjectComboBoxBuilder(projectNames);
-                    _selectProject = comboBoxBuilder.Create();
+                    _selectProject = comboBoxBuilder.GetComboBox();
                 }
                 return _selectProject;
             }
@@ -52,7 +52,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
                 {
                     IEnumerable<string> marketNames = BrowserConfig.Instance.MarketNamesStorage.AllMarketNames;
                     ComboBoxBuilder comboBoxBuilder = new SelectMarketComboBoxBuilder(marketNames);
-                    _selectMarket = comboBoxBuilder.Create();
+                    _selectMarket = comboBoxBuilder.GetComboBox();
                 }
                 return _selectMarket;
             }
@@ -66,7 +66,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
                 if(_additionAccounts == null)
                 {
                     ButtonForAdditionAccountsBuilder buttonForAdditionAccountsBuilder = new ButtonForAdditionAccountsBuilder();
-                    _additionAccounts = buttonForAdditionAccountsBuilder.Create();
+                    _additionAccounts = buttonForAdditionAccountsBuilder.GetButton();
                 }
                 return _additionAccounts;
             }
@@ -80,7 +80,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
                 if(_findAccount == null)
                 {
                     FindAccountButtonBuilder findAccountButton = new FindAccountButtonBuilder();
-                    _findAccount = findAccountButton.Create();
+                    _findAccount = findAccountButton.GetButton();
                 }
                 return _findAccount; 
             } 
@@ -94,7 +94,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
                 if(_grid == null)
                 {
                     AccountsDataGridBuilder accountSelectionDataGrid = new AccountsDataGridBuilder();
-                    _grid = accountSelectionDataGrid.Create();
+                    _grid = accountSelectionDataGrid.GetDataGrid();
                 }
                 return _grid;
             }
@@ -108,7 +108,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
                 if(_textBox == null)
                 {
                     SearchTextBoxBuilder searchTextBoxBuilder = new SearchTextBoxBuilder();
-                    _textBox = searchTextBoxBuilder.Create();
+                    _textBox = searchTextBoxBuilder.GetTextBox();
                 }
                 return _textBox;
             }

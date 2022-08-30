@@ -17,7 +17,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection.Controls
             _marketNames = marketNames;
         }
 
-        public override ComboBox Create()
+        public override ComboBox GetComboBox()
         {
             ComboBox comboBox = new ComboBox();
             SetSettings(comboBox);

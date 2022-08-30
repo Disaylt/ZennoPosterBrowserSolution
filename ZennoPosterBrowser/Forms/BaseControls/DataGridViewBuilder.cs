@@ -9,7 +9,7 @@ namespace ZennoPosterBrowser.Forms.BaseControls
 {
     internal abstract class DataGridViewBuilder
     {
-        public abstract DataGridView Create();
+        public abstract DataGridView GetDataGrid();
 
         public static void AddColumns(DataGridView dataGridView, IEnumerable<DataGridViewTextBoxColumn> columns)
         {

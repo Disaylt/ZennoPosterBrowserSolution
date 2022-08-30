@@ -17,7 +17,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator.Controls
             _projectNames = projectNames;
         }
 
-        public override ComboBox Create()
+        public override ComboBox GetComboBox()
         {
             ComboBox comboBox = new ComboBox();
             SetSettings(comboBox);

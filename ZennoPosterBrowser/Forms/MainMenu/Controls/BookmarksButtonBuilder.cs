@@ -11,7 +11,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu.Controls
 {
     internal class BookmarksButtonBuilder : ButtonBuilder
     {
-        public override Button Create()
+        public override Button GetButton()
         {
             Button button = new Button();
             button.Text = "Закладки";
