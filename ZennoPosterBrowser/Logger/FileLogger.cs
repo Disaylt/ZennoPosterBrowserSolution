@@ -16,7 +16,6 @@ namespace ZennoPosterBrowser.Logger
 
         private FileLogger()
         {
-            _instance = new FileLogger();
             _loggerDirectory = CreateLoggerDirectory();
         }
 
@@ -39,8 +38,8 @@ namespace ZennoPosterBrowser.Logger
         {
             lock (_lock)
             {
-                string fileName = $"Error - {DateTime.Now.Date}";
-                File.WriteAllText($"{_loggerDirectory}{fileName}", error.GetMessage());
+                string fileName = $"Error - {DateTime.Now.ToShortDateString()}.txt";
+                File.AppendAllText($"{_loggerDirectory}{fileName}", error.GetMessage());
             }
         }
 
@@ -48,8 +47,8 @@ namespace ZennoPosterBrowser.Logger
         {
             lock(_lock)
             {
-                string fileName = $"INFO - {DateTime.Now.Date}";
-                File.WriteAllText($"{_loggerDirectory}{fileName}", info.GetMessage());
+                string fileName = $"INFO - {DateTime.Now.ToShortDateString()}.txt";
+                File.AppendAllText($"{_loggerDirectory}{fileName}", info.GetMessage());
             }
         }
 
@@ -59,7 +58,7 @@ namespace ZennoPosterBrowser.Logger
             
             string loggerFolder = $@"{ baseConfig.ProjectPath}Loggs\";
 
-            if(Directory.Exists(loggerFolder))
+            if(!Directory.Exists(loggerFolder))
             {
                 Directory.CreateDirectory(loggerFolder);
             }

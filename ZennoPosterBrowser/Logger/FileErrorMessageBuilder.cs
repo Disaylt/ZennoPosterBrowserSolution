@@ -17,14 +17,12 @@ namespace ZennoPosterBrowser.Logger
         public override string GetMessage()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            string firstAndLastLine = "----------------------------";
-            stringBuilder.AppendLine(firstAndLastLine);
             stringBuilder.AppendLine("Error");
             stringBuilder.AppendLine($"Date: {DateTime.Now}");
             stringBuilder.AppendLine($"Message: {Exception.Message}");
             stringBuilder.AppendLine($"Description: {_descriptionError}");
             stringBuilder.AppendLine($"StackTrace: {Exception.StackTrace}");
-            stringBuilder.AppendLine(firstAndLastLine);
+            stringBuilder.AppendLine("----------------------------");
             return stringBuilder.ToString();
         }
     }
