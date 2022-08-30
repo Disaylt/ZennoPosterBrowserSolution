@@ -11,19 +11,25 @@ namespace ZennoPosterBrowser.Forms.MainMenu.Controls
 {
     internal class BookmarkGoToPageButtonBuilder : ButtonBuilder
     {
-        private readonly Point _location;
         public BookmarkGoToPageButtonBuilder(Point location)
         {
-            _location = location;
+            Control = new Button();
+            SetSettings(location);
         }
+
+        protected Button Control { get; }
+
         public override Button GetButton()
         {
-            Button button = new Button();
-            button.Text = "Перейти";
-            button.Font = new Font(button.Font.Name, 9f, button.Font.Unit);
-            button.Location = _location;
-            button.Size = new Size(110, 20);
-            return button;
+            return Control;
+        }
+
+        private void SetSettings(Point location)
+        {
+            Control.Text = "Перейти";
+            Control.Font = new Font(Control.Font.Name, 9f, Control.Font.Unit);
+            Control.Location = location;
+            Control.Size = new Size(110, 20);
         }
     }
 }
