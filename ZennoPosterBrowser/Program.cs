@@ -34,6 +34,8 @@ namespace ZennoPosterBrowser
         private IZennoPosterProjectModel _project;
         private static readonly object _locker = new object();
 
+        public static Guid CurrentGuid { get; private set; } = Guid.NewGuid();
+
         /// <summary>
         /// Метод для запуска выполнения скрипта
         /// </summary>
@@ -44,11 +46,11 @@ namespace ZennoPosterBrowser
         {
             lock (_locker)
             {
+                CurrentGuid = Guid.NewGuid();
                 _instance = instance;
                 _project = project;
                 BaseConfig.InitialConfig(project);
                 bool isGoodEnd = true;
-                Guid guid = Guid.NewGuid();
 
                 try
                 {
@@ -62,7 +64,7 @@ namespace ZennoPosterBrowser
                 catch (Exception ex)
                 {
                     isGoodEnd = false;
-                    ErrorMessage errorMessage = new FileErrorMessageBuilder(ex, guid.ToString());
+                    ErrorMessage errorMessage = new FileErrorMessageBuilder(ex, CurrentGuid.ToString());
                     LoggerStorage.Logger.WriteError(errorMessage);
                 }
                 finally
@@ -70,12 +72,12 @@ namespace ZennoPosterBrowser
                     BrowserConfig.Instance.ResetBrowserProperies();
                     if(isGoodEnd)
                     {
-                        InfoMessage message = new FileInfoMessageBuilder($"Guid - {guid} выполнен успешно.");
+                        InfoMessage message = new FileInfoMessageBuilder($"Выполнен успешно.");
                         LoggerStorage.Logger.WriteInfo(message);
                     }
                     else
                     {
-                        InfoMessage message = new FileInfoMessageBuilder($"Guid - {guid} завершился с ошибкой.");
+                        InfoMessage message = new FileInfoMessageBuilder($"Завершился с ошибкой.");
                         LoggerStorage.Logger.WriteInfo(message);
                     }
                 }

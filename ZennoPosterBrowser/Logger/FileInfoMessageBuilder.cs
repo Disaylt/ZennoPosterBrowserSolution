@@ -18,6 +18,7 @@ namespace ZennoPosterBrowser.Logger
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("INFO");
             stringBuilder.AppendLine($"Date: {DateTime.Now}");
+            stringBuilder.AppendLine($"Guid: {Program.CurrentGuid}");
             stringBuilder.AppendLine($"Message: {Message}");
             stringBuilder.AppendLine("----------------------------");
             return stringBuilder.ToString();

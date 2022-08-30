@@ -42,6 +42,7 @@ namespace ZennoPosterBrowser.Services.BrowserActions
                 var nextAction = firstAction;
                 do
                 {
+                    LoggerStorage.Logger.WriteInfo(new FileInfoMessageBuilder($"Next action - {nextAction}"));
                     nextAction = ExecuteCurrentActionAndReturnNextAction(nextAction);
                 }
                 while (nextAction != BrowserProjectActions.CloseBrowser);
@@ -81,6 +82,7 @@ namespace ZennoPosterBrowser.Services.BrowserActions
         {
             foreach (var action in _firstActions)
             {
+                LoggerStorage.Logger.WriteInfo(new FileInfoMessageBuilder($"Execute first action - {action.Method.Name}"));
                 action?.Invoke();
             }
         }
@@ -91,6 +93,7 @@ namespace ZennoPosterBrowser.Services.BrowserActions
             {
                 try
                 {
+                    LoggerStorage.Logger.WriteInfo(new FileInfoMessageBuilder($"Execute last action - {action.Method.Name}"));
                     action?.Invoke();
                 }
                 catch (Exception ex)

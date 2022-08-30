@@ -19,6 +19,7 @@ namespace ZennoPosterBrowser.Logger
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("Error");
             stringBuilder.AppendLine($"Date: {DateTime.Now}");
+            stringBuilder.AppendLine($"Guid: {Program.CurrentGuid}");
             stringBuilder.AppendLine($"Message: {Exception.Message}");
             stringBuilder.AppendLine($"Description: {_descriptionError}");
             stringBuilder.AppendLine($"StackTrace: {Exception.StackTrace}");
