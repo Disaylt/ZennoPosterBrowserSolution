@@ -10,13 +10,21 @@ namespace ZennoPosterBrowser.Forms.AccountSelection.Controls
 {
     internal class SearchTextBoxBuilder : TextBoxBuilder
     {
+        public SearchTextBoxBuilder()
+        {
+            SetSettings();
+        }
+
         public override TextBox GetTextBox()
         {
-            TextBox textBoxSearch = new TextBox();
-            textBoxSearch.Location = new System.Drawing.Point(15, 15);
-            textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new System.Drawing.Size(130, 20);
-            return textBoxSearch;
+            return Control;
+        }
+
+        private void SetSettings()
+        {
+            Control.Location = new System.Drawing.Point(15, 15);
+            Control.Name = "textBoxSearch";
+            Control.Size = new System.Drawing.Size(130, 20);
         }
     }
 }

@@ -11,15 +11,23 @@ namespace ZennoPosterBrowser.Forms.AccountSelection.Controls
 {
     internal class FindAccountButtonBuilder : ButtonBuilder
     {
+        public FindAccountButtonBuilder()
+        {
+            SetSettings();
+        }
+
         public override Button GetButton()
         {
-            Button button = new Button();
-            button.Text = "Поиск";
-            button.Name = "FindAccount";
-            button.Font = new Font(button.Font.Name, 9f, button.Font.Unit);
-            button.Location = new Point(150, 15);
-            button.Size = new Size(55, 20);
-            return button;
+            return Control;
+        }
+
+        private void SetSettings()
+        {
+            Control.Text = "Поиск";
+            Control.Name = "FindAccount";
+            Control.Font = new Font(Control.Font.Name, 9f, Control.Font.Unit);
+            Control.Location = new Point(150, 15);
+            Control.Size = new Size(55, 20);
         }
     }
 }
