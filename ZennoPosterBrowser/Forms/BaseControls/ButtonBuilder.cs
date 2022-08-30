@@ -9,6 +9,13 @@ namespace ZennoPosterBrowser.Forms.BaseControls
 {
     internal abstract class ButtonBuilder
     {
+        public ButtonBuilder()
+        {
+            Control = new Button();
+        }
+
+        protected Button Control { get; }
+
         public abstract Button GetButton();
     }
 }
