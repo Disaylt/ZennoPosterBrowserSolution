@@ -108,6 +108,7 @@
     <Compile Include="Forms\AccountSelection\Controls\AccountsDataGridColumnsStorage.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionForm.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionFormSettings.cs" />
+    <Compile Include="Forms\AccountSelection\Controls\ButtonForAdditionAccountsBuilder.cs" />
     <Compile Include="Forms\AccountSelection\Controls\FindAccountButtonBuilder.cs" />
     <Compile Include="Forms\AccountSelection\Controls\SearchTextBoxBuilder.cs" />
     <Compile Include="Forms\AccountSelection\AccountSelectionFormControls.cs" />

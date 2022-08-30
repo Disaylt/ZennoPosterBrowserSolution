@@ -16,7 +16,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
         private readonly AccountCreatorFormEventHandler _accountCreatorFormEvent;
         public AccountCreatorForm(IZennoPosterProjectModel project)
         {
-            NextAction = BrowserProjectActions.CloseBrowser;
+            NextAction = BrowserProjectActions.SelectionSession;
             _accountCreatorFormEvent = new AccountCreatorFormEventHandler(project, this);
             Form.Size = new Size(400, 250);
             Form.Name = _nameForm;
