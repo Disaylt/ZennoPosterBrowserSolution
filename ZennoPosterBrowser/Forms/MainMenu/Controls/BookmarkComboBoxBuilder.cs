@@ -14,12 +14,10 @@ namespace ZennoPosterBrowser.Forms.MainMenu.Controls
     {
         public BookmarkComboBoxBuilder(IEnumerable<BookmarkModel> bookmarkNames, Point location)
         {
-            Control = new ComboBox();
             SetSettings(location);
             AddItems(bookmarkNames);
         }
 
-        protected ComboBox Control { get; }
 
         public override ComboBox GetComboBox()
         {

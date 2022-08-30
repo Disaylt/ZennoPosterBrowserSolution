@@ -13,11 +13,8 @@ namespace ZennoPosterBrowser.Forms.MainMenu.Controls
     {
         public BookmarkGoToPageButtonBuilder(Point location)
         {
-            Control = new Button();
             SetSettings(location);
         }
-
-        protected Button Control { get; }
 
         public override Button GetButton()
         {

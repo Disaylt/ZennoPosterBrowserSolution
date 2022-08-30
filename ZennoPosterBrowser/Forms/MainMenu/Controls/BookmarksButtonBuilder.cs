@@ -11,16 +11,23 @@ namespace ZennoPosterBrowser.Forms.MainMenu.Controls
 {
     internal class BookmarksButtonBuilder : ButtonBuilder
     {
+        public BookmarksButtonBuilder()
+        {
+            SetSettings();
+        }
 
         public override Button GetButton()
         {
-            Button button = new Button();
-            button.Text = "Закладки";
-            button.Name = "Bookmarks";
-            button.Font = new Font(button.Font.Name, 9f, button.Font.Unit);
-            button.Location = new Point(255, 15);
-            button.Size = new Size(110, 40);
-            return button;
+            return Control;
+        }
+
+        private void SetSettings()
+        {
+            Control.Text = "Закладки";
+            Control.Name = "Bookmarks";
+            Control.Font = new Font(Control.Font.Name, 9f, Control.Font.Unit);
+            Control.Location = new Point(255, 15);
+            Control.Size = new Size(110, 40);
         }
     }
 }
