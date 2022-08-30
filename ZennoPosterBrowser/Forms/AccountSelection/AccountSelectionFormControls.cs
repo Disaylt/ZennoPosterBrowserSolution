@@ -23,7 +23,8 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
                 TextBox,
                 SelectMarket,
                 SelectProject,
-                FindAccount
+                FindAccount,
+                AdditionAccounts
             };
         }
 
@@ -54,6 +55,20 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
                     _selectMarket = comboBoxBuilder.Create();
                 }
                 return _selectMarket;
+            }
+        }
+
+        private Button _additionAccounts;
+        public virtual Button AdditionAccounts
+        {
+            get
+            {
+                if(_additionAccounts == null)
+                {
+                    ButtonForAdditionAccountsBuilder buttonForAdditionAccountsBuilder = new ButtonForAdditionAccountsBuilder();
+                    _additionAccounts = buttonForAdditionAccountsBuilder.Create();
+                }
+                return _additionAccounts;
             }
         }
 

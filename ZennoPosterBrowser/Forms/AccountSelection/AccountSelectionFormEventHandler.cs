@@ -30,6 +30,7 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             _accountSelectionForm.Form.FormClosed += SaveSettings;
             _accountSelectionForm.FormControls.FindAccount.Click += FindAccounts;
             _accountSelectionForm.FormControls.Grid.MouseDoubleClick += ChooseAccount;
+            _accountSelectionForm.FormControls.AdditionAccounts.Click += CreateNewAccount;
         }
 
         protected virtual void LoadAccounts(object sender, EventArgs e)
@@ -66,6 +67,12 @@ namespace ZennoPosterBrowser.Forms.AccountSelection
             browserConfig.CurrentSession = (string)_accountSelectionForm.FormControls.Grid.SelectedCells[0].Value;
             browserConfig.PathToSession = _accountsSearchEngine.LastAccountSetting.FolderPath;
             _accountSelectionForm.NextAction = BrowserProjectActions.LoadingSession;
+            _accountSelectionForm.Form.Close();
+        }
+
+        protected virtual void CreateNewAccount(object sender, EventArgs e)
+        {
+            _accountSelectionForm.NextAction = BrowserProjectActions.AddNewAccount;
             _accountSelectionForm.Form.Close();
         }
 
