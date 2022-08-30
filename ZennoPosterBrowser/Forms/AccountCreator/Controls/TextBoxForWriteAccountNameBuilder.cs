@@ -10,12 +10,20 @@ namespace ZennoPosterBrowser.Forms.AccountCreator.Controls
 {
     internal class TextBoxForWriteAccountNameBuilder : TextBoxBuilder
     {
+        public TextBoxForWriteAccountNameBuilder()
+        {
+            SetSettings();
+        }
+
         public override TextBox GetTextBox()
         {
-            TextBox textBoxSearch = new TextBox();
-            textBoxSearch.Location = new System.Drawing.Point(15, 15);
-            textBoxSearch.Size = new System.Drawing.Size(230, 20);
-            return textBoxSearch;
+            return Control;
+        }
+
+        private void SetSettings()
+        {
+            Control.Location = new System.Drawing.Point(15, 15);
+            Control.Size = new System.Drawing.Size(230, 20);
         }
     }
 }
