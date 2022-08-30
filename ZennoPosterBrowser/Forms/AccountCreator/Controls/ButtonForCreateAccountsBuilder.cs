@@ -11,15 +11,22 @@ namespace ZennoPosterBrowser.Forms.AccountCreator.Controls
 {
     internal class ButtonForCreateAccountsBuilder : ButtonBuilder
     {
-
-        public override Button Create()
+        public ButtonForCreateAccountsBuilder()
         {
-            Button button = new Button();
-            button.Text = "Создать";
-            button.Font = new Font(button.Font.Name, 9f, button.Font.Unit);
-            button.Location = new Point(255, 15);
-            button.Size = new Size(110, 70);
-            return button;
+            SetSettings();
+        }
+
+        public override Button GetButton()
+        {
+            return Control;
+        }
+
+        private void SetSettings()
+        {
+            Control.Text = "Создать";
+            Control.Font = new Font(Control.Font.Name, 9f, Control.Font.Unit);
+            Control.Location = new Point(255, 15);
+            Control.Size = new Size(110, 70);
         }
     }
 }

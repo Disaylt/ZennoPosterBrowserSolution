@@ -19,6 +19,7 @@ using ZennoPosterBrowser.Forms.MainMenu;
 using ZennoPosterBrowser.Logger;
 using ZennoPosterBrowser.Services.Accounts;
 using ZennoPosterBrowser.Services.BrowserActions;
+using ZennoPosterBrowser.Services.Logger;
 using ZennoPosterBrowser.Services.VPN;
 using ZennoPosterBrowser.Services.ZennoPosterBrowser;
 
@@ -33,6 +34,8 @@ namespace ZennoPosterBrowser
         private IZennoPosterProjectModel _project;
         private static readonly object _locker = new object();
 
+        public static Guid CurrentGuid { get; private set; } = Guid.NewGuid();
+
         /// <summary>
         /// Метод для запуска выполнения скрипта
         /// </summary>
@@ -43,11 +46,11 @@ namespace ZennoPosterBrowser
         {
             lock (_locker)
             {
+                CurrentGuid = Guid.NewGuid();
                 _instance = instance;
                 _project = project;
-                BaseConfig config =  BaseConfig.InitialConfig(project);
+                BaseConfig.InitialConfig(project);
                 bool isGoodEnd = true;
-                Guid guid = Guid.NewGuid();
 
                 try
                 {
@@ -61,21 +64,21 @@ namespace ZennoPosterBrowser
                 catch (Exception ex)
                 {
                     isGoodEnd = false;
-                    ErrorMessage errorMessage = new FileErrorMessageBuilder(ex, guid.ToString());
-                    config.Logger.WriteError(errorMessage);
+                    ErrorMessage errorMessage = new FileErrorMessageBuilder(ex, CurrentGuid.ToString());
+                    LoggerStorage.Logger.WriteError(errorMessage);
                 }
                 finally
                 {
                     BrowserConfig.Instance.ResetBrowserProperies();
                     if(isGoodEnd)
                     {
-                        InfoMessage message = new FileInfoMessageBuilder($"Guid: {guid} выполнен успешно.");
-                        config.Logger.WriteInfo(message);
+                        InfoMessage message = new FileInfoMessageBuilder($"Выполнен успешно.");
+                        LoggerStorage.Logger.WriteInfo(message);
                     }
                     else
                     {
-                        InfoMessage message = new FileInfoMessageBuilder($"Guid: {guid} завершился с ошибкой.");
-                        config.Logger.WriteInfo(message);
+                        InfoMessage message = new FileInfoMessageBuilder($"Завершился с ошибкой.");
+                        LoggerStorage.Logger.WriteInfo(message);
                     }
                 }
 

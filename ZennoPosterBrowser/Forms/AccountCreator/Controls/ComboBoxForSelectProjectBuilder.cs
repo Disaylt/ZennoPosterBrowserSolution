@@ -10,27 +10,23 @@ namespace ZennoPosterBrowser.Forms.AccountCreator.Controls
 {
     internal class ComboBoxForSelectProjectBuilder : ComboBoxBuilder
     {
-        private readonly IEnumerable<string> _projectNames;
-
         public ComboBoxForSelectProjectBuilder(IEnumerable<string> projectNames)
         {
-            _projectNames = projectNames;
+            SetSettings();
+            Control.Items.AddRange(projectNames.ToArray());
         }
 
-        public override ComboBox Create()
+        public override ComboBox GetComboBox()
         {
-            ComboBox comboBox = new ComboBox();
-            SetSettings(comboBox);
-            comboBox.Items.AddRange(_projectNames.ToArray());
-            return comboBox;
+            return Control;
         }
 
-        private void SetSettings(ComboBox comboBox)
+        private void SetSettings()
         {
-            comboBox.FormattingEnabled = true;
-            comboBox.Location = new System.Drawing.Point(15, 65);
-            comboBox.Size = new System.Drawing.Size(230, 20);
-            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            Control.FormattingEnabled = true;
+            Control.Location = new System.Drawing.Point(15, 65);
+            Control.Size = new System.Drawing.Size(230, 20);
+            Control.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }
 }

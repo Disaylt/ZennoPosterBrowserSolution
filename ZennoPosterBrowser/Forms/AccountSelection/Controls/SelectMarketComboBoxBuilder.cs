@@ -10,28 +10,24 @@ namespace ZennoPosterBrowser.Forms.AccountSelection.Controls
 {
     internal class SelectMarketComboBoxBuilder : ComboBoxBuilder
     {
-        private readonly IEnumerable<string> _marketNames;
-
         public SelectMarketComboBoxBuilder(IEnumerable<string> marketNames)
         {
-            _marketNames = marketNames;
+            SetSettings();
+            Control.Items.AddRange(marketNames.ToArray());
         }
 
-        public override ComboBox Create()
+        public override ComboBox GetComboBox()
         {
-            ComboBox comboBox = new ComboBox();
-            SetSettings(comboBox);
-            comboBox.Items.AddRange(_marketNames.ToArray());
-            return comboBox;
+            return Control;
         }
 
-        private void SetSettings(ComboBox comboBox)
+        private void SetSettings()
         {
-            comboBox.FormattingEnabled = true;
-            comboBox.Location = new System.Drawing.Point(210, 15);
-            comboBox.Name = "comboBoxSelectMarket";
-            comboBox.Size = new System.Drawing.Size(60, 20);
-            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            Control.FormattingEnabled = true;
+            Control.Location = new System.Drawing.Point(210, 15);
+            Control.Name = "comboBoxSelectMarket";
+            Control.Size = new System.Drawing.Size(60, 20);
+            Control.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }
 }

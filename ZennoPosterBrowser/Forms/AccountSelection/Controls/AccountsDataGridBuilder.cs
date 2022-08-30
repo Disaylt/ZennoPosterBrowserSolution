@@ -10,24 +10,27 @@ namespace ZennoPosterBrowser.Forms.AccountSelection.Controls
 {
     internal class AccountsDataGridBuilder : DataGridViewBuilder
     {
-        public override DataGridView Create()
+        public AccountsDataGridBuilder()
         {
-            DataGridView dataGridView = new DataGridView();
-            SetDataGridSettings(dataGridView);
+            SetDataGridSettings();
             AccountsDataGridColumnsStorage columnStorage = new AccountsDataGridColumnsStorage();
-            AddColumns(dataGridView, columnStorage.Columns);
-            return dataGridView;
+            AddColumns(Control, columnStorage.Columns);
         }
 
-        private void SetDataGridSettings(DataGridView dataGridView)
+        public override DataGridView GetDataGrid()
         {
-            ((System.ComponentModel.ISupportInitialize)(dataGridView)).BeginInit();
-            dataGridView.SuspendLayout();
-            dataGridView.BackgroundColor = System.Drawing.Color.White;
-            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Location = new System.Drawing.Point(15, 45);
-            dataGridView.Name = "dataGridAccounts";
-            dataGridView.Size = new System.Drawing.Size(350, 300);
+            return Control;
+        }
+
+        private void SetDataGridSettings()
+        {
+            ((System.ComponentModel.ISupportInitialize)(Control)).BeginInit();
+            Control.SuspendLayout();
+            Control.BackgroundColor = System.Drawing.Color.White;
+            Control.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Control.Location = new System.Drawing.Point(15, 45);
+            Control.Name = "dataGridAccounts";
+            Control.Size = new System.Drawing.Size(350, 300);
         }
     }
 }

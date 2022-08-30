@@ -7,6 +7,8 @@ using SmartProxyV2_ZennoLabVersion;
 using SmartProxyV2_ZennoLabVersion.Models;
 using SmartProxyV2_ZennoLabVersion.MongoModels;
 using ZennoLab.CommandCenter;
+using ZennoPosterBrowser.Logger;
+using ZennoPosterBrowser.Services.Logger;
 
 namespace ZennoPosterBrowser.Services.VPN
 {
@@ -45,6 +47,7 @@ namespace ZennoPosterBrowser.Services.VPN
         {
             string proxyString = $"{Proxy.User}:{Proxy.Password}@{Proxy.Ip}:{Proxy.PortData.PortNum}";
             Instance.SetProxy(proxyString);
+            LoggerStorage.Logger.WriteInfo(new FileInfoMessageBuilder($"Set proxy - {proxyString}"));
         }
     }
 }

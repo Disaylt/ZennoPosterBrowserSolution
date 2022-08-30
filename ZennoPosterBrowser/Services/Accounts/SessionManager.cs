@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoPosterBrowser.Configs;
+using ZennoPosterBrowser.Logger;
 using ZennoPosterBrowser.Services.BrowserActions;
+using ZennoPosterBrowser.Services.Logger;
 
 namespace ZennoPosterBrowser.Services.Accounts
 {
@@ -28,6 +30,7 @@ namespace ZennoPosterBrowser.Services.Accounts
             {
                 _project.Profile.Load($"{browserConfig.PathToSession}{browserConfig.CurrentSession}.zpprofile");
                 _isLoad = true;
+                LoggerStorage.Logger.WriteInfo(new FileInfoMessageBuilder($"Load account - {browserConfig.CurrentSession}"));
                 return BrowserProjectActions.OpenMenu;
             }
             else if (_isLoad)
@@ -61,6 +64,7 @@ namespace ZennoPosterBrowser.Services.Accounts
                 true,
                 true,
                 true);
+            LoggerStorage.Logger.WriteInfo(new FileInfoMessageBuilder($"Save account - {sessionName}"));
         }
     }
 }

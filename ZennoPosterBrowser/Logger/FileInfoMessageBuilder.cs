@@ -16,12 +16,11 @@ namespace ZennoPosterBrowser.Logger
         public override string GetMessage()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            string firstAndLastLine = "----------------------------";
-            stringBuilder.AppendLine(firstAndLastLine);
             stringBuilder.AppendLine("INFO");
             stringBuilder.AppendLine($"Date: {DateTime.Now}");
+            stringBuilder.AppendLine($"Guid: {Program.CurrentGuid}");
             stringBuilder.AppendLine($"Message: {Message}");
-            stringBuilder.AppendLine(firstAndLastLine);
+            stringBuilder.AppendLine("----------------------------");
             return stringBuilder.ToString();
         }
     }

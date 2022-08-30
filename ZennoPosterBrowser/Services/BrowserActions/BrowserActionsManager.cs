@@ -10,6 +10,7 @@ using ZennoPosterBrowser.Forms.AccountSelection;
 using ZennoPosterBrowser.Forms.MainMenu;
 using ZennoPosterBrowser.Logger;
 using ZennoPosterBrowser.Services.Accounts;
+using ZennoPosterBrowser.Services.Logger;
 using ZennoPosterBrowser.Services.ZennoPosterBrowser;
 
 namespace ZennoPosterBrowser.Services.BrowserActions
@@ -23,8 +24,6 @@ namespace ZennoPosterBrowser.Services.BrowserActions
 
         private readonly List<Action> _firstActions;
         private readonly List<Action> _lastActions;
-
-        private readonly ILogger<InfoMessage, ErrorMessage> _logger;
 
         public BrowserActionsManager()
         {
@@ -43,6 +42,7 @@ namespace ZennoPosterBrowser.Services.BrowserActions
                 var nextAction = firstAction;
                 do
                 {
+                    LoggerStorage.Logger.WriteInfo(new FileInfoMessageBuilder($"Next action - {nextAction}"));
                     nextAction = ExecuteCurrentActionAndReturnNextAction(nextAction);
                 }
                 while (nextAction != BrowserProjectActions.CloseBrowser);
@@ -50,7 +50,7 @@ namespace ZennoPosterBrowser.Services.BrowserActions
             catch(Exception ex)
             {
                 ErrorMessage errorMessage = new FileErrorMessageBuilder(ex);
-                _logger.WriteError(errorMessage);
+                LoggerStorage.Logger.WriteError(errorMessage);
             }
             finally
             {
@@ -82,6 +82,7 @@ namespace ZennoPosterBrowser.Services.BrowserActions
         {
             foreach (var action in _firstActions)
             {
+                LoggerStorage.Logger.WriteInfo(new FileInfoMessageBuilder($"Execute first action - {action.Method.Name}"));
                 action?.Invoke();
             }
         }
@@ -92,12 +93,13 @@ namespace ZennoPosterBrowser.Services.BrowserActions
             {
                 try
                 {
+                    LoggerStorage.Logger.WriteInfo(new FileInfoMessageBuilder($"Execute last action - {action.Method.Name}"));
                     action?.Invoke();
                 }
                 catch (Exception ex)
                 {
                     ErrorMessage errorMessage = new FileErrorMessageBuilder(ex);
-                    _logger.WriteError(errorMessage);
+                    LoggerStorage.Logger.WriteError(errorMessage);
                 }
             }
         }

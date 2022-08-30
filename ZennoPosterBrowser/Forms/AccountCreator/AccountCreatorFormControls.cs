@@ -38,7 +38,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
                 if( _buttonForCreateAccounts == null )
                 {
                     ButtonForCreateAccountsBuilder buttonForCreateAccountsBuilder = new ButtonForCreateAccountsBuilder();
-                    _buttonForCreateAccounts = buttonForCreateAccountsBuilder.Create();
+                    _buttonForCreateAccounts = buttonForCreateAccountsBuilder.GetButton();
                 }
                 return _buttonForCreateAccounts; 
             }
@@ -52,7 +52,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
                 if(_textBoxForWriteAccountName == null )
                 {
                     TextBoxForWriteAccountNameBuilder textBoxForWriteAccountNameBuilder = new TextBoxForWriteAccountNameBuilder();
-                    _textBoxForWriteAccountName = textBoxForWriteAccountNameBuilder.Create();
+                    _textBoxForWriteAccountName = textBoxForWriteAccountNameBuilder.GetTextBox();
                 }
                 return _textBoxForWriteAccountName;
             }
@@ -67,7 +67,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
                 {
                     var projectNamesLoader = BrowserConfig.Instance.ProjectNamesStorage;
                     ComboBoxForSelectProjectBuilder comboBoxForSelectProjectBuilder = new ComboBoxForSelectProjectBuilder(projectNamesLoader.AllProjectNames);
-                    _comboBoxForSelectProject = comboBoxForSelectProjectBuilder.Create();
+                    _comboBoxForSelectProject = comboBoxForSelectProjectBuilder.GetComboBox();
                 }
                 return _comboBoxForSelectProject;
             }
@@ -82,7 +82,7 @@ namespace ZennoPosterBrowser.Forms.AccountCreator
                 {
                     var marketNamesLoader = BrowserConfig.Instance.MarketNamesStorage;
                     ComboBoxForSelectMarketBuilder comboBoxForSelectMarketBuilder = new ComboBoxForSelectMarketBuilder(marketNamesLoader.AllMarketNames);
-                    _comboBoxForSelectMarket = comboBoxForSelectMarketBuilder.Create();
+                    _comboBoxForSelectMarket = comboBoxForSelectMarketBuilder.GetComboBox();
                 }
                 return _comboBoxForSelectMarket;
             }

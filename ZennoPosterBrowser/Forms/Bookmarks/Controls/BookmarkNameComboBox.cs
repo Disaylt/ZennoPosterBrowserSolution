@@ -11,29 +11,32 @@ namespace ZennoPosterBrowser.Forms.Bookmarks.Controls
 {
     internal class BookmarkNameComboBox : ComboBoxBuilder
     {
-        private readonly IEnumerable<string> _bookmarkNames;
-
         public BookmarkNameComboBox(IEnumerable<BookmarkModel> bookmarkNames)
         {
-            _bookmarkNames = bookmarkNames
-                .Select(x=> x.Name);
+            SetSettings();
+            AddItems(bookmarkNames);
         }
 
-        public override ComboBox Create()
+        public override ComboBox GetComboBox()
         {
-            ComboBox comboBox = new ComboBox();
-            SetSettings(comboBox);
-            comboBox.Items.AddRange(_bookmarkNames.ToArray());
-            return comboBox;
+            return Control;
         }
 
-        private void SetSettings(ComboBox comboBox)
+        private void AddItems(IEnumerable<BookmarkModel> bookmarkNames)
         {
-            comboBox.FormattingEnabled = true;
-            comboBox.Location = new System.Drawing.Point(15, 140);
-            comboBox.Name = "comboBoxBookmarks";
-            comboBox.Size = new System.Drawing.Size(260, 20);
-            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            var names = bookmarkNames
+                .Select(x => x.Name)
+                .ToArray();
+            Control.Items.AddRange(names);
+        }
+
+        private void SetSettings()
+        {
+            Control.FormattingEnabled = true;
+            Control.Location = new System.Drawing.Point(15, 140);
+            Control.Name = "comboBoxBookmarks";
+            Control.Size = new System.Drawing.Size(260, 20);
+            Control.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }
 }

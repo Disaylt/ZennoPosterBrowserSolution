@@ -7,13 +7,13 @@ using ZennoLab.CommandCenter;
 using ZennoPosterBrowser.Configs;
 using ZennoPosterBrowser.Logger;
 using ZennoPosterBrowser.Services.BrowserActions;
+using ZennoPosterBrowser.Services.Logger;
 
 namespace ZennoPosterBrowser.Forms.MainMenu
 {
     internal class MainMenuFormBrowserAction : IBrowserAction
     {
         private readonly MainMenuForm _menuForm;
-        private readonly ILogger<InfoMessage, ErrorMessage> _logger;
         public MainMenuFormBrowserAction(Instance instance)
         {
             _menuForm = new MainMenuForm(instance);
@@ -29,7 +29,7 @@ namespace ZennoPosterBrowser.Forms.MainMenu
             catch (Exception ex)
             {
                 ErrorMessage errorMessage = new FileErrorMessageBuilder(ex);
-                _logger.WriteError(errorMessage);
+                LoggerStorage.Logger.WriteError(errorMessage);
                 return BrowserProjectActions.CloseBrowser;
             }
         }

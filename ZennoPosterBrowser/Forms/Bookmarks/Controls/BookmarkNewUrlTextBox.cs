@@ -10,14 +10,23 @@ namespace ZennoPosterBrowser.Forms.Bookmarks.Controls
 {
     internal class BookmarkNewUrlTextBox : TextBoxBuilder
     {
-        public override TextBox Create()
+        public BookmarkNewUrlTextBox()
         {
-            TextBox textBoxSearch = new TextBox();
-            textBoxSearch.Location = new System.Drawing.Point(15, 45);
-            textBoxSearch.Name = "bookmarkUrl";
-            textBoxSearch.Multiline = true;
-            textBoxSearch.Size = new System.Drawing.Size(260, 60);
-            return textBoxSearch;
+            SetSettings();
+        }
+
+        public override TextBox GetTextBox()
+        {
+            
+            return Control;
+        }
+
+        private void SetSettings()
+        {
+            Control.Location = new System.Drawing.Point(15, 45);
+            Control.Name = "bookmarkUrl";
+            Control.Multiline = true;
+            Control.Size = new System.Drawing.Size(260, 60);
         }
     }
 }

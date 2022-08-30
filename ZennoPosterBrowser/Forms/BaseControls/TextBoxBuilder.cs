@@ -9,6 +9,11 @@ namespace ZennoPosterBrowser.Forms.BaseControls
 {
     internal abstract class TextBoxBuilder
     {
-        public abstract TextBox Create();
+        public TextBoxBuilder()
+        {
+            Control = new TextBox();
+        }
+        protected TextBox Control { get; }
+        public abstract TextBox GetTextBox();
     }
 }
